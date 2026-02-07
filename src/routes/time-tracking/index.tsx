@@ -1,6 +1,19 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { Button, Row, Col, Space, Input, Table, Typography, Tag, Popconfirm, Dropdown, Form, Select } from "antd";
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Table,
+  Typography,
+  Tag,
+  Popconfirm,
+  Dropdown,
+  Form,
+  Select,
+} from "antd";
 import type { GetRef } from "antd";
 import {
   PlayCircleOutlined,
@@ -67,7 +80,7 @@ interface EditableCellProps {
   dataIndex: string;
   record: any;
   handleSave: (record: any) => void;
-  inputType?: 'text' | 'select';
+  inputType?: "text" | "select";
   options?: Array<{ value: any; label: string }>;
 }
 
@@ -89,7 +102,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
     if (editing) {
       inputRef.current?.focus();
       // Auto-open dropdown for select fields
-      if (dataIndex === 'clientId' || dataIndex === 'projectId') {
+      if (dataIndex === "clientId" || dataIndex === "projectId") {
         setSelectOpen(true);
       }
     } else {
@@ -104,14 +117,14 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
 
   const save = async () => {
     if (saving) return; // Prevent duplicate saves
-    
+
     setSaving(true);
     try {
       const values = await form.validateFields();
       toggleEdit();
       handleSave({ ...record, ...values });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      console.log("Save failed:", errInfo);
     } finally {
       setSaving(false);
     }
@@ -126,11 +139,8 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
 
   if (editable) {
     childNode = editing ? (
-      <Form.Item
-        style={{ margin: 0 }}
-        name={dataIndex}
-      >
-        {dataIndex === 'clientId' ? (
+      <Form.Item style={{ margin: 0 }} name={dataIndex}>
+        {dataIndex === "clientId" ? (
           <Select
             ref={inputRef}
             open={selectOpen}
@@ -141,7 +151,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
             allowClear
             placeholder="Select client"
           />
-        ) : dataIndex === 'projectId' ? (
+        ) : dataIndex === "projectId" ? (
           <Select
             ref={inputRef}
             open={selectOpen}
@@ -218,7 +228,6 @@ const TimeTracking = () => {
     });
   };
 
-
   // Timer functionality
   const startTimer = async () => {
     const startTime = dayjs().valueOf();
@@ -265,7 +274,7 @@ const TimeTracking = () => {
             updates: {
               endTime,
               duration,
-            }
+            },
           });
 
           // Refresh the list
@@ -279,7 +288,6 @@ const TimeTracking = () => {
     }
   };
 
-
   // Format duration
   const formatDuration = (seconds: number) => {
     const d = dayjs.duration(seconds, "seconds");
@@ -292,22 +300,22 @@ const TimeTracking = () => {
   // Handle inline field update
   const handleSave = async (row: any) => {
     // Extract the changed fields (exclude unchanged ones)
-    const original = timeEntries.find(e => e.id === row.id);
+    const original = timeEntries.find((e) => e.id === row.id);
     const updates: any = {};
-    
+
     if (row.description !== original?.description) {
       updates.description = row.description;
     }
-    
+
     if (row.clientId !== original?.clientId) {
       updates.clientId = row.clientId;
       // Also update the clientName for display
-      const client = clients.find(c => c.id === row.clientId);
+      const client = clients.find((c) => c.id === row.clientId);
       updates.clientName = client?.name || null;
-      
+
       // If client is changed, check if current project belongs to this client
       if (row.projectId) {
-        const currentProject = projects.find(p => p.id === row.projectId);
+        const currentProject = projects.find((p) => p.id === row.projectId);
         if (currentProject && currentProject.clientId !== row.clientId) {
           // Clear project if it doesn't belong to the new client
           updates.projectId = null;
@@ -315,17 +323,17 @@ const TimeTracking = () => {
         }
       }
     }
-    
+
     if (row.projectId !== original?.projectId) {
       updates.projectId = row.projectId;
       // Also update the projectName for display
-      const project = projects.find(p => p.id === row.projectId);
+      const project = projects.find((p) => p.id === row.projectId);
       updates.projectName = project?.name || null;
-      
+
       // Auto-select client when project is selected
       if (row.projectId && project?.clientId && row.clientId !== project.clientId) {
         updates.clientId = project.clientId;
-        const client = clients.find(c => c.id === project.clientId);
+        const client = clients.find((c) => c.id === project.clientId);
         updates.clientName = client?.name || null;
       }
     }
@@ -334,15 +342,15 @@ const TimeTracking = () => {
     if (row.startTime !== original?.startTime) {
       updates.startTime = row.startTime;
     }
-    
+
     if (row.endTime !== original?.endTime) {
       updates.endTime = row.endTime;
     }
-    
+
     if (row.duration !== original?.duration) {
       updates.duration = row.duration;
     }
-    
+
     // Only update if there are actual changes
     if (Object.keys(updates).length > 0) {
       await updateTimeEntryDirectly({ id: row.id, updates });
@@ -356,14 +364,15 @@ const TimeTracking = () => {
       dataIndex: "description",
       key: "description",
       editable: true,
-      render: (text: string) => text || <span style={{ color: '#bfbfbf', fontStyle: 'italic' }}>Add description...</span>,
+      render: (text: string) =>
+        text || <span style={{ color: "#bfbfbf", fontStyle: "italic" }}>Add description...</span>,
     },
     {
       title: <Trans>Client</Trans>,
       dataIndex: "clientId",
       key: "clientId",
       editable: true,
-      inputType: 'select',
+      inputType: "select",
       render: (_: string, record: any) => record.clientName || "-",
       filters: clients.map((client: any) => ({
         text: client.name,
@@ -376,7 +385,7 @@ const TimeTracking = () => {
       dataIndex: "projectId",
       key: "projectId",
       editable: true,
-      inputType: 'select',
+      inputType: "select",
       render: (_: string, record: any) => record.projectName || "-",
       filters: projects.map((project: any) => ({
         text: project.name,
@@ -388,11 +397,9 @@ const TimeTracking = () => {
       title: <Trans>Time Range</Trans>,
       dataIndex: "timeRange",
       key: "timeRange",
-      render: (_: any, record: any) => (
-        <TimeRangeCell record={record} handleSave={handleSave} />
-      ),
+      render: (_: any, record: any) => <TimeRangeCell record={record} handleSave={handleSave} />,
       sorter: (a: any, b: any) => a.startTime - b.startTime,
-      defaultSortOrder: 'descend',
+      defaultSortOrder: "descend",
       showSorterTooltip: false,
     },
     {
@@ -402,7 +409,10 @@ const TimeTracking = () => {
       render: (seconds: number, record: any) => {
         // For running timers, calculate current duration dynamically
         if (runningTimer && record.id === runningTimer && !record.endTime) {
-          const currentDuration = Math.max(0, Math.floor((currentTime.valueOf() - record.startTime) / 1000));
+          const currentDuration = Math.max(
+            0,
+            Math.floor((currentTime.valueOf() - record.startTime) / 1000),
+          );
           return formatDuration(currentDuration);
         }
         return formatDuration(seconds);
@@ -454,13 +464,13 @@ const TimeTracking = () => {
                 label: <Trans>Edit</Trans>,
                 icon: <EditOutlined />,
                 onClick: () => {
-                  navigate(location.pathname, { 
-                    state: { 
+                  navigate(location.pathname, {
+                    state: {
                       ...location.state,
-                      timeEntryModal: true, 
-                      timeEntryId: record.id 
-                    }, 
-                    replace: true 
+                      timeEntryModal: true,
+                      timeEntryId: record.id,
+                    },
+                    replace: true,
                   });
                 },
               },
@@ -510,21 +520,21 @@ const TimeTracking = () => {
     if (!col.editable) {
       return col;
     }
-    
+
     // Prepare options for select fields
     let options: Array<{ value: any; label: string }> = [];
-    if (col.inputType === 'select' && col.dataIndex === 'clientId') {
+    if (col.inputType === "select" && col.dataIndex === "clientId") {
       options = clients.map((client: any) => ({
         value: client.id,
         label: client.name,
       }));
-    } else if (col.inputType === 'select' && col.dataIndex === 'projectId') {
+    } else if (col.inputType === "select" && col.dataIndex === "projectId") {
       options = projects.map((project: any) => ({
         value: project.id,
         label: project.name,
       }));
     }
-    
+
     return {
       ...col,
       onCell: (record: any) => ({

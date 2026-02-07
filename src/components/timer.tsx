@@ -75,9 +75,20 @@ const Timer = () => {
       <Space>
         <Badge status="processing" color="red" />
         <span style={{ fontWeight: "bold", fontFamily: "monospace" }}>
-          {timeEntry && timeEntry.startTime ? 
-            formatDuration(Math.max(0, Math.floor((currentTime.valueOf() - (typeof timeEntry.startTime === 'number' ? timeEntry.startTime : dayjs(timeEntry.startTime).valueOf())) / 1000))) : 
-            "00:00:00"}
+          {timeEntry && timeEntry.startTime
+            ? formatDuration(
+                Math.max(
+                  0,
+                  Math.floor(
+                    (currentTime.valueOf() -
+                      (typeof timeEntry.startTime === "number"
+                        ? timeEntry.startTime
+                        : dayjs(timeEntry.startTime).valueOf())) /
+                      1000,
+                  ),
+                ),
+              )
+            : "00:00:00"}
         </span>
       </Space>
     </Button>

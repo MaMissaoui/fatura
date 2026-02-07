@@ -51,7 +51,12 @@ export const taxRateAtom = atom(
           // Convert percentage string to number
           percentage: parseFloat(newValues.percentage),
           // Convert boolean to integer for isDefault
-          isDefault: typeof newValues.isDefault === "boolean" ? (newValues.isDefault ? 1 : 0) : newValues.isDefault,
+          isDefault:
+            typeof newValues.isDefault === "boolean"
+              ? newValues.isDefault
+                ? 1
+                : 0
+              : newValues.isDefault,
         };
 
         const createdTaxRate = await invoke<any>("create_tax_rate", {
@@ -70,7 +75,12 @@ export const taxRateAtom = atom(
           // Convert percentage string to number if present
           percentage: newValues.percentage ? parseFloat(newValues.percentage) : undefined,
           // Convert boolean to integer for isDefault
-          isDefault: typeof newValues.isDefault === "boolean" ? (newValues.isDefault ? 1 : 0) : newValues.isDefault,
+          isDefault:
+            typeof newValues.isDefault === "boolean"
+              ? newValues.isDefault
+                ? 1
+                : 0
+              : newValues.isDefault,
         };
 
         const updatedTaxRate = await invoke<any>("update_tax_rate", {
@@ -92,5 +102,5 @@ export const taxRateAtom = atom(
         message.error(t`Tax rate update failed`);
       }
     }
-  }
+  },
 );

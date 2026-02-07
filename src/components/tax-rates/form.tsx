@@ -68,7 +68,10 @@ const TaxRateForm = () => {
           <Form.Item name="description">
             <Input.TextArea rows={4} placeholder={t`Description`} />
           </Form.Item>
-          <Form.Item name="percentage" rules={[{ required: true, message: t`Please input a percentage!` }]}>
+          <Form.Item
+            name="percentage"
+            rules={[{ required: true, message: t`Please input a percentage!` }]}
+          >
             <Input placeholder={t`Percentage`} />
           </Form.Item>
           <Form.Item name="isDefault" valuePropName="checked">

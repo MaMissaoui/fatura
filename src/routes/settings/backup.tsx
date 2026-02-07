@@ -1,19 +1,6 @@
 import { useState } from "react";
-import {
-  Button,
-  Col,
-  Space,
-  Typography,
-  Row,
-  message,
-  Card,
-  Modal,
-} from "antd";
-import {
-  CloudDownloadOutlined,
-  CloudUploadOutlined,
-  DatabaseOutlined,
-} from "@ant-design/icons";
+import { Button, Col, Space, Typography, Row, message, Card, Modal } from "antd";
+import { CloudDownloadOutlined, CloudUploadOutlined, DatabaseOutlined } from "@ant-design/icons";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
@@ -31,9 +18,7 @@ function SettingsBackup() {
     setBacking(true);
     try {
       const backupPath = await invoke<string>("backup_database");
-      messageApi.success(
-        t`Database backup saved successfully to ${backupPath}`,
-      );
+      messageApi.success(t`Database backup saved successfully to ${backupPath}`);
     } catch (error) {
       console.error("Backup failed:", error);
       messageApi.error(t`Failed to backup database: ${String(error)}`);
@@ -101,9 +86,8 @@ function SettingsBackup() {
           >
             <Paragraph>
               <Trans>
-                Create a backup of your database to save all your invoices,
-                clients, and settings. The backup file can be used to restore
-                your data if needed.
+                Create a backup of your database to save all your invoices, clients, and settings.
+                The backup file can be used to restore your data if needed.
               </Trans>
             </Paragraph>
           </Card>
@@ -127,8 +111,8 @@ function SettingsBackup() {
           >
             <Paragraph>
               <Trans>
-                Restore your database from a previously created backup file.
-                This will replace all current data with the backup data.
+                Restore your database from a previously created backup file. This will replace all
+                current data with the backup data.
               </Trans>
             </Paragraph>
           </Card>

@@ -32,7 +32,11 @@ const TimeRangeCell: React.FC<TimeRangeCellProps> = ({ record, handleSave }) => 
     const endTime = values.endTime || (record.endTime ? dayjs(record.endTime) : null);
 
     // Combine selected date with times
-    const newStartTime = selectedDate.hour(startTime.hour()).minute(startTime.minute()).second(0).millisecond(0);
+    const newStartTime = selectedDate
+      .hour(startTime.hour())
+      .minute(startTime.minute())
+      .second(0)
+      .millisecond(0);
 
     const newEndTime = endTime
       ? selectedDate.hour(endTime.hour()).minute(endTime.minute()).second(0).millisecond(0)
@@ -67,12 +71,22 @@ const TimeRangeCell: React.FC<TimeRangeCellProps> = ({ record, handleSave }) => 
         <Row gutter={12}>
           <Col span={12}>
             <Form.Item name="startTime" label={<Trans>Start Time</Trans>}>
-              <TimePicker format="HH:mm" style={{ width: "100%" }} open={false} inputReadOnly={false} />
+              <TimePicker
+                format="HH:mm"
+                style={{ width: "100%" }}
+                open={false}
+                inputReadOnly={false}
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Form.Item name="endTime" label={<Trans>End Time</Trans>}>
-              <TimePicker format="HH:mm" style={{ width: "100%" }} open={false} inputReadOnly={false} />
+              <TimePicker
+                format="HH:mm"
+                style={{ width: "100%" }}
+                open={false}
+                inputReadOnly={false}
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -96,8 +110,16 @@ const TimeRangeCell: React.FC<TimeRangeCellProps> = ({ record, handleSave }) => 
   );
 
   return (
-    <Popover content={popoverContent} trigger="click" open={open} onOpenChange={setOpen} placement="bottomLeft">
-      <span style={{ cursor: "pointer", color: "#1890ff" }}>{formatTimeRange(record.startTime, record.endTime)}</span>
+    <Popover
+      content={popoverContent}
+      trigger="click"
+      open={open}
+      onOpenChange={setOpen}
+      placement="bottomLeft"
+    >
+      <span style={{ cursor: "pointer", color: "#1890ff" }}>
+        {formatTimeRange(record.startTime, record.endTime)}
+      </span>
     </Popover>
   );
 };

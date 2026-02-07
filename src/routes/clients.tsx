@@ -40,7 +40,7 @@ const Clients = () => {
         (field) => {
           const value = get(client, field);
           return includes(toString(value).toLowerCase(), search.toLowerCase());
-        }
+        },
       );
     });
   };
@@ -56,7 +56,10 @@ const Clients = () => {
         </Col>
         <Col span={12} style={{ display: "flex", justifyContent: "flex-end" }}>
           <Space style={{ alignItems: "start" }}>
-            <Input.Search placeholder={t`Search text`} onChange={(e) => setSearch(e.target.value)} />
+            <Input.Search
+              placeholder={t`Search text`}
+              onChange={(e) => setSearch(e.target.value)}
+            />
             <Link to="/clients" state={{ clientModal: true }}>
               <Button type="primary" style={{ marginBottom: 10 }}>
                 <Trans>New client</Trans>
@@ -84,7 +87,9 @@ const Clients = () => {
               dataIndex="emails"
               key="emails"
               render={(emails: string) =>
-                emails ? JSON.parse(emails).map((email: string) => <Tag key={email}>{email}</Tag>) : ""
+                emails
+                  ? JSON.parse(emails).map((email: string) => <Tag key={email}>{email}</Tag>)
+                  : ""
               }
             />
             <Table.Column

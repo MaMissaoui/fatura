@@ -1,6 +1,17 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { Form, Input, Modal, Select, Button, Popconfirm, DatePicker, InputNumber, Row, Col } from "antd";
+import {
+  Form,
+  Input,
+  Modal,
+  Select,
+  Button,
+  Popconfirm,
+  DatePicker,
+  InputNumber,
+  Row,
+  Col,
+} from "antd";
 import { atom, useAtom, useSetAtom, useAtomValue } from "jotai";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
@@ -11,11 +22,11 @@ import dayjs from "dayjs";
 
 import { clientsAtom } from "src/atoms/client";
 import { projectsAtom } from "src/atoms/project";
-import { 
-  timeEntryIdAtom, 
-  timeEntryAtom, 
+import {
+  timeEntryIdAtom,
+  timeEntryAtom,
   deleteTimeEntryAtom,
-  setTagsAtom
+  setTagsAtom,
 } from "src/atoms/time-tracking";
 import { useDateTimePickerFormat } from "src/utils/date";
 import TagSelector from "src/components/tags/selector";
@@ -40,11 +51,11 @@ const TimeEntryForm = () => {
 
   const handleSubmit = async (values: any) => {
     setSubmitting(true);
-    
+
     // Calculate duration if both start and end times are provided
     let duration = values.duration || 0;
     if (values.startTime && values.endTime) {
-      duration = dayjs(values.endTime).diff(dayjs(values.startTime), 'seconds');
+      duration = dayjs(values.endTime).diff(dayjs(values.startTime), "seconds");
     }
 
     const submitData = {
@@ -73,12 +84,12 @@ const TimeEntryForm = () => {
   };
 
   const calculateDuration = () => {
-    const startTime = form.getFieldValue('startTime');
-    const endTime = form.getFieldValue('endTime');
-    
+    const startTime = form.getFieldValue("startTime");
+    const endTime = form.getFieldValue("endTime");
+
     if (startTime && endTime) {
-      const durationSeconds = dayjs(endTime).diff(dayjs(startTime), 'seconds');
-      form.setFieldValue('duration', durationSeconds);
+      const durationSeconds = dayjs(endTime).diff(dayjs(startTime), "seconds");
+      form.setFieldValue("duration", durationSeconds);
     }
   };
 
@@ -118,7 +129,10 @@ const TimeEntryForm = () => {
         navigate(location.pathname, { state: { timeEntryModal: false }, replace: true });
       }}
       footer={[
-        <div key="footer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+        <div
+          key="footer"
+          style={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+        >
           <div>
             {isEditing && (
               <Popconfirm
@@ -144,41 +158,34 @@ const TimeEntryForm = () => {
             >
               <Trans>Cancel</Trans>
             </Button>
-            <Button
-              type="primary"
-              loading={submitting}
-              onClick={() => form.submit()}
-            >
+            <Button type="primary" loading={submitting} onClick={() => form.submit()}>
               <Trans>Save</Trans>
             </Button>
           </div>
-        </div>
+        </div>,
       ]}
       forceRender={true}
     >
       {(!timeEntryId || !isEmpty(timeEntry)) && (
         <Form form={form} layout="vertical" onFinish={handleSubmit}>
-          <Form.Item 
-            name="description" 
-            label={<Trans>Description</Trans>}
-          >
+          <Form.Item name="description" label={<Trans>Description</Trans>}>
             <Input.TextArea rows={3} placeholder={t`What are you working on?`} />
           </Form.Item>
 
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item name="clientId" label={<Trans>Client</Trans>}>
-                <Select 
-                  placeholder={t`Select client (optional)`} 
+                <Select
+                  placeholder={t`Select client (optional)`}
                   allowClear
                   onChange={(clientId) => {
                     // If client is changed, check if current project belongs to this client
-                    const currentProjectId = form.getFieldValue('projectId');
+                    const currentProjectId = form.getFieldValue("projectId");
                     if (currentProjectId) {
-                      const currentProject = projects.find(p => p.id === currentProjectId);
+                      const currentProject = projects.find((p) => p.id === currentProjectId);
                       if (currentProject && currentProject.clientId !== clientId) {
                         // Clear project if it doesn't belong to the new client
-                        form.setFieldValue('projectId', null);
+                        form.setFieldValue("projectId", null);
                       }
                     }
                   }}
@@ -193,14 +200,14 @@ const TimeEntryForm = () => {
             </Col>
             <Col span={12}>
               <Form.Item name="projectId" label={<Trans>Project</Trans>}>
-                <Select 
-                  placeholder={t`Select project (optional)`} 
+                <Select
+                  placeholder={t`Select project (optional)`}
                   allowClear
                   onChange={(projectId) => {
                     if (projectId) {
-                      const selectedProject = projects.find(p => p.id === projectId);
+                      const selectedProject = projects.find((p) => p.id === projectId);
                       if (selectedProject?.clientId) {
-                        form.setFieldValue('clientId', selectedProject.clientId);
+                        form.setFieldValue("clientId", selectedProject.clientId);
                       }
                     }
                   }}
@@ -217,25 +224,25 @@ const TimeEntryForm = () => {
 
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item 
-                name="startTime" 
+              <Form.Item
+                name="startTime"
                 label={<Trans>Start Time</Trans>}
                 rules={[{ required: true, message: t`Please select start time!` }]}
               >
-                <DatePicker 
-                  showTime 
+                <DatePicker
+                  showTime
                   format={dateTimeFormat}
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   onChange={calculateDuration}
                 />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item name="endTime" label={<Trans>End Time</Trans>}>
-                <DatePicker 
-                  showTime 
+                <DatePicker
+                  showTime
                   format={dateTimeFormat}
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   onChange={calculateDuration}
                 />
               </Form.Item>
@@ -243,11 +250,7 @@ const TimeEntryForm = () => {
           </Row>
 
           <Form.Item name="duration" label={<Trans>Duration (seconds)</Trans>}>
-            <InputNumber 
-              style={{ width: '100%' }}
-              min={0}
-              placeholder={t`Duration in seconds`}
-            />
+            <InputNumber style={{ width: "100%" }} min={0} placeholder={t`Duration in seconds`} />
           </Form.Item>
 
           {/* <Row gutter={16}>
@@ -269,7 +272,7 @@ const TimeEntryForm = () => {
           </Row> */}
 
           <Form.Item name="tags" label={<Trans>Tags</Trans>}>
-            <TagSelector placeholder={t`Add or select tags`} style={{ width: '100%' }} />
+            <TagSelector placeholder={t`Add or select tags`} style={{ width: "100%" }} />
           </Form.Item>
         </Form>
       )}

@@ -59,7 +59,11 @@ const Projects = () => {
       dataIndex: "name",
       key: "name",
       render: (text: string, record: any) => (
-        <Button type="link" onClick={() => handleEditProject(record.id)} style={{ padding: 0, height: "auto" }}>
+        <Button
+          type="link"
+          onClick={() => handleEditProject(record.id)}
+          style={{ padding: 0, height: "auto" }}
+        >
           {text}
         </Button>
       ),
@@ -144,7 +148,12 @@ const Projects = () => {
               onChange={(e) => setSearch(e.target.value)}
               allowClear
             />
-            <Button type="primary" onClick={handleNewProject} icon={<PlusOutlined />} style={{ marginBottom: 10 }}>
+            <Button
+              type="primary"
+              onClick={handleNewProject}
+              icon={<PlusOutlined />}
+              style={{ marginBottom: 10 }}
+            >
               <Trans>New Project</Trans>
             </Button>
           </Space>

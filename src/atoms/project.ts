@@ -68,19 +68,24 @@ export const createProjectAtom = atom(
       message.error(t`Failed to create project`);
       throw error;
     }
-  }
+  },
 );
 createProjectAtom.debugLabel = "createProjectAtom";
 
 // Update project
 export const updateProjectAtom = atom(
   null,
-  async (get, set, projectId: string, updates: Partial<Omit<Project, "id" | "organizationId" | "createdAt">>) => {
+  async (
+    get,
+    set,
+    projectId: string,
+    updates: Partial<Omit<Project, "id" | "organizationId" | "createdAt">>,
+  ) => {
     try {
       await invoke("update_project", { projectId, updates });
       const projects = get(projectsAtom);
       const updatedProjects = map(projects, (project) =>
-        project.id === projectId ? { ...project, ...updates } : project
+        project.id === projectId ? { ...project, ...updates } : project,
       );
       set(projectsAtom, updatedProjects);
       message.success(t`Project updated successfully`);
@@ -89,50 +94,43 @@ export const updateProjectAtom = atom(
       message.error(t`Failed to update project`);
       throw error;
     }
-  }
+  },
 );
 updateProjectAtom.debugLabel = "updateProjectAtom";
 
 // Archive project
-export const archiveProjectAtom = atom(
-  null,
-  async (get, set, projectId: string) => {
-    const archivedAt = Math.floor(Date.now() / 1000);
-    try {
-      await invoke("update_project", { projectId, updates: { archivedAt } });
-      const projects = get(projectsAtom);
-      const updatedProjects = map(projects, (project) =>
-        project.id === projectId ? { ...project, archivedAt } : project
-      );
-      set(projectsAtom, updatedProjects);
-      message.success(t`Project archived successfully`);
-    } catch (error) {
-      console.error("Failed to archive project:", error);
-      message.error(t`Failed to archive project`);
-      throw error;
-    }
+export const archiveProjectAtom = atom(null, async (get, set, projectId: string) => {
+  const archivedAt = Math.floor(Date.now() / 1000);
+  try {
+    await invoke("update_project", { projectId, updates: { archivedAt } });
+    const projects = get(projectsAtom);
+    const updatedProjects = map(projects, (project) =>
+      project.id === projectId ? { ...project, archivedAt } : project,
+    );
+    set(projectsAtom, updatedProjects);
+    message.success(t`Project archived successfully`);
+  } catch (error) {
+    console.error("Failed to archive project:", error);
+    message.error(t`Failed to archive project`);
+    throw error;
   }
-);
+});
 archiveProjectAtom.debugLabel = "archiveProjectAtom";
 
 // Unarchive project
-export const unarchiveProjectAtom = atom(
-  null,
-  async (get, set, projectId: string) => {
-    try {
-      await invoke("update_project", { projectId, updates: { archivedAt: null } });
-      const projects = get(projectsAtom);
-      const updatedProjects = map(projects, (project) =>
-        project.id === projectId ? { ...project, archivedAt: undefined } : project
-      );
-      set(projectsAtom, updatedProjects);
-      message.success(t`Project unarchived successfully`);
-    } catch (error) {
-      console.error("Failed to unarchive project:", error);
-      message.error(t`Failed to unarchive project`);
-      throw error;
-    }
+export const unarchiveProjectAtom = atom(null, async (get, set, projectId: string) => {
+  try {
+    await invoke("update_project", { projectId, updates: { archivedAt: null } });
+    const projects = get(projectsAtom);
+    const updatedProjects = map(projects, (project) =>
+      project.id === projectId ? { ...project, archivedAt: undefined } : project,
+    );
+    set(projectsAtom, updatedProjects);
+    message.success(t`Project unarchived successfully`);
+  } catch (error) {
+    console.error("Failed to unarchive project:", error);
+    message.error(t`Failed to unarchive project`);
+    throw error;
   }
-);
+});
 unarchiveProjectAtom.debugLabel = "unarchiveProjectAtom";
-

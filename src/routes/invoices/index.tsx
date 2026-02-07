@@ -1,8 +1,25 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
-import { Button, Col, Input, Space, Table, Typography, Row, Dropdown, MenuProps, Popconfirm } from "antd";
+import {
+  Button,
+  Col,
+  Input,
+  Space,
+  Table,
+  Typography,
+  Row,
+  Dropdown,
+  MenuProps,
+  Popconfirm,
+} from "antd";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
-import { FileTextOutlined, MoreOutlined, CopyOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  FileTextOutlined,
+  MoreOutlined,
+  CopyOutlined,
+  EditOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
@@ -13,7 +30,12 @@ import includes from "lodash/includes";
 import some from "lodash/some";
 import toString from "lodash/toString";
 
-import { invoicesAtom, setInvoicesAtom, duplicateInvoiceAtom, deleteInvoiceAtom } from "src/atoms/invoice";
+import {
+  invoicesAtom,
+  setInvoicesAtom,
+  duplicateInvoiceAtom,
+  deleteInvoiceAtom,
+} from "src/atoms/invoice";
 import { organizationAtom } from "src/atoms/organization";
 import { getFormattedNumber } from "src/utils/currencies";
 import { useDateFormatter } from "src/utils/date";
@@ -129,7 +151,10 @@ const Invoices = () => {
         </Col>
         <Col span={12} style={{ display: "flex", justifyContent: "flex-end" }}>
           <Space style={{ alignItems: "start" }}>
-            <Input.Search placeholder={t`Search text`} onChange={(e) => setSearch(e.target.value)} />
+            <Input.Search
+              placeholder={t`Search text`}
+              onChange={(e) => setSearch(e.target.value)}
+            />
             <Link to="/invoices/new">
               <Button type="primary" style={{ marginBottom: 10 }}>
                 <Trans>New invoice</Trans>
@@ -149,7 +174,9 @@ const Invoices = () => {
         <Table.Column
           title={<Trans>Client</Trans>}
           dataIndex="clientName"
-          sorter={(a: any, b: any) => (a.clientName < b.clientName ? -1 : a.clientName === b.clientName ? 0 : 1)}
+          sorter={(a: any, b: any) =>
+            a.clientName < b.clientName ? -1 : a.clientName === b.clientName ? 0 : 1
+          }
           render={(clientName) => (clientName ? clientName : "-")}
         />
         <Table.Column
@@ -172,7 +199,9 @@ const Invoices = () => {
           key="total"
           align="right"
           sorter={(a: any, b: any) => a.total - b.total}
-          render={(total, invoice: any) => getFormattedNumber(total, invoice.currency, i18n.locale, organization)}
+          render={(total, invoice: any) =>
+            getFormattedNumber(total, invoice.currency, i18n.locale, organization)
+          }
         />
         <Table.Column
           title={<Trans>State</Trans>}

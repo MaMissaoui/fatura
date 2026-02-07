@@ -29,7 +29,7 @@ export async function dynamicActivate(locale: string) {
 
   // Map locales to dayjs locale codes
   const dayjsLocaleMap: Record<string, string> = {
-    'en-GB': 'en-gb', // Ensure correct casing
+    "en-GB": "en-gb", // Ensure correct casing
   };
 
   const dayjsLocale = dayjsLocaleMap[locale] || locale;

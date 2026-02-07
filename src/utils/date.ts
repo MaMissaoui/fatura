@@ -25,15 +25,15 @@ export type DateFormatKey = keyof typeof DATE_FORMATS;
 export function formatDate(
   date: string | number | Date | dayjs.Dayjs,
   customFormat?: string | null,
-  longFormat = false
+  longFormat = false,
 ): string {
   const dateObj = dayjs(date);
-  
+
   // If a custom format is provided, use it
   if (customFormat && customFormat !== "AUTO") {
     return dateObj.format(customFormat);
   }
-  
+
   // Otherwise, use locale-based format
   return dateObj.format(longFormat ? "LL" : "L");
 }
@@ -43,7 +43,7 @@ export function formatDate(
  */
 export function useDateFormatter() {
   const organization = useAtomValue(organizationAtom);
-  
+
   return (date: string | number | Date | dayjs.Dayjs, longFormat = false) => {
     return formatDate(date, organization?.date_format, longFormat);
   };
@@ -55,12 +55,12 @@ export function useDateFormatter() {
  */
 export function useDatePickerFormat() {
   const organization = useAtomValue(organizationAtom);
-  
+
   // If a custom format is set, use it
   if (organization?.date_format && organization.date_format !== "AUTO") {
     return organization.date_format;
   }
-  
+
   // Otherwise return the default format that dayjs uses for locale
   // This ensures DatePicker always has a valid format string
   return "L"; // This will use the locale's default short date format
@@ -72,12 +72,12 @@ export function useDatePickerFormat() {
  */
 export function useDateTimePickerFormat() {
   const organization = useAtomValue(organizationAtom);
-  
+
   // If a custom format is set, append time format to it
   if (organization?.date_format && organization.date_format !== "AUTO") {
     return `${organization.date_format} HH:mm`;
   }
-  
+
   // Otherwise return the default datetime format
   return "L HH:mm"; // This will use the locale's default short date format with time
 }
@@ -89,11 +89,11 @@ export function useDateTimePickerFormat() {
  */
 export function getDateFormatLabel(format: DateFormatKey): string {
   const today = dayjs();
-  
+
   if (format === "AUTO") {
     return `Auto (${today.format("L")})`;
   }
-  
+
   const formatString = DATE_FORMATS[format];
   return formatString ? `${format} (${today.format(formatString)})` : format;
 }

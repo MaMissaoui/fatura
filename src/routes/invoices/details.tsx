@@ -42,17 +42,15 @@ import {
   useSensor,
   useSensors,
   DragEndEvent,
-} from '@dnd-kit/core';
+} from "@dnd-kit/core";
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
   useSortable,
-} from '@dnd-kit/sortable';
-import {
-  CSS,
-} from '@dnd-kit/utilities';
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { save } from "@tauri-apps/plugin-dialog";
 import { writeFile } from "@tauri-apps/plugin-fs";
 import { pdf } from "@react-pdf/renderer";
@@ -65,7 +63,10 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 
 // Configure PDF.js worker
 import { pdfjs } from "react-pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url,
+).toString();
 
 import get from "lodash/get";
 import includes from "lodash/includes";
@@ -80,7 +81,12 @@ import toNumber from "lodash/toNumber";
 
 import { clientsAtom, setClientsAtom } from "src/atoms/client";
 import { useDatePickerFormat } from "src/utils/date";
-import { invoiceIdAtom, invoiceAtom, deleteInvoiceAtom, duplicateInvoiceAtom } from "src/atoms/invoice";
+import {
+  invoiceIdAtom,
+  invoiceAtom,
+  deleteInvoiceAtom,
+  duplicateInvoiceAtom,
+} from "src/atoms/invoice";
 import { organizationAtom, nextInvoiceNumberAtom } from "src/atoms/organization";
 import { taxRatesAtom, setTaxRatesAtom } from "src/atoms/tax-rate";
 import { siderAtom } from "src/atoms/generic";
@@ -99,10 +105,7 @@ const DragHandleCell: React.FC<{
   children: React.ReactNode;
   rowKey: string;
 }> = ({ children, rowKey }) => {
-  const {
-    attributes,
-    listeners,
-  } = useSortable({
+  const { attributes, listeners } = useSortable({
     id: rowKey,
   });
 
@@ -111,7 +114,7 @@ const DragHandleCell: React.FC<{
       <MoreOutlined
         {...attributes}
         {...listeners}
-        style={{ position: "absolute", top: 20, left: -20, cursor: 'move', color: '#999' }}
+        style={{ position: "absolute", top: 20, left: -20, cursor: "move", color: "#999" }}
       />
       {children}
     </>
@@ -121,16 +124,11 @@ const DragHandleCell: React.FC<{
 // Sortable row component for Ant Design Table
 const SortableRow: React.FC<{
   children: React.ReactNode;
-  'data-row-key': string;
+  "data-row-key": string;
   [key: string]: any;
 }> = ({ children, ...props }) => {
-  const {
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({
-    id: props['data-row-key'],
+  const { setNodeRef, transform, transition, isDragging } = useSortable({
+    id: props["data-row-key"],
   });
 
   const style: React.CSSProperties = {
@@ -148,7 +146,9 @@ const SortableRow: React.FC<{
 };
 
 // PDF Preview component that generates blob manually (like PDF download)
-const PDFPreview: React.FC<{ createPDFDocument: () => React.ReactElement | null }> = ({ createPDFDocument }) => {
+const PDFPreview: React.FC<{ createPDFDocument: () => React.ReactElement | null }> = ({
+  createPDFDocument,
+}) => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -313,7 +313,7 @@ const InvoiceDetails: React.FC = () => {
     }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const isNew = id === "new";
@@ -408,13 +408,13 @@ const InvoiceDetails: React.FC = () => {
     const { active, over } = event;
 
     if (active.id !== over?.id) {
-      const lineItems = form.getFieldValue('lineItems') || [];
+      const lineItems = form.getFieldValue("lineItems") || [];
       const oldIndex = parseInt(active.id as string);
       const newIndex = parseInt(over?.id as string);
 
       if (oldIndex !== newIndex && !isNaN(oldIndex) && !isNaN(newIndex)) {
         const newLineItems = arrayMove(lineItems, oldIndex, newIndex);
-        form.setFieldValue('lineItems', newLineItems);
+        form.setFieldValue("lineItems", newLineItems);
       }
     }
   };
@@ -423,12 +423,13 @@ const InvoiceDetails: React.FC = () => {
   const subTotal = sum(
     map(
       filter(lineItems, (item) => isNumber(get(item, "total"))),
-      "total"
-    )
+      "total",
+    ),
   );
   // Group line items by tax rate and calculate tax for each group
   const taxGroups = useMemo(() => {
-    const groups: { [key: string]: { taxRate: any; items: any[]; subtotal: number; tax: number } } = {};
+    const groups: { [key: string]: { taxRate: any; items: any[]; subtotal: number; tax: number } } =
+      {};
 
     if (lineItems && Array.isArray(lineItems)) {
       lineItems.forEach((item: any) => {
@@ -535,7 +536,12 @@ const InvoiceDetails: React.FC = () => {
                         // Regenerate invoice number with client code
                         const counter = addDecimal(organization.invoiceNumberCounter || 0, 1);
                         const newNumber = organization.invoiceNumberFormat
-                          ? generateInvoiceNumber(organization.invoiceNumberFormat, counter, new Date(), clientCode)
+                          ? generateInvoiceNumber(
+                              organization.invoiceNumberFormat,
+                              counter,
+                              new Date(),
+                              clientCode,
+                            )
                           : "";
                         form.setFieldsValue({ number: newNumber });
                       }
@@ -596,7 +602,11 @@ const InvoiceDetails: React.FC = () => {
             </Row>
             <Row gutter={24}>
               <Col span={4} offset={12}>
-                <Form.Item label="Date" name="date" rules={[{ required: true, message: t`This field is required!` }]}>
+                <Form.Item
+                  label="Date"
+                  name="date"
+                  rules={[{ required: true, message: t`This field is required!` }]}
+                >
                   <DatePicker style={{ width: "100%" }} format={dateFormat} />
                 </Form.Item>
               </Col>
@@ -613,7 +623,11 @@ const InvoiceDetails: React.FC = () => {
                 <Form.Item
                   label={t`Overdue charge`}
                   name="overdueCharge"
-                  help={<span style={{ fontSize: "12px", display: "block", textAlign: "right" }}>{t`Daily %`}</span>}
+                  help={
+                    <span
+                      style={{ fontSize: "12px", display: "block", textAlign: "right" }}
+                    >{t`Daily %`}</span>
+                  }
                 >
                   <InputNumber
                     style={{ width: "100%" }}
@@ -668,7 +682,9 @@ const InvoiceDetails: React.FC = () => {
                                 <DragHandleCell rowKey={record.index.toString()}>
                                   <Form.Item
                                     name={[field.name, "description"]}
-                                    rules={[{ required: true, message: t`This field is required!` }]}
+                                    rules={[
+                                      { required: true, message: t`This field is required!` },
+                                    ]}
                                     noStyle
                                   >
                                     <TextArea rows={4} autoSize />
@@ -689,20 +705,28 @@ const InvoiceDetails: React.FC = () => {
                                   <InputNumber
                                     style={{ width: "100%" }}
                                     onChange={(value) => {
-                                      const total = form.getFieldValue(["lineItems", field.key, "total"]);
-                                      const unitPrice = form.getFieldValue(["lineItems", field.key, "unitPrice"]);
+                                      const total = form.getFieldValue([
+                                        "lineItems",
+                                        field.key,
+                                        "total",
+                                      ]);
+                                      const unitPrice = form.getFieldValue([
+                                        "lineItems",
+                                        field.key,
+                                        "unitPrice",
+                                      ]);
 
                                       value = toNumber(value);
                                       if (value) {
                                         if (!unitPrice && total) {
                                           form.setFieldValue(
                                             ["lineItems", field.key, "unitPrice"],
-                                            divideDecimal(total, value)
+                                            divideDecimal(total, value),
                                           );
                                         } else if (unitPrice) {
                                           form.setFieldValue(
                                             ["lineItems", field.key, "total"],
-                                            multiplyDecimal(value, unitPrice)
+                                            multiplyDecimal(value, unitPrice),
                                           );
                                         }
                                       }
@@ -724,20 +748,28 @@ const InvoiceDetails: React.FC = () => {
                                   <InputNumber
                                     style={{ width: "100%" }}
                                     onChange={(value) => {
-                                      const total = form.getFieldValue(["lineItems", field.key, "total"]);
-                                      const quantity = form.getFieldValue(["lineItems", field.key, "quantity"]);
+                                      const total = form.getFieldValue([
+                                        "lineItems",
+                                        field.key,
+                                        "total",
+                                      ]);
+                                      const quantity = form.getFieldValue([
+                                        "lineItems",
+                                        field.key,
+                                        "quantity",
+                                      ]);
 
                                       value = toNumber(value);
                                       if (value) {
                                         if (!quantity && total) {
                                           form.setFieldValue(
                                             ["lineItems", field.key, "quantity"],
-                                            divideDecimal(total, value)
+                                            divideDecimal(total, value),
                                           );
                                         } else if (quantity) {
                                           form.setFieldValue(
                                             ["lineItems", field.key, "total"],
-                                            multiplyDecimal(quantity, value)
+                                            multiplyDecimal(quantity, value),
                                           );
                                         }
                                       }
@@ -752,7 +784,11 @@ const InvoiceDetails: React.FC = () => {
                               width={120}
                               render={(field) => (
                                 <Form.Item name={[field.name, "taxRate"]} noStyle>
-                                  <Select style={{ width: "100%" }} allowClear placeholder="Select tax">
+                                  <Select
+                                    style={{ width: "100%" }}
+                                    allowClear
+                                    placeholder="Select tax"
+                                  >
                                     {map(taxRates, (rate: any) => {
                                       return (
                                         <Option value={rate.id} key={rate.id}>
@@ -784,26 +820,36 @@ const InvoiceDetails: React.FC = () => {
                                   />
                                   <Form.Item
                                     name={[field.name, "total"]}
-                                    rules={[{ required: true, message: t`This field is required!` }]}
+                                    rules={[
+                                      { required: true, message: t`This field is required!` },
+                                    ]}
                                     noStyle
                                   >
                                     <InputNumber
                                       style={{ width: "100%" }}
                                       onChange={(value) => {
-                                        const unitPrice = form.getFieldValue(["lineItems", field.key, "unitPrice"]);
-                                        const quantity = form.getFieldValue(["lineItems", field.key, "quantity"]);
+                                        const unitPrice = form.getFieldValue([
+                                          "lineItems",
+                                          field.key,
+                                          "unitPrice",
+                                        ]);
+                                        const quantity = form.getFieldValue([
+                                          "lineItems",
+                                          field.key,
+                                          "quantity",
+                                        ]);
 
                                         value = toNumber(value);
                                         if (value) {
                                           if (!quantity && unitPrice) {
                                             form.setFieldValue(
                                               ["lineItems", field.key, "quantity"],
-                                              divideDecimal(value, unitPrice)
+                                              divideDecimal(value, unitPrice),
                                             );
                                           } else if (quantity) {
                                             form.setFieldValue(
                                               ["lineItems", field.key, "unitPrice"],
-                                              divideDecimal(value, quantity)
+                                              divideDecimal(value, quantity),
                                             );
                                           }
                                         }
@@ -820,7 +866,12 @@ const InvoiceDetails: React.FC = () => {
                         <Button
                           type="default"
                           size="small"
-                          onClick={() => add({ quantity: 1, taxRate: get(find(taxRates, { isDefault: 1 }), "id") })}
+                          onClick={() =>
+                            add({
+                              quantity: 1,
+                              taxRate: get(find(taxRates, { isDefault: 1 }), "id"),
+                            })
+                          }
                           icon={<PlusOutlined />}
                         >
                           <Trans>Add line item</Trans>
@@ -971,7 +1022,9 @@ const InvoiceDetails: React.FC = () => {
                         {!isNew && (
                           <Button
                             onClick={async () => {
-                              const filePath: string | null = await save({ defaultPath: `invoice-${id}.pdf` });
+                              const filePath: string | null = await save({
+                                defaultPath: `invoice-${id}.pdf`,
+                              });
                               if (!filePath) return;
 
                               const document = createPDFDocument();
@@ -984,7 +1037,12 @@ const InvoiceDetails: React.FC = () => {
                             <FilePdfOutlined /> PDF
                           </Button>
                         )}
-                        <Button type="primary" disabled={false} loading={false} onClick={() => form.submit()}>
+                        <Button
+                          type="primary"
+                          disabled={false}
+                          loading={false}
+                          onClick={() => form.submit()}
+                        >
                           <SaveOutlined /> <Trans>Save</Trans>
                         </Button>
                       </Space>
@@ -992,7 +1050,7 @@ const InvoiceDetails: React.FC = () => {
                   </Row>
                 </Footer>,
                 // @ts-expect-error - Footer can be null
-                document.getElementById("footer")
+                document.getElementById("footer"),
               )}
           </Form>
           {previewMode && (

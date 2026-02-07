@@ -28,9 +28,14 @@ export const setOrganizationsAtom = atom(null, async (_get, set) => {
 });
 
 // Organization
-export const organizationIdAtom = atomWithStorage<string | null>("organizationId", null, undefined, {
-  getOnInit: true,
-});
+export const organizationIdAtom = atomWithStorage<string | null>(
+  "organizationId",
+  null,
+  undefined,
+  {
+    getOnInit: true,
+  },
+);
 organizationIdAtom.debugLabel = "organizationIdAtom";
 
 export const organizationAtom = atom(
@@ -61,7 +66,7 @@ export const organizationAtom = atom(
     try {
       // Convert logo from data URL to byte array if present
       let processedValues = { ...newValues };
-      if (processedValues.logo && typeof processedValues.logo === 'string') {
+      if (processedValues.logo && typeof processedValues.logo === "string") {
         // Always convert to byte array since Rust expects Vec<u8>
         const encoder = new TextEncoder();
         const bytes = encoder.encode(processedValues.logo);
@@ -109,7 +114,7 @@ export const organizationAtom = atom(
         message.error(t`Organization update failed`);
       }
     }
-  }
+  },
 );
 organizationAtom.debugLabel = "organizationAtom";
 
@@ -136,7 +141,9 @@ export const deleteOrganizationAtom = atom(null, async (get, set) => {
 
     if (success) {
       // Remove organization from the list
-      const organizations: any = reject(get(organizationsAtom), (obj: any) => isEqual(obj.id, organizationId));
+      const organizations: any = reject(get(organizationsAtom), (obj: any) =>
+        isEqual(obj.id, organizationId),
+      );
       set(organizationsAtom, organizations);
 
       const nextOrganization: any = first(organizations);

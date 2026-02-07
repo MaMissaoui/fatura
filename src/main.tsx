@@ -11,7 +11,7 @@ declare global {
 
 // Polyfill for Promise.withResolvers for older JavaScript environments
 if (!Promise.withResolvers) {
-  Promise.withResolvers = function<T>() {
+  Promise.withResolvers = function <T>() {
     let resolve: (value: T | PromiseLike<T>) => void;
     let reject: (reason?: any) => void;
     const promise = new Promise<T>((res, rej) => {
@@ -30,5 +30,5 @@ import App from "src/app";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

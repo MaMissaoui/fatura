@@ -1,7 +1,7 @@
 import "src/styles/base.scss";
 
 // Import devtools styles for development
-if (import.meta.env.DEV && import.meta.env.VITE_JOTAI_DEVTOOLS_ENABLED === 'true') {
+if (import.meta.env.DEV && import.meta.env.VITE_JOTAI_DEVTOOLS_ENABLED === "true") {
   import("jotai-devtools/styles.css");
 }
 
@@ -66,9 +66,10 @@ import TaxRateForm from "src/components/tax-rates/form.tsx";
 dayjs.extend(localizedFormat);
 
 // Lazy load DevTools for development
-const DevTools = import.meta.env.DEV && import.meta.env.VITE_JOTAI_DEVTOOLS_ENABLED === 'true'
-  ? lazy(() => import("jotai-devtools").then(module => ({ default: module.DevTools })))
-  : () => null;
+const DevTools =
+  import.meta.env.DEV && import.meta.env.VITE_JOTAI_DEVTOOLS_ENABLED === "true"
+    ? lazy(() => import("jotai-devtools").then((module) => ({ default: module.DevTools })))
+    : () => null;
 
 const AppContent = () => {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ const AppContent = () => {
 
   // Load locale
   const locale = useAtomValue(localeAtom);
-  
+
   // Organizations
   const organizationId = useAtomValue(organizationIdAtom);
   const setOrganizations = useSetAtom(setOrganizationsAtom);
@@ -145,7 +146,7 @@ const AppContent = () => {
   useEffect(() => {
     const allowedPathsWithoutOrg = ["/", "/organizations/new"];
     const isAllowedPath = allowedPathsWithoutOrg.includes(location.pathname);
-    
+
     if (organizationId === null && !isAllowedPath) {
       navigate("/");
     }
@@ -165,7 +166,7 @@ const AppContent = () => {
         },
       }}
     >
-      {import.meta.env.DEV && import.meta.env.VITE_JOTAI_DEVTOOLS_ENABLED === 'true' && (
+      {import.meta.env.DEV && import.meta.env.VITE_JOTAI_DEVTOOLS_ENABLED === "true" && (
         <Suspense fallback={null}>
           <DevTools />
         </Suspense>

@@ -58,7 +58,9 @@ export const clientAtom = atom(
       // Convert emails array to JSON string if it's an array
       const processedValues = {
         ...newValues,
-        emails: Array.isArray(newValues.emails) ? JSON.stringify(newValues.emails) : newValues.emails,
+        emails: Array.isArray(newValues.emails)
+          ? JSON.stringify(newValues.emails)
+          : newValues.emails,
       };
 
       if (!clientId) {
@@ -95,7 +97,7 @@ export const clientAtom = atom(
         message.error(t`Client update failed`);
       }
     }
-  }
+  },
 );
 
 // Delete client

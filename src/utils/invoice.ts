@@ -37,7 +37,7 @@ export const generateInvoiceNumber = (
   format: string,
   counter: number = 1,
   date: Date = new Date(),
-  clientCode: string = ""
+  clientCode: string = "",
 ): string => {
   // Add null safety check
   if (!format) {

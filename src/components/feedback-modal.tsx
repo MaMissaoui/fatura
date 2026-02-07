@@ -19,14 +19,14 @@ const FeedbackModal = ({ open, onClose }: FeedbackModalProps) => {
     try {
       setLoading(true);
       const values = await form.validateFields();
-      
+
       // Send feedback to Sentry
       Sentry.captureFeedback({
         name: values.name || undefined,
         email: values.email || undefined,
         message: values.message,
       });
-      
+
       message.success(t`Feedback sent successfully!`);
       form.resetFields();
       onClose();
@@ -54,18 +54,11 @@ const FeedbackModal = ({ open, onClose }: FeedbackModalProps) => {
       cancelText={<Trans>Cancel</Trans>}
       width={500}
     >
-      <Form
-        form={form}
-        layout="vertical"
-        autoComplete="off"
-      >
-        <Form.Item
-          name="name"
-          label={<Trans>Name</Trans>}
-        >
+      <Form form={form} layout="vertical" autoComplete="off">
+        <Form.Item name="name" label={<Trans>Name</Trans>}>
           <Input placeholder={t`Your name (optional)`} />
         </Form.Item>
-        
+
         <Form.Item
           name="email"
           label={<Trans>Email</Trans>}
@@ -78,7 +71,7 @@ const FeedbackModal = ({ open, onClose }: FeedbackModalProps) => {
         >
           <Input placeholder={t`your.email@example.com (optional)`} />
         </Form.Item>
-        
+
         <Form.Item
           name="message"
           label={<Trans>Message</Trans>}

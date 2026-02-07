@@ -1,4 +1,15 @@
-import { Button, Col, Form, Input, Popconfirm, Space, Typography, Row, Select, Divider } from "antd";
+import {
+  Button,
+  Col,
+  Form,
+  Input,
+  Popconfirm,
+  Space,
+  Typography,
+  Row,
+  Select,
+  Divider,
+} from "antd";
 import { atom, useAtom, useSetAtom } from "jotai";
 import { HomeOutlined } from "@ant-design/icons";
 import { Trans } from "@lingui/react/macro";
@@ -6,7 +17,11 @@ import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import isEmpty from "lodash/isEmpty";
 
-import { organizationAtom, setOrganizationsAtom, deleteOrganizationAtom } from "src/atoms/organization";
+import {
+  organizationAtom,
+  setOrganizationsAtom,
+  deleteOrganizationAtom,
+} from "src/atoms/organization";
 import { DATE_FORMATS, type DateFormatKey, getDateFormatLabel } from "src/utils/date";
 import { countries } from "src/utils/countries";
 
@@ -52,7 +67,11 @@ function SettingsInvoice() {
           </Row>
           <Row>
             <Col span={12}>
-              <Form.Item label={t`Name`} name="name" rules={[{ required: true, message: "This field is required!" }]}>
+              <Form.Item
+                label={t`Name`}
+                name="name"
+                rules={[{ required: true, message: "This field is required!" }]}
+              >
                 <Input />
               </Form.Item>
               <Form.Item label={t`Country`} name="country">
@@ -121,7 +140,10 @@ function SettingsInvoice() {
                   <Form.Item label={t`Date format`} name="date_format">
                     <Select placeholder={t`Select date format`}>
                       {Object.keys(DATE_FORMATS).map((key) => (
-                        <Select.Option key={key} value={key === "AUTO" ? null : DATE_FORMATS[key as DateFormatKey]}>
+                        <Select.Option
+                          key={key}
+                          value={key === "AUTO" ? null : DATE_FORMATS[key as DateFormatKey]}
+                        >
                           {getDateFormatLabel(key as DateFormatKey)}
                         </Select.Option>
                       ))}

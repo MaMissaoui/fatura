@@ -1,6 +1,24 @@
-import { Button, Col, Form, Input, InputNumber, Select, Space, Typography, Row, Upload, Divider, message } from "antd";
+import {
+  Button,
+  Col,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  Space,
+  Typography,
+  Row,
+  Upload,
+  Divider,
+  message,
+} from "antd";
 import { atom, useAtom, useSetAtom } from "jotai";
-import { FileTextOutlined, UploadOutlined, CaretRightOutlined, CaretDownOutlined } from "@ant-design/icons";
+import {
+  FileTextOutlined,
+  UploadOutlined,
+  CaretRightOutlined,
+  CaretDownOutlined,
+} from "@ant-design/icons";
 import { useState } from "react";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
@@ -102,7 +120,11 @@ function SettingsInvoice() {
               <Form.Item label={t`Due days`} name="due_days">
                 <InputNumber min={0} />
               </Form.Item>
-              <Form.Item label={t`Overdue charge`} help={<Trans>% per day</Trans>} name="overdueCharge">
+              <Form.Item
+                label={t`Overdue charge`}
+                help={<Trans>% per day</Trans>}
+                name="overdueCharge"
+              >
                 <InputNumber
                   min={0}
                   step={0.01}
@@ -158,7 +180,14 @@ function SettingsInvoice() {
                 <Trans>Show variables</Trans>
               </Button>
               {showVariables && (
-                <div style={{ marginBottom: 16, padding: "12px 16px", backgroundColor: "#f5f5f5", borderRadius: 4 }}>
+                <div
+                  style={{
+                    marginBottom: 16,
+                    padding: "12px 16px",
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: 4,
+                  }}
+                >
                   <Text strong style={{ display: "block", marginBottom: 8 }}>
                     <Trans>Available variables:</Trans>
                   </Text>
@@ -167,7 +196,8 @@ function SettingsInvoice() {
                       <Text code>{"{number}"}</Text> - <Trans>Sequential number</Trans>
                     </div>
                     <div>
-                      <Text code>{"{year}"}</Text> - <Trans>4-digit year</Trans> ({new Date().getFullYear()})
+                      <Text code>{"{year}"}</Text> - <Trans>4-digit year</Trans> (
+                      {new Date().getFullYear()})
                     </div>
                     <div>
                       <Text code>{"{y}"}</Text> - <Trans>2-digit year</Trans> (
@@ -186,7 +216,8 @@ function SettingsInvoice() {
                       {String(new Date().getDate()).padStart(2, "0")})
                     </div>
                     <div>
-                      <Text code>{"{clientCode}"}</Text> - <Trans>Client code</Trans> (<Trans>e.g. AP, MS</Trans>)
+                      <Text code>{"{clientCode}"}</Text> - <Trans>Client code</Trans> (
+                      <Trans>e.g. AP, MS</Trans>)
                     </div>
                   </Space>
                 </div>

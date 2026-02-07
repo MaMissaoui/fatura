@@ -154,7 +154,7 @@ export const invoiceAtom = atom(
         message.error(t`Invoice update failed`);
       }
     }
-  }
+  },
 );
 
 // Delete invoice
@@ -177,30 +177,33 @@ export const deleteInvoiceAtom = atom(null, async (get, set, invoiceId: string) 
 });
 
 // Update invoice state only
-export const updateInvoiceStateAtom = atom(null, async (get, set, { invoiceId, state }: { invoiceId: string; state: string }) => {
-  try {
-    const updatedInvoice = await invoke<any>("update_invoice_state", {
-      invoiceId,
-      state,
-    });
+export const updateInvoiceStateAtom = atom(
+  null,
+  async (get, set, { invoiceId, state }: { invoiceId: string; state: string }) => {
+    try {
+      const updatedInvoice = await invoke<any>("update_invoice_state", {
+        invoiceId,
+        state,
+      });
 
-    message.success(t`Invoice state updated`);
+      message.success(t`Invoice state updated`);
 
-    // Update the invoices list
-    const invoices: any = get(invoicesAtom);
-    const invoiceWithUnits = {
-      ...updatedInvoice,
-      total: centsToUnits(updatedInvoice.total),
-      taxTotal: centsToUnits(updatedInvoice.taxTotal),
-      subTotal: centsToUnits(updatedInvoice.subTotal),
-    };
-    const mergedInvoices: any = keyBy([...invoices, invoiceWithUnits], "id");
-    set(invoicesAtom, orderBy(map(mergedInvoices), "date", "desc"));
-  } catch (error) {
-    console.error("Failed to update invoice state:", error);
-    message.error(t`Failed to update invoice state`);
-  }
-});
+      // Update the invoices list
+      const invoices: any = get(invoicesAtom);
+      const invoiceWithUnits = {
+        ...updatedInvoice,
+        total: centsToUnits(updatedInvoice.total),
+        taxTotal: centsToUnits(updatedInvoice.taxTotal),
+        subTotal: centsToUnits(updatedInvoice.subTotal),
+      };
+      const mergedInvoices: any = keyBy([...invoices, invoiceWithUnits], "id");
+      set(invoicesAtom, orderBy(map(mergedInvoices), "date", "desc"));
+    } catch (error) {
+      console.error("Failed to update invoice state:", error);
+      message.error(t`Failed to update invoice state`);
+    }
+  },
+);
 
 // Duplicate invoice
 export const duplicateInvoiceAtom = atom(null, async (get, set, invoiceId: string) => {
@@ -233,7 +236,11 @@ export const duplicateInvoiceAtom = atom(null, async (get, set, invoiceId: strin
       state: "draft", // Always start as draft
       clientId: originalInvoice.clientId,
       date: currentDate.valueOf(),
-      dueDate: originalInvoice.dueDate ? currentDate.add(dayjs(originalInvoice.dueDate).diff(dayjs(originalInvoice.date), 'day'), 'day').valueOf() : null,
+      dueDate: originalInvoice.dueDate
+        ? currentDate
+            .add(dayjs(originalInvoice.dueDate).diff(dayjs(originalInvoice.date), "day"), "day")
+            .valueOf()
+        : null,
       currency: originalInvoice.currency,
       total: originalInvoice.total,
       taxTotal: originalInvoice.taxTotal,

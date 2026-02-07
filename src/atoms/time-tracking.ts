@@ -84,7 +84,7 @@ export const tagAtom = atom(
         message.error(t`Tag update failed`);
       }
     }
-  }
+  },
 );
 
 // Delete tag
@@ -121,44 +121,57 @@ export const setTimeEntriesAtom = atom(null, async (get, set) => {
 });
 
 // Update time entry locally without refetching
-export const updateTimeEntryLocallyAtom = atom(null, (get, set, { id, updates }: { id: string, updates: any }) => {
-  const entries = get(timeEntriesAtom);
-  const updatedEntries = entries.map(entry => 
-    entry.id === id ? { ...entry, ...updates } : entry
-  );
-  set(timeEntriesAtom, updatedEntries);
-});
+export const updateTimeEntryLocallyAtom = atom(
+  null,
+  (get, set, { id, updates }: { id: string; updates: any }) => {
+    const entries = get(timeEntriesAtom);
+    const updatedEntries = entries.map((entry) =>
+      entry.id === id ? { ...entry, ...updates } : entry,
+    );
+    set(timeEntriesAtom, updatedEntries);
+  },
+);
 
 // Direct update time entry without triggering fetches
-export const updateTimeEntryDirectlyAtom = atom(null, async (get, set, { id, updates }: { id: string, updates: any }) => {
-  const entry = get(timeEntriesAtom).find(e => e.id === id);
-  
-  if (!entry) return;
-  
-  try {
-    // Merge updates with existing entry
-    const updatedEntry = { ...entry, ...updates };
-    
-    // Prepare the update data for database
-    const updateData = {
-      ...updatedEntry,
-      // Convert dayjs back to timestamps if needed
-      startTime: updatedEntry.startTime instanceof dayjs ? updatedEntry.startTime.valueOf() : updatedEntry.startTime,
-      endTime: updatedEntry.endTime instanceof dayjs ? updatedEntry.endTime.valueOf() : updatedEntry.endTime,
-      tags: Array.isArray(updatedEntry.tags) ? JSON.stringify(updatedEntry.tags) : updatedEntry.tags,
-    };
-    
-    // Update in database
-    await invoke("update_time_entry", { timeEntryId: id, updates: updateData });
-    
-    // Update local state immediately
-    set(updateTimeEntryLocallyAtom, { id, updates });
-    
-  } catch (error) {
-    console.error("Failed to update time entry:", error);
-    message.error(t`Failed to update time entry`);
-  }
-});
+export const updateTimeEntryDirectlyAtom = atom(
+  null,
+  async (get, set, { id, updates }: { id: string; updates: any }) => {
+    const entry = get(timeEntriesAtom).find((e) => e.id === id);
+
+    if (!entry) return;
+
+    try {
+      // Merge updates with existing entry
+      const updatedEntry = { ...entry, ...updates };
+
+      // Prepare the update data for database
+      const updateData = {
+        ...updatedEntry,
+        // Convert dayjs back to timestamps if needed
+        startTime:
+          updatedEntry.startTime instanceof dayjs
+            ? updatedEntry.startTime.valueOf()
+            : updatedEntry.startTime,
+        endTime:
+          updatedEntry.endTime instanceof dayjs
+            ? updatedEntry.endTime.valueOf()
+            : updatedEntry.endTime,
+        tags: Array.isArray(updatedEntry.tags)
+          ? JSON.stringify(updatedEntry.tags)
+          : updatedEntry.tags,
+      };
+
+      // Update in database
+      await invoke("update_time_entry", { timeEntryId: id, updates: updateData });
+
+      // Update local state immediately
+      set(updateTimeEntryLocallyAtom, { id, updates });
+    } catch (error) {
+      console.error("Failed to update time entry:", error);
+      message.error(t`Failed to update time entry`);
+    }
+  },
+);
 
 // Time Entry
 export const timeEntryIdAtom = atom<string | null>(null);
@@ -193,12 +206,19 @@ export const timeEntryAtom = atom(
           id: nanoid(),
           organizationId: get(organizationIdAtom),
           // Convert dayjs objects to unix timestamps
-          startTime: newValues.startTime?.valueOf ? newValues.startTime.valueOf() : newValues.startTime,
+          startTime: newValues.startTime?.valueOf
+            ? newValues.startTime.valueOf()
+            : newValues.startTime,
           endTime: newValues.endTime?.valueOf ? newValues.endTime.valueOf() : newValues.endTime,
           // Convert tags array to JSON string
           tags: Array.isArray(newValues.tags) ? JSON.stringify(newValues.tags) : newValues.tags,
           // Convert boolean to integer
-          isBillable: typeof newValues.isBillable === "boolean" ? (newValues.isBillable ? 1 : 0) : newValues.isBillable,
+          isBillable:
+            typeof newValues.isBillable === "boolean"
+              ? newValues.isBillable
+                ? 1
+                : 0
+              : newValues.isBillable,
         };
 
         const createdTimeEntry = await invoke<any>("create_time_entry", {
@@ -210,19 +230,26 @@ export const timeEntryAtom = atom(
         // Update the time entries list
         const timeEntries: any = get(timeEntriesAtom);
         set(timeEntriesAtom, [createdTimeEntry, ...timeEntries]);
-        
+
         return createdTimeEntry;
       } else {
         // Update
         const updateData = {
           ...newValues,
           // Convert dayjs objects to unix timestamps
-          startTime: newValues.startTime?.valueOf ? newValues.startTime.valueOf() : newValues.startTime,
+          startTime: newValues.startTime?.valueOf
+            ? newValues.startTime.valueOf()
+            : newValues.startTime,
           endTime: newValues.endTime?.valueOf ? newValues.endTime.valueOf() : newValues.endTime,
           // Convert tags array to JSON string
           tags: Array.isArray(newValues.tags) ? JSON.stringify(newValues.tags) : newValues.tags,
           // Convert boolean to integer
-          isBillable: typeof newValues.isBillable === "boolean" ? (newValues.isBillable ? 1 : 0) : newValues.isBillable,
+          isBillable:
+            typeof newValues.isBillable === "boolean"
+              ? newValues.isBillable
+                ? 1
+                : 0
+              : newValues.isBillable,
         };
 
         const updatedTimeEntry = await invoke<any>("update_time_entry", {
@@ -235,7 +262,7 @@ export const timeEntryAtom = atom(
         const timeEntries: any = get(timeEntriesAtom);
         const mergedTimeEntries: any = keyBy([...timeEntries, updatedTimeEntry], "id");
         set(timeEntriesAtom, orderBy(map(mergedTimeEntries), "startTime", "desc"));
-        
+
         return updatedTimeEntry;
       }
     } catch (error) {
@@ -246,7 +273,7 @@ export const timeEntryAtom = atom(
         message.error(t`Time entry update failed`);
       }
     }
-  }
+  },
 );
 
 // Delete time entry
@@ -256,7 +283,9 @@ export const deleteTimeEntryAtom = atom(null, async (get, set, timeEntryId: stri
 
     if (success) {
       // Remove time entry from the list
-      const timeEntries: any = reject(get(timeEntriesAtom), (obj: any) => isEqual(obj.id, timeEntryId));
+      const timeEntries: any = reject(get(timeEntriesAtom), (obj: any) =>
+        isEqual(obj.id, timeEntryId),
+      );
       set(timeEntriesAtom, timeEntries);
       message.success(t`Time entry deleted`);
     } else {

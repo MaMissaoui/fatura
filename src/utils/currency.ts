@@ -1,4 +1,4 @@
-import Decimal from 'decimal.js';
+import Decimal from "decimal.js";
 
 // Configure Decimal.js for financial calculations
 Decimal.set({
@@ -36,7 +36,7 @@ export function unitsToCents(units: number, precision: number = 2): number {
 export function formatCents(cents: number, currency: string, locale: string): string {
   const units = centsToUnits(cents);
   return new Intl.NumberFormat(locale, {
-    style: 'currency',
+    style: "currency",
     currency: currency,
   }).format(units);
 }

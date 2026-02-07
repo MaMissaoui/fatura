@@ -7,4 +7,3 @@ siderAtom.debugLabel = "siderAtom";
 
 export const localeAtom = atomWithStorage("locale", defaultLocale);
 localeAtom.debugLabel = "localeAtom";
-

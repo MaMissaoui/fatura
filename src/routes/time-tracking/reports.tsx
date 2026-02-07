@@ -1,5 +1,16 @@
 import { useState, useMemo } from "react";
-import { Card, Col, Row, Typography, Select, DatePicker, Table, Statistic, Button, Space } from "antd";
+import {
+  Card,
+  Col,
+  Row,
+  Typography,
+  Select,
+  DatePicker,
+  Table,
+  Statistic,
+  Button,
+  Space,
+} from "antd";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
@@ -44,7 +55,7 @@ export default function TimeTrackingReports() {
       if (!entry.endTime) {
         return false;
       }
-      
+
       const entryDate = dayjs(entry.startTime);
       const inDateRange = entryDate.isAfter(dateRange[0]) && entryDate.isBefore(dateRange[1]);
       const matchesClient = selectedClient === "all" || entry.clientId === selectedClient;
@@ -90,7 +101,10 @@ export default function TimeTrackingReports() {
           displayName = client?.name || t`No client`;
         } else if (groupByOption === "week") {
           const [year, week] = key.split("-W");
-          const startOfWeek = dayjs().year(parseInt(year)).isoWeek(parseInt(week)).startOf("isoWeek");
+          const startOfWeek = dayjs()
+            .year(parseInt(year))
+            .isoWeek(parseInt(week))
+            .startOf("isoWeek");
           displayName = t`Week ${week} (${startOfWeek.format("MMM D")})`;
         }
 
@@ -102,7 +116,9 @@ export default function TimeTrackingReports() {
           formattedDuration: formatDuration(totalSeconds),
         };
       }),
-      groupByOption === "date" ? [(item) => -dayjs(item.key).valueOf()] : [(item) => -item.duration]
+      groupByOption === "date"
+        ? [(item) => -dayjs(item.key).valueOf()]
+        : [(item) => -item.duration],
     );
   }, [filteredEntries, groupByOption, clients]);
 
@@ -218,7 +234,11 @@ export default function TimeTrackingReports() {
           <Card>
             <Statistic
               title={<Trans>Average per entry</Trans>}
-              value={filteredEntries.length > 0 ? formatDuration(totalDuration / filteredEntries.length) : "0h 0m"}
+              value={
+                filteredEntries.length > 0
+                  ? formatDuration(totalDuration / filteredEntries.length)
+                  : "0h 0m"
+              }
             />
           </Card>
         </Col>

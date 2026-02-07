@@ -98,7 +98,11 @@ export default function BaseLayout() {
 
   if (!organization) {
     return (
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>Loading...</div>
+      <div
+        style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}
+      >
+        Loading...
+      </div>
     );
   }
 
@@ -237,7 +241,9 @@ export default function BaseLayout() {
           </Button>
         </div>
       </Sider>
-      <Layout style={{ width: "100%", marginLeft: siderCollapsed ? 80 : 200, transition: "all 0.2s" }}>
+      <Layout
+        style={{ width: "100%", marginLeft: siderCollapsed ? 80 : 200, transition: "all 0.2s" }}
+      >
         <Header
           style={{
             position: "sticky",
@@ -272,7 +278,9 @@ export default function BaseLayout() {
                       // Get the organization name from the option
                       const organizations = option as any;
                       const orgName = organizations?.children;
-                      return orgName ? String(orgName).toLowerCase().includes(input.toLowerCase()) : false;
+                      return orgName
+                        ? String(orgName).toLowerCase().includes(input.toLowerCase())
+                        : false;
                     }}
                     style={{ width: 200 }}
                     defaultValue={organization.id}

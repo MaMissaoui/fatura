@@ -24,16 +24,11 @@ const TagSelector = ({ value, onChange, placeholder, style }: TagSelectorProps) 
 
   const tagRender = (props: any) => {
     const { label, value, closable, onClose } = props;
-    const tag = tags.find(t => t.name === value);
-    const color = tag?.color || '#1890ff';
+    const tag = tags.find((t) => t.name === value);
+    const color = tag?.color || "#1890ff";
 
     return (
-      <AntTag
-        color={color}
-        closable={closable}
-        onClose={onClose}
-        style={{ marginRight: 3 }}
-      >
+      <AntTag color={color} closable={closable} onClose={onClose} style={{ marginRight: 3 }}>
         {label}
       </AntTag>
     );

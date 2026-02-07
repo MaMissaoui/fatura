@@ -187,7 +187,8 @@ const InvoicePDF = ({
   const dateFormat = organization?.date_format;
   // Group line items by tax rate and calculate tax for each group
   const taxGroups = (() => {
-    const groups: { [key: string]: { taxRate: any; items: any[]; subtotal: number; tax: number } } = {};
+    const groups: { [key: string]: { taxRate: any; items: any[]; subtotal: number; tax: number } } =
+      {};
 
     invoice.lineItems?.forEach((item: any) => {
       if (item.total) {
@@ -205,7 +206,9 @@ const InvoicePDF = ({
 
         groups[taxRateId].items.push(item);
         groups[taxRateId].subtotal += item.total;
-        groups[taxRateId].tax = taxRate?.percentage ? (groups[taxRateId].subtotal * taxRate.percentage) / 100 : 0;
+        groups[taxRateId].tax = taxRate?.percentage
+          ? (groups[taxRateId].subtotal * taxRate.percentage) / 100
+          : 0;
       }
     });
 
@@ -222,7 +225,9 @@ const InvoicePDF = ({
               </Text>
             </View>
             <View style={[styles.column]}>
-              {organization.logo && <Image src={organization.logo} style={{ maxWidth: 120, marginLeft: "auto" }} />}
+              {organization.logo && (
+                <Image src={organization.logo} style={{ maxWidth: 120, marginLeft: "auto" }} />
+              )}
             </View>
           </View>
 
@@ -230,21 +235,21 @@ const InvoicePDF = ({
             <View style={styles.column}>
               <Text style={[styles.subtitle]}>{client.name}</Text>
               <Text style={styles.smallText}>{client.address}</Text>
-              {client.emails && (() => {
-                // Handle both string (JSON) and array formats
-                let emailsArray: string[] = [];
-                try {
-                  emailsArray = typeof client.emails === 'string' 
-                    ? JSON.parse(client.emails) 
-                    : client.emails;
-                } catch {
-                  // If parsing fails, treat as empty array
-                  emailsArray = [];
-                }
-                return emailsArray.length > 0 && emailsArray[0] 
-                  ? <Text style={styles.smallText}>{emailsArray[0]}</Text> 
-                  : null;
-              })()}
+              {client.emails &&
+                (() => {
+                  // Handle both string (JSON) and array formats
+                  let emailsArray: string[] = [];
+                  try {
+                    emailsArray =
+                      typeof client.emails === "string" ? JSON.parse(client.emails) : client.emails;
+                  } catch {
+                    // If parsing fails, treat as empty array
+                    emailsArray = [];
+                  }
+                  return emailsArray.length > 0 && emailsArray[0] ? (
+                    <Text style={styles.smallText}>{emailsArray[0]}</Text>
+                  ) : null;
+                })()}
               <Text style={styles.smallText}>{client.website}</Text>
             </View>
             <View style={[styles.column, { textAlign: "right" }]}>
@@ -270,16 +275,29 @@ const InvoicePDF = ({
               )}
             </View>
             <View>
-              <Text style={[styles.smallText, { marginBottom: 8 }]}>{formatDate(invoice.date, dateFormat)}</Text>
-              <Text style={[styles.smallText, { marginBottom: 8 }]}>{formatDate(invoice.dueDate, dateFormat)}</Text>
+              <Text style={[styles.smallText, { marginBottom: 8 }]}>
+                {formatDate(invoice.date, dateFormat)}
+              </Text>
+              <Text style={[styles.smallText, { marginBottom: 8 }]}>
+                {formatDate(invoice.dueDate, dateFormat)}
+              </Text>
               {invoice.overdueCharge && (
-                <Text style={[styles.smallText, { marginBottom: 8 }]}>{invoice.overdueCharge}%</Text>
+                <Text style={[styles.smallText, { marginBottom: 8 }]}>
+                  {invoice.overdueCharge}%
+                </Text>
               )}
             </View>
           </View>
 
           <View style={styles.table}>
-            <View style={[styles.tableRow, styles.tableRowBordered, styles.tableRowBorderedBold, styles.tableHeader]}>
+            <View
+              style={[
+                styles.tableRow,
+                styles.tableRowBordered,
+                styles.tableRowBorderedBold,
+                styles.tableHeader,
+              ]}
+            >
               <Text style={[styles.tableCol, styles.tableColFirst, styles.lineItemNumber]}>#</Text>
               <Text style={[styles.tableCol, styles.lineItemDescription]}>
                 <Trans>Description</Trans>
@@ -309,15 +327,33 @@ const InvoicePDF = ({
                     ...(isLastItem ? [styles.tableRowBorderedBold] : []),
                   ]}
                 >
-                  <Text style={[styles.tableCol, styles.tableColFirst, styles.lineItemNumber]}>{index + 1}</Text>
-                  <Text style={[styles.tableCol, styles.lineItemDescription]}>{lineItem.description}</Text>
-                  <Text style={[styles.tableCol, styles.lineItemQuantity]}>{lineItem.quantity}</Text>
-                  <Text style={[styles.tableCol, styles.lineItemUnitPrice]}>
-                    {getFormattedNumber(lineItem.unitPrice, invoice.currency, i18n.locale, organization)}
+                  <Text style={[styles.tableCol, styles.tableColFirst, styles.lineItemNumber]}>
+                    {index + 1}
                   </Text>
-                  <Text style={[styles.tableCol, styles.lineItemTax]}>{taxRate ? `${taxRate.percentage}%` : ""}</Text>
+                  <Text style={[styles.tableCol, styles.lineItemDescription]}>
+                    {lineItem.description}
+                  </Text>
+                  <Text style={[styles.tableCol, styles.lineItemQuantity]}>
+                    {lineItem.quantity}
+                  </Text>
+                  <Text style={[styles.tableCol, styles.lineItemUnitPrice]}>
+                    {getFormattedNumber(
+                      lineItem.unitPrice,
+                      invoice.currency,
+                      i18n.locale,
+                      organization,
+                    )}
+                  </Text>
+                  <Text style={[styles.tableCol, styles.lineItemTax]}>
+                    {taxRate ? `${taxRate.percentage}%` : ""}
+                  </Text>
                   <Text style={[styles.tableCol, styles.tableColLast, styles.lineItemTotal]}>
-                    {getFormattedNumber(lineItem.total, invoice.currency, i18n.locale, organization)}
+                    {getFormattedNumber(
+                      lineItem.total,
+                      invoice.currency,
+                      i18n.locale,
+                      organization,
+                    )}
                   </Text>
                 </View>
               );
@@ -330,21 +366,40 @@ const InvoicePDF = ({
             </View>
             <View style={{ width: "40%" }}>
               <View>
-                <View style={{ flexDirection: "row", justifyContent: "space-between", paddingVertical: 4 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    paddingVertical: 4,
+                  }}
+                >
                   <Text style={[styles.smallText, styles.nowrap]}>
                     <Trans>Subtotal</Trans>
                   </Text>
                   <Text style={[styles.smallText]}>
-                    {getFormattedNumber(invoice.subTotal, invoice.currency, i18n.locale, organization)}
+                    {getFormattedNumber(
+                      invoice.subTotal,
+                      invoice.currency,
+                      i18n.locale,
+                      organization,
+                    )}
                   </Text>
                 </View>
                 {taxGroups.map((group, index) => (
                   <View
                     key={`tax-${index}`}
-                    style={{ flexDirection: "row", justifyContent: "space-between", paddingVertical: 4 }}
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      paddingVertical: 4,
+                    }}
                   >
                     <Text style={[styles.smallText, styles.nowrap]}>
-                      {group.taxRate ? `${group.taxRate.name} ${group.taxRate.percentage}%` : <Trans>Tax 0%</Trans>}
+                      {group.taxRate ? (
+                        `${group.taxRate.name} ${group.taxRate.percentage}%`
+                      ) : (
+                        <Trans>Tax 0%</Trans>
+                      )}
                     </Text>
                     <Text style={[styles.smallText]}>
                       {getFormattedNumber(group.tax, invoice.currency, i18n.locale, organization)}
@@ -383,7 +438,9 @@ const InvoicePDF = ({
               {organization.bank_name} {organization.iban}
             </Text>
             {organization.registration_number && (
-              <Text style={[styles.text, { textAlign: "center" }]}>Reg. nr {organization.registration_number}</Text>
+              <Text style={[styles.text, { textAlign: "center" }]}>
+                Reg. nr {organization.registration_number}
+              </Text>
             )}
             {organization.vatin && (
               <Text style={[styles.text, { textAlign: "right" }]}>VATIN {organization.vatin}</Text>

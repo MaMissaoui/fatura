@@ -44,13 +44,26 @@ function SettingsTaxRates() {
       </Row>
       <Row>
         <Col span={24}>
-          <Table dataSource={taxRates} pagination={false} rowKey="id" size="middle" bordered style={{ width: "100%" }}>
+          <Table
+            dataSource={taxRates}
+            pagination={false}
+            rowKey="id"
+            size="middle"
+            bordered
+            style={{ width: "100%" }}
+          >
             <Table.Column
               title={<Trans>Name</Trans>}
               key="name"
-              render={(taxRate) => <Link to={`/settings/tax-rates/${taxRate.id}`}>{taxRate.name}</Link>}
+              render={(taxRate) => (
+                <Link to={`/settings/tax-rates/${taxRate.id}`}>{taxRate.name}</Link>
+              )}
             />
-            <Table.Column title={<Trans>Description</Trans>} dataIndex="description" key="description" />
+            <Table.Column
+              title={<Trans>Description</Trans>}
+              dataIndex="description"
+              key="description"
+            />
             <Table.Column
               title={
                 <div style={{ textAlign: "right" }}>

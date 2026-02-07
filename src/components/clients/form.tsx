@@ -109,16 +109,23 @@ const ClientForm = () => {
         navigate(location.pathname, { state: { clientModal: false } });
       }}
       footer={[
-        <div key="footer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+        <div
+          key="footer"
+          style={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+        >
           <div>
             {clientId && (
               <Popconfirm
                 title={
                   <div>
-                    <div><Trans>Are you sure you want to delete this client?</Trans></div>
+                    <div>
+                      <Trans>Are you sure you want to delete this client?</Trans>
+                    </div>
                     {invoiceCount !== null && invoiceCount > 0 && (
-                      <div style={{ color: '#ff4d4f', marginTop: 4 }}>
-                        <Trans>Warning: This will also delete {invoiceCount} related invoice(s).</Trans>
+                      <div style={{ color: "#ff4d4f", marginTop: 4 }}>
+                        <Trans>
+                          Warning: This will also delete {invoiceCount} related invoice(s).
+                        </Trans>
                       </div>
                     )}
                   </div>
@@ -147,56 +154,54 @@ const ClientForm = () => {
             >
               <Trans>Cancel</Trans>
             </Button>
-            <Button
-              type="primary"
-              loading={submitting}
-              onClick={() => form.submit()}
-            >
+            <Button type="primary" loading={submitting} onClick={() => form.submit()}>
               <Trans>Save</Trans>
             </Button>
           </div>
-        </div>
+        </div>,
       ]}
       forceRender={true}
     >
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '40px 0' }}>
+        <div style={{ textAlign: "center", padding: "40px 0" }}>
           <Spin size="large" />
         </div>
-      ) : (!clientId || !isEmpty(client)) && (
-        <Form form={form} layout="vertical" onFinish={handleSubmit}>
-          <Form.Item name="name" rules={[{ required: true, message: t`Please input name!` }]}>
-            <Input 
-              placeholder={t`Name`} 
-              onChange={(e) => {
-                // Only auto-generate code for new clients (no clientId)
-                if (!clientId) {
-                  const code = generateClientCode(e.target.value);
-                  form.setFieldValue('code', code);
-                }
-              }}
-            />
-          </Form.Item>
-          <Form.Item name="code" rules={[{ required: false }]}>
-            <Input placeholder={t`Code`} maxLength={10} />
-          </Form.Item>
-          <Form.Item name="address">
-            <Input.TextArea rows={4} placeholder={t`Address`} />
-          </Form.Item>
-          {/* TODO: E-mail validation */}
-          <Form.Item name="emails">
-            <Select placeholder={t`E-mails`} mode="tags" tokenSeparators={[",", ";"]} />
-          </Form.Item>
-          <Form.Item name="phone">
-            <Input placeholder={t`Phone`} />
-          </Form.Item>
-          <Form.Item name="vatin">
-            <Input placeholder={t`VAT Number`} />
-          </Form.Item>
-          <Form.Item name="website">
-            <Input placeholder={t`Website`} />
-          </Form.Item>
-        </Form>
+      ) : (
+        (!clientId || !isEmpty(client)) && (
+          <Form form={form} layout="vertical" onFinish={handleSubmit}>
+            <Form.Item name="name" rules={[{ required: true, message: t`Please input name!` }]}>
+              <Input
+                placeholder={t`Name`}
+                onChange={(e) => {
+                  // Only auto-generate code for new clients (no clientId)
+                  if (!clientId) {
+                    const code = generateClientCode(e.target.value);
+                    form.setFieldValue("code", code);
+                  }
+                }}
+              />
+            </Form.Item>
+            <Form.Item name="code" rules={[{ required: false }]}>
+              <Input placeholder={t`Code`} maxLength={10} />
+            </Form.Item>
+            <Form.Item name="address">
+              <Input.TextArea rows={4} placeholder={t`Address`} />
+            </Form.Item>
+            {/* TODO: E-mail validation */}
+            <Form.Item name="emails">
+              <Select placeholder={t`E-mails`} mode="tags" tokenSeparators={[",", ";"]} />
+            </Form.Item>
+            <Form.Item name="phone">
+              <Input placeholder={t`Phone`} />
+            </Form.Item>
+            <Form.Item name="vatin">
+              <Input placeholder={t`VAT Number`} />
+            </Form.Item>
+            <Form.Item name="website">
+              <Input placeholder={t`Website`} />
+            </Form.Item>
+          </Form>
+        )
       )}
     </Modal>
   );

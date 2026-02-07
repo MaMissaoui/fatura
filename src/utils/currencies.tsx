@@ -11,7 +11,12 @@ export const getCurrencySymbol = (locale: string, currency: string) => {
   return partValues[0];
 };
 
-export const getFormattedNumber = (number: number, currency: string, locale: string, organization: any) => {
+export const getFormattedNumber = (
+  number: number,
+  currency: string,
+  locale: string,
+  organization: any,
+) => {
   if (!isNumber(number)) return "-";
 
   return new Intl.NumberFormat(locale, {

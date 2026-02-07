@@ -7,12 +7,12 @@ import { t } from "@lingui/core/macro";
 import { InboxOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
-import { 
+import {
   projectsAtom,
   createProjectAtom,
   updateProjectAtom,
   archiveProjectAtom,
-  unarchiveProjectAtom
+  unarchiveProjectAtom,
 } from "src/atoms/project";
 import { clientsAtom, setClientsAtom } from "src/atoms/client";
 import { useDatePickerFormat } from "src/utils/date";
@@ -36,7 +36,7 @@ const ProjectForm = () => {
   const archiveProject = useSetAtom(archiveProjectAtom);
   const unarchiveProject = useSetAtom(unarchiveProjectAtom);
 
-  const project = projects.find(p => p.id === projectId);
+  const project = projects.find((p) => p.id === projectId);
   const isVisible = location.state?.projectModal === true;
 
   useEffect(() => {
@@ -124,45 +124,40 @@ const ProjectForm = () => {
       open={isVisible}
       onCancel={handleCancel}
       footer={[
-        <div key="footer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+        <div
+          key="footer"
+          style={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+        >
           <div>
             {projectId && (
               <Popconfirm
                 title={
-                  project?.archivedAt 
-                    ? <Trans>Are you sure you want to unarchive this project?</Trans>
-                    : <Trans>Are you sure you want to archive this project?</Trans>
+                  project?.archivedAt ? (
+                    <Trans>Are you sure you want to unarchive this project?</Trans>
+                  ) : (
+                    <Trans>Are you sure you want to archive this project?</Trans>
+                  )
                 }
                 onConfirm={handleArchive}
                 okText={<Trans>Yes</Trans>}
                 cancelText={<Trans>No</Trans>}
                 placement="topRight"
               >
-                <Button
-                  icon={<InboxOutlined />}
-                  loading={submitting}
-                >
+                <Button icon={<InboxOutlined />} loading={submitting}>
                   {project?.archivedAt ? <Trans>Unarchive</Trans> : <Trans>Archive</Trans>}
                 </Button>
               </Popconfirm>
             )}
           </div>
           <div>
-            <Button
-              onClick={handleCancel}
-              style={{ marginRight: 8 }}
-            >
+            <Button onClick={handleCancel} style={{ marginRight: 8 }}>
               <Trans>Cancel</Trans>
             </Button>
-            <Button
-              type="primary"
-              loading={submitting}
-              onClick={() => form.submit()}
-            >
+            <Button type="primary" loading={submitting} onClick={() => form.submit()}>
               {projectId ? <Trans>Update</Trans> : <Trans>Create</Trans>}
             </Button>
           </div>
-        </div>
+        </div>,
       ]}
       destroyOnHidden
       forceRender
@@ -176,10 +171,7 @@ const ProjectForm = () => {
           <Input placeholder={t`Enter project name`} />
         </Form.Item>
 
-        <Form.Item
-          name="clientId"
-          label={<Trans>Client</Trans>}
-        >
+        <Form.Item name="clientId" label={<Trans>Client</Trans>}>
           <Select
             placeholder={t`Select a client (optional)`}
             allowClear
@@ -194,17 +186,11 @@ const ProjectForm = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item
-          name="startDate"
-          label={<Trans>Start Date</Trans>}
-        >
+        <Form.Item name="startDate" label={<Trans>Start Date</Trans>}>
           <DatePicker style={{ width: "100%" }} format={dateFormat} />
         </Form.Item>
 
-        <Form.Item
-          name="endDate"
-          label={<Trans>End Date</Trans>}
-        >
+        <Form.Item name="endDate" label={<Trans>End Date</Trans>}>
           <DatePicker style={{ width: "100%" }} format={dateFormat} />
         </Form.Item>
       </Form>

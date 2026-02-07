@@ -79,12 +79,17 @@ const NewOrganization = () => {
                   </Form.Item>
                 </Col>
               </Row>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <Button type="primary" htmlType="submit" disabled={submitting}>
                   <Trans>Create Organization</Trans>
                 </Button>
                 {organizations.length > 0 && (
-                  <Button type="default" onClick={handleCancel} disabled={submitting} icon={<CloseOutlined />}>
+                  <Button
+                    type="default"
+                    onClick={handleCancel}
+                    disabled={submitting}
+                    icon={<CloseOutlined />}
+                  >
                     <Trans>Cancel</Trans>
                   </Button>
                 )}

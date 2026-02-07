@@ -5,7 +5,11 @@ import first from "lodash/first";
 
 import Loading from "src/components/loading";
 
-import { organizationsAtom, organizationIdAtom, organizationsLoadedAtom } from "src/atoms/organization";
+import {
+  organizationsAtom,
+  organizationIdAtom,
+  organizationsLoadedAtom,
+} from "src/atoms/organization";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -23,7 +27,7 @@ const Index = () => {
     }
 
     // If organizationId exists and is valid, redirect to invoices
-    if (organizationId && organizations.some(org => org.id === organizationId)) {
+    if (organizationId && organizations.some((org) => org.id === organizationId)) {
       navigate("/invoices", { replace: true });
       return;
     }
@@ -35,7 +39,7 @@ const Index = () => {
     }
 
     // If organizationId exists but is not in organizations, clear it
-    if (organizationId && !organizations.some(org => org.id === organizationId)) {
+    if (organizationId && !organizations.some((org) => org.id === organizationId)) {
       setOrganizationId(null);
       return;
     }
