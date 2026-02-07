@@ -17,7 +17,6 @@ import {
   ClockCircleOutlined,
   BarChartOutlined,
   ProjectOutlined,
-  RobotOutlined,
   CommentOutlined,
 } from "@ant-design/icons";
 import { Trans } from "@lingui/react/macro";
@@ -30,10 +29,9 @@ import map from "lodash/map";
 import take from "lodash/take";
 import toUpper from "lodash/toUpper";
 
-import { siderAtom, localeAtom, aiDrawerAtom } from "src/atoms/generic";
+import { siderAtom, localeAtom } from "src/atoms/generic";
 import { organizationsAtom, organizationIdAtom, organizationAtom } from "src/atoms/organization";
 import Timer from "src/components/timer";
-import AiDrawer from "src/components/ai-drawer";
 import FeedbackModal from "src/components/feedback-modal";
 import { dynamicActivate, locales } from "src/utils/lingui";
 import { useAutoUpdater } from "src/hooks/useAutoUpdater";
@@ -67,9 +65,6 @@ export default function BaseLayout() {
 
   // Sider
   const [siderCollapsed, setSiderCollapsed] = useAtom(siderAtom);
-
-  // AI Drawer
-  const setAiDrawerOpen = useSetAtom(aiDrawerAtom);
 
   // Auto-updater
   useAutoUpdater();
@@ -219,15 +214,6 @@ export default function BaseLayout() {
                   ),
                   key: "settings.backup",
                 },
-                {
-                  icon: <RobotOutlined />,
-                  label: (
-                    <Link to="/settings/ai">
-                      <Trans>AI</Trans>
-                    </Link>
-                  ),
-                  key: "settings.ai",
-                },
               ],
             },
           ]}
@@ -278,9 +264,6 @@ export default function BaseLayout() {
             <Col>
               <Space>
                 <Timer />
-                <Button icon={<RobotOutlined />} onClick={() => setAiDrawerOpen(true)}>
-                  AI
-                </Button>
                 {!isEmpty(organizations) && (
                   <Select
                     showSearch={organizations.length > 5 ? true : false}
@@ -374,7 +357,6 @@ export default function BaseLayout() {
         </Content>
         <div id="footer" />
       </Layout>
-      <AiDrawer />
       <FeedbackModal open={feedbackModalOpen} onClose={() => setFeedbackModalOpen(false)} />
       {contextHolder}
     </Layout>

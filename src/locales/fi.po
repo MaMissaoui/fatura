@@ -41,7 +41,7 @@ msgstr "Aktiivinen"
 msgid "Add a new organization to your account"
 msgstr "Lisää uusi organisaatio tiliisi"
 
-#: src/routes/invoices/details.tsx:766
+#: src/routes/invoices/details.tsx:826
 msgid "Add line item"
 msgstr "Lisää rivi"
 
@@ -56,34 +56,34 @@ msgid "Address"
 msgstr "Osoite"
 
 #: src/layouts/base.tsx:226
-msgid "AI"
-msgstr "AI"
+#~ msgid "AI"
+#~ msgstr "AI"
 
 #: src/components/ai-drawer.tsx:346
 #: src/components/ai-drawer.tsx:378
 #: src/components/ai-drawer.tsx:472
-msgid "AI Assistant"
-msgstr "AI-assistentti"
+#~ msgid "AI Assistant"
+#~ msgstr "AI-assistentti"
 
 #: src/routes/settings/ai.tsx:31
-msgid "AI Configuration"
-msgstr "AI-konfiguraatio"
+#~ msgid "AI Configuration"
+#~ msgstr "AI-konfiguraatio"
 
 #: src/routes/time-tracking/reports.tsx:182
 msgid "All clients"
 msgstr "Kaikki asiakkaat"
 
 #: src/routes/settings/ai.tsx:55
-msgid "Anthropic API Key"
-msgstr "Anthropic API-avain"
+#~ msgid "Anthropic API Key"
+#~ msgstr "Anthropic API-avain"
 
 #: src/components/ai-drawer.tsx:355
-msgid "API Key Required"
-msgstr "API-avain vaaditaan"
+#~ msgid "API Key Required"
+#~ msgstr "API-avain vaaditaan"
 
 #: src/routes/settings/ai.tsx:21
-msgid "API key saved successfully"
-msgstr "API-avain tallennettu onnistuneesti"
+#~ msgid "API key saved successfully"
+#~ msgstr "API-avain tallennettu onnistuneesti"
 
 #: src/components/projects/form.tsx:145
 msgid "Archive"
@@ -98,7 +98,7 @@ msgstr "Arkistoitu"
 msgid "Are you sure delete this organization?"
 msgstr "Haluatko varmasti poistaa tämän organisaation?"
 
-#: src/routes/invoices/details.tsx:879
+#: src/routes/invoices/details.tsx:939
 #: src/routes/invoices/index.tsx:104
 msgid "Are you sure to delete this invoice?"
 msgstr "Haluatko varmasti poistaa tämän laskun?"
@@ -128,8 +128,8 @@ msgid "Are you sure you want to unarchive this project?"
 msgstr "Haluatko varmasti palauttaa tämän projektin arkistosta?"
 
 #: src/components/ai-drawer.tsx:420
-msgid "Ask me about invoicing, clients, or general questions..."
-msgstr "Kysy minulta laskutuksesta, asiakkaista tai yleisistä kysymyksistä..."
+#~ msgid "Ask me about invoicing, clients, or general questions..."
+#~ msgstr "Kysy minulta laskutuksesta, asiakkaista tai yleisistä kysymyksistä..."
 
 #: src/routes/settings/invoice.tsx:163
 msgid "Available variables:"
@@ -139,7 +139,7 @@ msgstr "Saatavilla olevat muuttujat:"
 msgid "Average per entry"
 msgstr "Keskiarvo per kirjaus"
 
-#: src/layouts/base.tsx:217
+#: src/layouts/base.tsx:212
 msgid "Backup"
 msgstr "Varmuuskopio"
 
@@ -166,8 +166,8 @@ msgid "Change"
 msgstr "Muuta"
 
 #: src/components/ai-drawer.tsx:388
-msgid "Clear chat"
-msgstr "Tyhjennä keskustelu"
+#~ msgid "Clear chat"
+#~ msgstr "Tyhjennä keskustelu"
 
 #: src/components/projects/form.tsx:181
 #: src/components/time-entries/form.tsx:170
@@ -207,7 +207,7 @@ msgstr "Asiakkaan päivitys epäonnistui"
 msgid "Client updated successfully"
 msgstr "Asiakas päivitetty onnistuneesti"
 
-#: src/layouts/base.tsx:142
+#: src/layouts/base.tsx:137
 #: src/routes/clients.tsx:54
 msgid "Clients"
 msgstr "Asiakkaat"
@@ -217,8 +217,8 @@ msgid "Code"
 msgstr "Koodi"
 
 #: src/routes/settings/ai.tsx:47
-msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
-msgstr "Määritä Anthropic API-avaimesi ottaaksesi käyttöön AI-toiminnot laskutustyönkulussasi."
+#~ msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
+#~ msgstr "Määritä Anthropic API-avaimesi ottaaksesi käyttöön AI-toiminnot laskutustyönkulussasi."
 
 #: src/routes/invoices/index.tsx:32
 msgid "Confirmed"
@@ -253,17 +253,17 @@ msgstr "Luo organisaatio"
 #~ msgid "Create your organization to get started"
 #~ msgstr "Luo organisaatiosi aloittaaksesi"
 
-#: src/routes/invoices/details.tsx:540
+#: src/routes/invoices/details.tsx:581
 #: src/routes/organizations/new.tsx:72
 #: src/routes/settings/invoice.tsx:84
 msgid "Currency"
 msgstr "Valuutta"
 
-#: src/routes/invoices/details.tsx:777
+#: src/routes/invoices/details.tsx:837
 msgid "Customer note"
 msgstr "Asiakashuomautus"
 
-#: src/routes/invoices/details.tsx:575
+#: src/routes/invoices/details.tsx:616
 msgid "Daily %"
 msgstr "Päivittäin %"
 
@@ -309,14 +309,14 @@ msgstr "Oletus"
 
 #: src/components/clients/form.tsx:132
 #: src/components/time-entries/form.tsx:132
-#: src/routes/invoices/details.tsx:885
+#: src/routes/invoices/details.tsx:945
 #: src/routes/invoices/index.tsx:113
 #: src/routes/settings/organization.tsx:147
 #: src/routes/time-tracking/index.tsx:484
 msgid "Delete"
 msgstr "Poista"
 
-#: src/routes/invoices/details.tsx:878
+#: src/routes/invoices/details.tsx:938
 #: src/routes/invoices/index.tsx:103
 msgid "Delete the invoice?"
 msgstr "Poistetaanko lasku?"
@@ -328,7 +328,7 @@ msgstr "Poistetaanko aikakirjaus?"
 #: src/components/invoices/pdf.tsx:285
 #: src/components/tax-rates/form.tsx:69
 #: src/components/time-entries/form.tsx:163
-#: src/routes/invoices/details.tsx:602
+#: src/routes/invoices/details.tsx:658
 #: src/routes/settings/tax-rates.tsx:53
 #: src/routes/time-tracking/index.tsx:355
 msgid "Description"
@@ -341,7 +341,7 @@ msgid "Draft"
 msgstr "Luonnos"
 
 #: src/components/invoices/pdf.tsx:264
-#: src/routes/invoices/details.tsx:564
+#: src/routes/invoices/details.tsx:605
 #: src/routes/invoices/index.tsx:163
 msgid "Due date"
 msgstr "Eräpäivä"
@@ -350,7 +350,7 @@ msgstr "Eräpäivä"
 msgid "Due days"
 msgstr "Eräpäiviä"
 
-#: src/routes/invoices/details.tsx:873
+#: src/routes/invoices/details.tsx:933
 #: src/routes/invoices/index.tsx:92
 msgid "Duplicate"
 msgstr "Monista"
@@ -379,7 +379,7 @@ msgstr "Sähköpostit"
 msgid "e.g. AP, MS"
 msgstr "esim. AP, MS"
 
-#: src/routes/invoices/details.tsx:902
+#: src/routes/invoices/details.tsx:962
 #: src/routes/invoices/index.tsx:86
 #: src/routes/time-tracking/index.tsx:454
 msgid "Edit"
@@ -431,8 +431,8 @@ msgid "Entries"
 msgstr "Kirjaukset"
 
 #: src/components/ai-drawer.tsx:444
-msgid "Error"
-msgstr "Virhe"
+#~ msgid "Error"
+#~ msgstr "Virhe"
 
 #: src/routes/time-tracking/reports.tsx:159
 msgid "Export"
@@ -508,7 +508,7 @@ msgstr "Projektin päivitys epäonnistui"
 msgid "Failed to update time entry"
 msgstr "Aikakirjauksen päivitys epäonnistui"
 
-#: src/layouts/base.tsx:250
+#: src/layouts/base.tsx:236
 msgid "Feedback"
 msgstr "Palaute"
 
@@ -521,8 +521,8 @@ msgstr "Palaute lähetetty onnistuneesti!"
 #~ msgstr "Aloita"
 
 #: src/routes/settings/ai.tsx:59
-msgid "Get your API key from"
-msgstr "Hanki API-avaimesi osoitteesta"
+#~ msgid "Get your API key from"
+#~ msgstr "Hanki API-avaimesi osoitteesta"
 
 #: src/routes/time-tracking/reports.tsx:194
 msgid "Group by client"
@@ -540,7 +540,7 @@ msgstr "Ryhmittele viikon mukaan"
 msgid "IBAN"
 msgstr "IBAN"
 
-#: src/layouts/base.tsx:199
+#: src/layouts/base.tsx:194
 msgid "Invoice"
 msgstr "Lasku"
 
@@ -583,14 +583,14 @@ msgid "Invoice duplication failed"
 msgstr "Laskun monistus epäonnistui"
 
 #: src/components/ai-drawer.tsx:167
-msgid "Invoice form updated with new data."
-msgstr "Laskulomake päivitetty uusilla tiedoilla."
+#~ msgid "Invoice form updated with new data."
+#~ msgstr "Laskulomake päivitetty uusilla tiedoilla."
 
 #: src/atoms/invoice.ts:215
 msgid "Invoice not found"
 msgstr "Laskua ei löytynyt"
 
-#: src/routes/invoices/details.tsx:531
+#: src/routes/invoices/details.tsx:572
 msgid "Invoice number"
 msgstr "Laskunumero"
 
@@ -618,7 +618,7 @@ msgstr "Laskun päivitys epäonnistui"
 msgid "Invoice updated successfully"
 msgstr "Lasku päivitetty onnistuneesti"
 
-#: src/layouts/base.tsx:133
+#: src/layouts/base.tsx:128
 #: src/routes/invoices/index.tsx:127
 msgid "Invoices"
 msgstr "Laskut"
@@ -648,7 +648,7 @@ msgstr "Nimi"
 
 #: src/components/clients/form.tsx:99
 #: src/routes/clients.tsx:62
-#: src/routes/invoices/details.tsx:516
+#: src/routes/invoices/details.tsx:557
 msgid "New client"
 msgstr "Uusi asiakas"
 
@@ -660,7 +660,7 @@ msgstr "Uusi kirjaus"
 msgid "New invoice"
 msgstr "Uusi lasku"
 
-#: src/layouts/base.tsx:310
+#: src/layouts/base.tsx:293
 msgid "New organization"
 msgstr "Uusi organisaatio"
 
@@ -692,7 +692,7 @@ msgstr "Seuraava lasku käyttää tätä numeroa + 1"
 #: src/components/clients/form.tsx:128
 #: src/components/projects/form.tsx:138
 #: src/components/time-entries/form.tsx:128
-#: src/routes/invoices/details.tsx:882
+#: src/routes/invoices/details.tsx:942
 #: src/routes/invoices/index.tsx:110
 #: src/routes/time-tracking/index.tsx:481
 msgid "No"
@@ -706,7 +706,7 @@ msgstr "Ei asiakasta"
 msgid "No client assigned"
 msgstr "Ei määritettyä asiakasta"
 
-#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:649
 msgid "No line items"
 msgstr "Ei rivikohteita"
 
@@ -731,10 +731,10 @@ msgstr "Huomautukset"
 #~ msgstr "Numeroiden määrä"
 
 #: src/components/ai-drawer.tsx:161
-msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
-msgstr "Avataan uusi laskulomake tiedoillasi. Tarkista ja napsauta Tallenna luodaksesi laskun."
+#~ msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
+#~ msgstr "Avataan uusi laskulomake tiedoillasi. Tarkista ja napsauta Tallenna luodaksesi laskun."
 
-#: src/layouts/base.tsx:190
+#: src/layouts/base.tsx:185
 msgid "Organization"
 msgstr "Organisaatio"
 
@@ -768,7 +768,7 @@ msgid "Organization updated successfully"
 msgstr "Organisaatio päivitetty onnistuneesti"
 
 #: src/components/invoices/pdf.tsx:268
-#: src/routes/invoices/details.tsx:573
+#: src/routes/invoices/details.tsx:614
 #: src/routes/settings/invoice.tsx:105
 msgid "Overdue charge"
 msgstr "Viivästysmaksu"
@@ -791,8 +791,8 @@ msgid "Phone"
 msgstr "Puhelin"
 
 #: src/components/ai-drawer.tsx:358
-msgid "Please configure your Anthropic API key in"
-msgstr "Määritä Anthropic API-avaimesi kohdassa"
+#~ msgid "Please configure your Anthropic API key in"
+#~ msgstr "Määritä Anthropic API-avaimesi kohdassa"
 
 #: src/components/projects/form.tsx:174
 msgid "Please enter a project name"
@@ -833,7 +833,7 @@ msgid "Preview"
 msgstr "Esikatselu"
 
 #: src/components/invoices/pdf.tsx:291
-#: src/routes/invoices/details.tsx:659
+#: src/routes/invoices/details.tsx:715
 msgid "Price"
 msgstr "Hinta"
 
@@ -862,13 +862,13 @@ msgstr "Projekti palautettu arkistosta onnistuneesti"
 msgid "Project updated successfully"
 msgstr "Projekti päivitetty onnistuneesti"
 
-#: src/layouts/base.tsx:151
+#: src/layouts/base.tsx:146
 #: src/routes/projects.tsx:136
 msgid "Projects"
 msgstr "Projektit"
 
 #: src/components/invoices/pdf.tsx:288
-#: src/routes/invoices/details.tsx:625
+#: src/routes/invoices/details.tsx:680
 msgid "Qty."
 msgstr "Määrä"
 
@@ -876,7 +876,7 @@ msgstr "Määrä"
 msgid "Registration number"
 msgstr "Y-tunnus"
 
-#: src/layouts/base.tsx:174
+#: src/layouts/base.tsx:169
 #: src/routes/time-tracking/reports.tsx:153
 msgid "Reports"
 msgstr "Raportit"
@@ -907,15 +907,15 @@ msgstr "Palauta tietokantasi aiemmin luodusta varmuuskopiotiedostosta. Tämä ko
 #: src/components/time-entries/form.tsx:113
 #: src/components/time-entries/form.tsx:152
 #: src/components/time-entries/time-range-cell.tsx:91
-#: src/routes/invoices/details.tsx:928
+#: src/routes/invoices/details.tsx:988
 #: src/routes/settings/invoice.tsx:256
 #: src/routes/settings/organization.tsx:138
 msgid "Save"
 msgstr "Tallenna"
 
 #: src/routes/settings/ai.tsx:76
-msgid "Save Configuration"
-msgstr "Tallenna konfiguraatio"
+#~ msgid "Save Configuration"
+#~ msgstr "Tallenna konfiguraatio"
 
 #: src/routes/projects.tsx:142
 msgid "Search projects..."
@@ -950,7 +950,7 @@ msgstr ""
 msgid "Select date format"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:474
+#: src/routes/invoices/details.tsx:515
 msgid "Select or create a client"
 msgstr "Valitse tai luo asiakas"
 
@@ -979,21 +979,21 @@ msgstr "Lähetetty"
 msgid "Sequential number"
 msgstr "Juokseva numero"
 
-#: src/layouts/base.tsx:183
+#: src/layouts/base.tsx:178
 msgid "Settings"
 msgstr "Asetukset"
 
 #: src/components/ai-drawer.tsx:360
-msgid "Settings → AI"
-msgstr "Asetukset → AI"
+#~ msgid "Settings → AI"
+#~ msgstr "Asetukset → AI"
 
 #: src/routes/settings/invoice.tsx:158
 msgid "Show variables"
 msgstr "Näytä muuttujat"
 
 #: src/components/ai-drawer.tsx:496
-msgid "Start a conversation with your AI assistant"
-msgstr "Aloita keskustelu AI-assistenttisi kanssa"
+#~ msgid "Start a conversation with your AI assistant"
+#~ msgstr "Aloita keskustelu AI-assistenttisi kanssa"
 
 #: src/components/projects/form.tsx:199
 msgid "Start Date"
@@ -1021,7 +1021,7 @@ msgid "Stop Timer"
 msgstr "Pysäytä ajastin"
 
 #: src/components/invoices/pdf.tsx:335
-#: src/routes/invoices/details.tsx:806
+#: src/routes/invoices/details.tsx:866
 msgid "Subtotal"
 msgstr "Välisumma"
 
@@ -1059,12 +1059,12 @@ msgstr "Tunniste päivitetty onnistuneesti"
 msgid "Tags"
 msgstr "Tunnisteet"
 
-#: src/routes/invoices/details.tsx:827
+#: src/routes/invoices/details.tsx:887
 msgid "Tax"
 msgstr "Vero"
 
 #: src/components/invoices/pdf.tsx:294
-#: src/routes/invoices/details.tsx:693
+#: src/routes/invoices/details.tsx:750
 msgid "Tax %"
 msgstr "Vero %"
 
@@ -1088,7 +1088,7 @@ msgstr "Verokannan päivitys epäonnistui"
 msgid "Tax rate updated successfully"
 msgstr "Verokanta päivitetty onnistuneesti"
 
-#: src/layouts/base.tsx:208
+#: src/layouts/base.tsx:203
 #: src/routes/settings/tax-rates.tsx:33
 msgid "Tax rates"
 msgstr "Verokannat"
@@ -1097,15 +1097,15 @@ msgstr "Verokannat"
 msgid "Tell us what you think, report a bug, or suggest an improvement..."
 msgstr "Kerro mitä ajattelet, ilmoita virheestä tai ehdota parannusta..."
 
-#: src/routes/invoices/details.tsx:476
-#: src/routes/invoices/details.tsx:533
-#: src/routes/invoices/details.tsx:542
-#: src/routes/invoices/details.tsx:558
-#: src/routes/invoices/details.tsx:566
-#: src/routes/invoices/details.tsx:616
-#: src/routes/invoices/details.tsx:631
-#: src/routes/invoices/details.tsx:665
-#: src/routes/invoices/details.tsx:730
+#: src/routes/invoices/details.tsx:517
+#: src/routes/invoices/details.tsx:574
+#: src/routes/invoices/details.tsx:583
+#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:607
+#: src/routes/invoices/details.tsx:671
+#: src/routes/invoices/details.tsx:686
+#: src/routes/invoices/details.tsx:721
+#: src/routes/invoices/details.tsx:787
 #: src/routes/settings/invoice.tsx:86
 #: src/routes/settings/invoice.tsx:132
 #: src/routes/settings/invoice.tsx:202
@@ -1141,7 +1141,7 @@ msgstr "Aikakirjaus päivitetty onnistuneesti"
 msgid "Time Range"
 msgstr "Aikajakso"
 
-#: src/layouts/base.tsx:158
+#: src/layouts/base.tsx:153
 msgid "Time tracking"
 msgstr "Ajanseuranta"
 
@@ -1153,18 +1153,18 @@ msgstr "Ajanseuranta"
 msgid "Timeframe"
 msgstr "Ajanjakso"
 
-#: src/layouts/base.tsx:165
+#: src/layouts/base.tsx:160
 msgid "Timer"
 msgstr "Ajastin"
 
 #: src/components/ai-drawer.tsx:362
-msgid "to use the AI assistant."
-msgstr "käyttääksesi AI-assistenttia."
+#~ msgid "to use the AI assistant."
+#~ msgstr "käyttääksesi AI-assistenttia."
 
 #: src/components/invoices/pdf.tsx:297
 #: src/components/invoices/pdf.tsx:371
-#: src/routes/invoices/details.tsx:711
-#: src/routes/invoices/details.tsx:838
+#: src/routes/invoices/details.tsx:768
+#: src/routes/invoices/details.tsx:898
 #: src/routes/invoices/index.tsx:170
 #: src/routes/time-tracking/reports.tsx:249
 msgid "Total"
@@ -1199,7 +1199,7 @@ msgstr "ALV-numero"
 msgid "VATIN"
 msgstr "ALV-tunnus"
 
-#: src/routes/invoices/details.tsx:906
+#: src/routes/invoices/details.tsx:966
 msgid "View"
 msgstr "Näytä"
 
@@ -1234,7 +1234,7 @@ msgstr "Mitä teet parhaillaan?"
 #: src/components/clients/form.tsx:127
 #: src/components/projects/form.tsx:137
 #: src/components/time-entries/form.tsx:127
-#: src/routes/invoices/details.tsx:881
+#: src/routes/invoices/details.tsx:941
 #: src/routes/invoices/index.tsx:109
 #: src/routes/settings/organization.tsx:143
 #: src/routes/time-tracking/index.tsx:480
@@ -1242,12 +1242,12 @@ msgid "Yes"
 msgstr "Kyllä"
 
 #: src/components/ai-drawer.tsx:472
-msgid "You"
-msgstr "Sinä"
+#~ msgid "You"
+#~ msgstr "Sinä"
 
 #: src/routes/settings/ai.tsx:40
-msgid "Your Anthropic API key is configured and AI features are enabled."
-msgstr "Anthropic API-avaimesi on määritetty ja AI-ominaisuudet ovat käytössä."
+#~ msgid "Your Anthropic API key is configured and AI features are enabled."
+#~ msgstr "Anthropic API-avaimesi on määritetty ja AI-ominaisuudet ovat käytössä."
 
 #: src/components/feedback-modal.tsx:66
 msgid "Your name (optional)"

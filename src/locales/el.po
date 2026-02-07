@@ -41,7 +41,7 @@ msgstr "Ενεργός"
 msgid "Add a new organization to your account"
 msgstr "Προσθήκη νέου οργανισμού στον λογαριασμό σας"
 
-#: src/routes/invoices/details.tsx:766
+#: src/routes/invoices/details.tsx:826
 msgid "Add line item"
 msgstr "Προσθήκη στοιχείου γραμμής"
 
@@ -56,34 +56,34 @@ msgid "Address"
 msgstr "Διεύθυνση"
 
 #: src/layouts/base.tsx:226
-msgid "AI"
-msgstr "ΤΝ"
+#~ msgid "AI"
+#~ msgstr "ΤΝ"
 
 #: src/components/ai-drawer.tsx:346
 #: src/components/ai-drawer.tsx:378
 #: src/components/ai-drawer.tsx:472
-msgid "AI Assistant"
-msgstr "Βοηθός Τεχνητής Νοημοσύνης"
+#~ msgid "AI Assistant"
+#~ msgstr "Βοηθός Τεχνητής Νοημοσύνης"
 
 #: src/routes/settings/ai.tsx:31
-msgid "AI Configuration"
-msgstr "Ρύθμιση Τεχνητής Νοημοσύνης"
+#~ msgid "AI Configuration"
+#~ msgstr "Ρύθμιση Τεχνητής Νοημοσύνης"
 
 #: src/routes/time-tracking/reports.tsx:182
 msgid "All clients"
 msgstr "Όλοι οι πελάτες"
 
 #: src/routes/settings/ai.tsx:55
-msgid "Anthropic API Key"
-msgstr "Κλειδί API Anthropic"
+#~ msgid "Anthropic API Key"
+#~ msgstr "Κλειδί API Anthropic"
 
 #: src/components/ai-drawer.tsx:355
-msgid "API Key Required"
-msgstr "Απαιτείται Κλειδί API"
+#~ msgid "API Key Required"
+#~ msgstr "Απαιτείται Κλειδί API"
 
 #: src/routes/settings/ai.tsx:21
-msgid "API key saved successfully"
-msgstr "Το κλειδί API αποθηκεύτηκε επιτυχώς"
+#~ msgid "API key saved successfully"
+#~ msgstr "Το κλειδί API αποθηκεύτηκε επιτυχώς"
 
 #: src/components/projects/form.tsx:145
 msgid "Archive"
@@ -98,7 +98,7 @@ msgstr "Αρχειοθετημένο"
 msgid "Are you sure delete this organization?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον οργανισμό;"
 
-#: src/routes/invoices/details.tsx:879
+#: src/routes/invoices/details.tsx:939
 #: src/routes/invoices/index.tsx:104
 msgid "Are you sure to delete this invoice?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το τιμολόγιο;"
@@ -128,8 +128,8 @@ msgid "Are you sure you want to unarchive this project?"
 msgstr "Είστε σίγουροι ότι θέλετε να επαναφέρετε αυτό το έργο από το αρχείο;"
 
 #: src/components/ai-drawer.tsx:420
-msgid "Ask me about invoicing, clients, or general questions..."
-msgstr "Ρωτήστε με για τιμολόγηση, πελάτες ή γενικές ερωτήσεις..."
+#~ msgid "Ask me about invoicing, clients, or general questions..."
+#~ msgstr "Ρωτήστε με για τιμολόγηση, πελάτες ή γενικές ερωτήσεις..."
 
 #: src/routes/settings/invoice.tsx:163
 msgid "Available variables:"
@@ -139,7 +139,7 @@ msgstr "Διαθέσιμες μεταβλητές:"
 msgid "Average per entry"
 msgstr "Μέσος όρος ανά καταχώριση"
 
-#: src/layouts/base.tsx:217
+#: src/layouts/base.tsx:212
 msgid "Backup"
 msgstr "Αντίγραφο Ασφαλείας"
 
@@ -166,8 +166,8 @@ msgid "Change"
 msgstr "Αλλαγή"
 
 #: src/components/ai-drawer.tsx:388
-msgid "Clear chat"
-msgstr "Καθαρισμός συνομιλίας"
+#~ msgid "Clear chat"
+#~ msgstr "Καθαρισμός συνομιλίας"
 
 #: src/components/projects/form.tsx:181
 #: src/components/time-entries/form.tsx:170
@@ -207,7 +207,7 @@ msgstr "Η ενημέρωση πελάτη απέτυχε"
 msgid "Client updated successfully"
 msgstr "Ο πελάτης ενημερώθηκε επιτυχώς"
 
-#: src/layouts/base.tsx:142
+#: src/layouts/base.tsx:137
 #: src/routes/clients.tsx:54
 msgid "Clients"
 msgstr "Πελάτες"
@@ -217,8 +217,8 @@ msgid "Code"
 msgstr "Κωδικός"
 
 #: src/routes/settings/ai.tsx:47
-msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
-msgstr "Ρυθμίστε το κλειδί API Anthropic για να ενεργοποιήσετε λειτουργίες που υποστηρίζονται από Τεχνητή Νοημοσύνη στη ροή εργασιών τιμολόγησης."
+#~ msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
+#~ msgstr "Ρυθμίστε το κλειδί API Anthropic για να ενεργοποιήσετε λειτουργίες που υποστηρίζονται από Τεχνητή Νοημοσύνη στη ροή εργασιών τιμολόγησης."
 
 #: src/routes/invoices/index.tsx:32
 msgid "Confirmed"
@@ -253,17 +253,17 @@ msgstr "Δημιουργία Οργανισμού"
 #~ msgid "Create your organization to get started"
 #~ msgstr "Δημιουργήστε τον οργανισμό σας για να ξεκινήσετε"
 
-#: src/routes/invoices/details.tsx:540
+#: src/routes/invoices/details.tsx:581
 #: src/routes/organizations/new.tsx:72
 #: src/routes/settings/invoice.tsx:84
 msgid "Currency"
 msgstr "Νόμισμα"
 
-#: src/routes/invoices/details.tsx:777
+#: src/routes/invoices/details.tsx:837
 msgid "Customer note"
 msgstr "Σημείωση Πελάτη"
 
-#: src/routes/invoices/details.tsx:575
+#: src/routes/invoices/details.tsx:616
 msgid "Daily %"
 msgstr "Ημερήσιο %"
 
@@ -309,14 +309,14 @@ msgstr "Προεπιλογή"
 
 #: src/components/clients/form.tsx:132
 #: src/components/time-entries/form.tsx:132
-#: src/routes/invoices/details.tsx:885
+#: src/routes/invoices/details.tsx:945
 #: src/routes/invoices/index.tsx:113
 #: src/routes/settings/organization.tsx:147
 #: src/routes/time-tracking/index.tsx:484
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: src/routes/invoices/details.tsx:878
+#: src/routes/invoices/details.tsx:938
 #: src/routes/invoices/index.tsx:103
 msgid "Delete the invoice?"
 msgstr "Διαγραφή του τιμολογίου;"
@@ -328,7 +328,7 @@ msgstr "Διαγραφή της καταχώρισης χρόνου;"
 #: src/components/invoices/pdf.tsx:285
 #: src/components/tax-rates/form.tsx:69
 #: src/components/time-entries/form.tsx:163
-#: src/routes/invoices/details.tsx:602
+#: src/routes/invoices/details.tsx:658
 #: src/routes/settings/tax-rates.tsx:53
 #: src/routes/time-tracking/index.tsx:355
 msgid "Description"
@@ -341,7 +341,7 @@ msgid "Draft"
 msgstr "Πρόχειρο"
 
 #: src/components/invoices/pdf.tsx:264
-#: src/routes/invoices/details.tsx:564
+#: src/routes/invoices/details.tsx:605
 #: src/routes/invoices/index.tsx:163
 msgid "Due date"
 msgstr "Ημερομηνία λήξης"
@@ -350,7 +350,7 @@ msgstr "Ημερομηνία λήξης"
 msgid "Due days"
 msgstr "Ημέρες λήξης"
 
-#: src/routes/invoices/details.tsx:873
+#: src/routes/invoices/details.tsx:933
 #: src/routes/invoices/index.tsx:92
 msgid "Duplicate"
 msgstr "Αντιγραφή"
@@ -379,7 +379,7 @@ msgstr "Ηλεκτρονικά Ταχυδρομεία"
 msgid "e.g. AP, MS"
 msgstr "π.χ. AP, MS"
 
-#: src/routes/invoices/details.tsx:902
+#: src/routes/invoices/details.tsx:962
 #: src/routes/invoices/index.tsx:86
 #: src/routes/time-tracking/index.tsx:454
 msgid "Edit"
@@ -431,8 +431,8 @@ msgid "Entries"
 msgstr "Καταχωρίσεις"
 
 #: src/components/ai-drawer.tsx:444
-msgid "Error"
-msgstr "Σφάλμα"
+#~ msgid "Error"
+#~ msgstr "Σφάλμα"
 
 #: src/routes/time-tracking/reports.tsx:159
 msgid "Export"
@@ -508,7 +508,7 @@ msgstr "Αποτυχία ενημέρωσης έργου"
 msgid "Failed to update time entry"
 msgstr "Αποτυχία ενημέρωσης καταχώρισης χρόνου"
 
-#: src/layouts/base.tsx:250
+#: src/layouts/base.tsx:236
 msgid "Feedback"
 msgstr "Σχόλια"
 
@@ -521,8 +521,8 @@ msgstr "Τα σχόλια στάλθηκαν επιτυχώς!"
 #~ msgstr "Ξεκινήστε"
 
 #: src/routes/settings/ai.tsx:59
-msgid "Get your API key from"
-msgstr "Λάβετε το κλειδί API σας από"
+#~ msgid "Get your API key from"
+#~ msgstr "Λάβετε το κλειδί API σας από"
 
 #: src/routes/time-tracking/reports.tsx:194
 msgid "Group by client"
@@ -540,7 +540,7 @@ msgstr "Ομαδοποίηση ανά εβδομάδα"
 msgid "IBAN"
 msgstr "IBAN"
 
-#: src/layouts/base.tsx:199
+#: src/layouts/base.tsx:194
 msgid "Invoice"
 msgstr "Τιμολόγιο"
 
@@ -583,14 +583,14 @@ msgid "Invoice duplication failed"
 msgstr "Η αντιγραφή τιμολογίου απέτυχε"
 
 #: src/components/ai-drawer.tsx:167
-msgid "Invoice form updated with new data."
-msgstr "Η φόρμα τιμολογίου ενημερώθηκε με νέα δεδομένα."
+#~ msgid "Invoice form updated with new data."
+#~ msgstr "Η φόρμα τιμολογίου ενημερώθηκε με νέα δεδομένα."
 
 #: src/atoms/invoice.ts:215
 msgid "Invoice not found"
 msgstr "Το τιμολόγιο δεν βρέθηκε"
 
-#: src/routes/invoices/details.tsx:531
+#: src/routes/invoices/details.tsx:572
 msgid "Invoice number"
 msgstr "Αριθμός τιμολογίου"
 
@@ -618,7 +618,7 @@ msgstr "Η ενημέρωση του τιμολογίου απέτυχε"
 msgid "Invoice updated successfully"
 msgstr "Το τιμολόγιο ενημερώθηκε επιτυχώς"
 
-#: src/layouts/base.tsx:133
+#: src/layouts/base.tsx:128
 #: src/routes/invoices/index.tsx:127
 msgid "Invoices"
 msgstr "Τιμολόγια"
@@ -648,7 +648,7 @@ msgstr "Όνομα"
 
 #: src/components/clients/form.tsx:99
 #: src/routes/clients.tsx:62
-#: src/routes/invoices/details.tsx:516
+#: src/routes/invoices/details.tsx:557
 msgid "New client"
 msgstr "Νέος πελάτης"
 
@@ -660,7 +660,7 @@ msgstr "Νέα Καταχώριση"
 msgid "New invoice"
 msgstr "Νέο τιμολόγιο"
 
-#: src/layouts/base.tsx:310
+#: src/layouts/base.tsx:293
 msgid "New organization"
 msgstr "Νέος οργανισμός"
 
@@ -692,7 +692,7 @@ msgstr "Το επόμενο τιμολόγιο θα χρησιμοποιήσει
 #: src/components/clients/form.tsx:128
 #: src/components/projects/form.tsx:138
 #: src/components/time-entries/form.tsx:128
-#: src/routes/invoices/details.tsx:882
+#: src/routes/invoices/details.tsx:942
 #: src/routes/invoices/index.tsx:110
 #: src/routes/time-tracking/index.tsx:481
 msgid "No"
@@ -706,7 +706,7 @@ msgstr "Κανένας πελάτης"
 msgid "No client assigned"
 msgstr "Δεν έχει εκχωρηθεί πελάτης"
 
-#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:649
 msgid "No line items"
 msgstr "Κανένα στοιχείο γραμμής"
 
@@ -731,10 +731,10 @@ msgstr "Σημειώσεις"
 #~ msgstr "Αριθμός Ψηφίων"
 
 #: src/components/ai-drawer.tsx:161
-msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
-msgstr "’νοιγμα νέας φόρμας τιμολογίου με τα δεδομένα σας. Παρακαλώ ελέγξτε και κάντε κλικ στο Αποθήκευση για να δημιουργήσετε το τιμολόγιο."
+#~ msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
+#~ msgstr "’νοιγμα νέας φόρμας τιμολογίου με τα δεδομένα σας. Παρακαλώ ελέγξτε και κάντε κλικ στο Αποθήκευση για να δημιουργήσετε το τιμολόγιο."
 
-#: src/layouts/base.tsx:190
+#: src/layouts/base.tsx:185
 msgid "Organization"
 msgstr "Οργανισμός"
 
@@ -768,7 +768,7 @@ msgid "Organization updated successfully"
 msgstr "Ο οργανισμός ενημερώθηκε επιτυχώς"
 
 #: src/components/invoices/pdf.tsx:268
-#: src/routes/invoices/details.tsx:573
+#: src/routes/invoices/details.tsx:614
 #: src/routes/settings/invoice.tsx:105
 msgid "Overdue charge"
 msgstr "Χρέωση καθυστέρησης"
@@ -791,8 +791,8 @@ msgid "Phone"
 msgstr "Τηλέφωνο"
 
 #: src/components/ai-drawer.tsx:358
-msgid "Please configure your Anthropic API key in"
-msgstr "Παρακαλώ ρυθμίστε το κλειδί API Anthropic στο"
+#~ msgid "Please configure your Anthropic API key in"
+#~ msgstr "Παρακαλώ ρυθμίστε το κλειδί API Anthropic στο"
 
 #: src/components/projects/form.tsx:174
 msgid "Please enter a project name"
@@ -833,7 +833,7 @@ msgid "Preview"
 msgstr "Προεπισκόπηση"
 
 #: src/components/invoices/pdf.tsx:291
-#: src/routes/invoices/details.tsx:659
+#: src/routes/invoices/details.tsx:715
 msgid "Price"
 msgstr "Τιμή"
 
@@ -862,13 +862,13 @@ msgstr "Το έργο επαναφέρθηκε από το αρχείο επιτ
 msgid "Project updated successfully"
 msgstr "Το έργο ενημερώθηκε επιτυχώς"
 
-#: src/layouts/base.tsx:151
+#: src/layouts/base.tsx:146
 #: src/routes/projects.tsx:136
 msgid "Projects"
 msgstr "Έργα"
 
 #: src/components/invoices/pdf.tsx:288
-#: src/routes/invoices/details.tsx:625
+#: src/routes/invoices/details.tsx:680
 msgid "Qty."
 msgstr "Ποσότητα"
 
@@ -876,7 +876,7 @@ msgstr "Ποσότητα"
 msgid "Registration number"
 msgstr "Αριθμός Μητρώου"
 
-#: src/layouts/base.tsx:174
+#: src/layouts/base.tsx:169
 #: src/routes/time-tracking/reports.tsx:153
 msgid "Reports"
 msgstr "Αναφορές"
@@ -907,15 +907,15 @@ msgstr "Επαναφέρετε τη βάση δεδομένων σας από έ
 #: src/components/time-entries/form.tsx:113
 #: src/components/time-entries/form.tsx:152
 #: src/components/time-entries/time-range-cell.tsx:91
-#: src/routes/invoices/details.tsx:928
+#: src/routes/invoices/details.tsx:988
 #: src/routes/settings/invoice.tsx:256
 #: src/routes/settings/organization.tsx:138
 msgid "Save"
 msgstr "Αποθήκευση"
 
 #: src/routes/settings/ai.tsx:76
-msgid "Save Configuration"
-msgstr "Αποθήκευση Ρύθμισης"
+#~ msgid "Save Configuration"
+#~ msgstr "Αποθήκευση Ρύθμισης"
 
 #: src/routes/projects.tsx:142
 msgid "Search projects..."
@@ -950,7 +950,7 @@ msgstr "Επιλέξτε χώρα"
 msgid "Select date format"
 msgstr "Επιλέξτε μορφή ημερομηνίας"
 
-#: src/routes/invoices/details.tsx:474
+#: src/routes/invoices/details.tsx:515
 msgid "Select or create a client"
 msgstr "Επιλέξτε ή δημιουργήστε έναν πελάτη"
 
@@ -979,13 +979,13 @@ msgstr "Απεσταλμένο"
 msgid "Sequential number"
 msgstr "Αύξων αριθμός"
 
-#: src/layouts/base.tsx:183
+#: src/layouts/base.tsx:178
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
 #: src/components/ai-drawer.tsx:360
-msgid "Settings → AI"
-msgstr ""
+#~ msgid "Settings → AI"
+#~ msgstr ""
 
 #: src/components/ai-drawer.tsx:360
 #~ msgid "Settings > AI"
@@ -996,8 +996,8 @@ msgid "Show variables"
 msgstr "Εμφάνιση μεταβλητών"
 
 #: src/components/ai-drawer.tsx:496
-msgid "Start a conversation with your AI assistant"
-msgstr "Ξεκινήστε μια συνομιλία με τον βοηθό Τεχνητής Νοημοσύνης σας"
+#~ msgid "Start a conversation with your AI assistant"
+#~ msgstr "Ξεκινήστε μια συνομιλία με τον βοηθό Τεχνητής Νοημοσύνης σας"
 
 #: src/components/projects/form.tsx:199
 msgid "Start Date"
@@ -1025,7 +1025,7 @@ msgid "Stop Timer"
 msgstr "Διακοπή Χρονομέτρη"
 
 #: src/components/invoices/pdf.tsx:335
-#: src/routes/invoices/details.tsx:806
+#: src/routes/invoices/details.tsx:866
 msgid "Subtotal"
 msgstr "Υποσύνολο"
 
@@ -1063,12 +1063,12 @@ msgstr "Η ετικέτα ενημερώθηκε επιτυχώς"
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: src/routes/invoices/details.tsx:827
+#: src/routes/invoices/details.tsx:887
 msgid "Tax"
 msgstr "Φόρος"
 
 #: src/components/invoices/pdf.tsx:294
-#: src/routes/invoices/details.tsx:693
+#: src/routes/invoices/details.tsx:750
 msgid "Tax %"
 msgstr "Φόρος %"
 
@@ -1092,7 +1092,7 @@ msgstr "Η ενημέρωση φορολογικού συντελεστή απέ
 msgid "Tax rate updated successfully"
 msgstr "Ο φορολογικός συντελεστής ενημερώθηκε επιτυχώς"
 
-#: src/layouts/base.tsx:208
+#: src/layouts/base.tsx:203
 #: src/routes/settings/tax-rates.tsx:33
 msgid "Tax rates"
 msgstr "Φορολογικοί συντελεστές"
@@ -1101,15 +1101,15 @@ msgstr "Φορολογικοί συντελεστές"
 msgid "Tell us what you think, report a bug, or suggest an improvement..."
 msgstr "Πείτε μας τη γνώμη σας, αναφέρετε ένα σφάλμα ή προτείνετε μια βελτίωση..."
 
-#: src/routes/invoices/details.tsx:476
-#: src/routes/invoices/details.tsx:533
-#: src/routes/invoices/details.tsx:542
-#: src/routes/invoices/details.tsx:558
-#: src/routes/invoices/details.tsx:566
-#: src/routes/invoices/details.tsx:616
-#: src/routes/invoices/details.tsx:631
-#: src/routes/invoices/details.tsx:665
-#: src/routes/invoices/details.tsx:730
+#: src/routes/invoices/details.tsx:517
+#: src/routes/invoices/details.tsx:574
+#: src/routes/invoices/details.tsx:583
+#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:607
+#: src/routes/invoices/details.tsx:671
+#: src/routes/invoices/details.tsx:686
+#: src/routes/invoices/details.tsx:721
+#: src/routes/invoices/details.tsx:787
 #: src/routes/settings/invoice.tsx:86
 #: src/routes/settings/invoice.tsx:132
 #: src/routes/settings/invoice.tsx:202
@@ -1145,7 +1145,7 @@ msgstr "Η καταχώριση χρόνου ενημερώθηκε επιτυχ
 msgid "Time Range"
 msgstr "Χρονικό Εύρος"
 
-#: src/layouts/base.tsx:158
+#: src/layouts/base.tsx:153
 msgid "Time tracking"
 msgstr "Παρακολούθηση Χρόνου"
 
@@ -1157,18 +1157,18 @@ msgstr "Παρακολούθηση Χρόνου"
 msgid "Timeframe"
 msgstr "Χρονικό Πλαίσιο"
 
-#: src/layouts/base.tsx:165
+#: src/layouts/base.tsx:160
 msgid "Timer"
 msgstr "Χρονόμετρο"
 
 #: src/components/ai-drawer.tsx:362
-msgid "to use the AI assistant."
-msgstr "για να χρησιμοποιήσετε τον βοηθό Τεχνητής Νοημοσύνης."
+#~ msgid "to use the AI assistant."
+#~ msgstr "για να χρησιμοποιήσετε τον βοηθό Τεχνητής Νοημοσύνης."
 
 #: src/components/invoices/pdf.tsx:297
 #: src/components/invoices/pdf.tsx:371
-#: src/routes/invoices/details.tsx:711
-#: src/routes/invoices/details.tsx:838
+#: src/routes/invoices/details.tsx:768
+#: src/routes/invoices/details.tsx:898
 #: src/routes/invoices/index.tsx:170
 #: src/routes/time-tracking/reports.tsx:249
 msgid "Total"
@@ -1203,7 +1203,7 @@ msgstr "Αριθμός ΦΠΑ"
 msgid "VATIN"
 msgstr "Αριθμός ΦΠΑ"
 
-#: src/routes/invoices/details.tsx:906
+#: src/routes/invoices/details.tsx:966
 msgid "View"
 msgstr "Προβολή"
 
@@ -1238,7 +1238,7 @@ msgstr "Σε τι εργάζεστε;"
 #: src/components/clients/form.tsx:127
 #: src/components/projects/form.tsx:137
 #: src/components/time-entries/form.tsx:127
-#: src/routes/invoices/details.tsx:881
+#: src/routes/invoices/details.tsx:941
 #: src/routes/invoices/index.tsx:109
 #: src/routes/settings/organization.tsx:143
 #: src/routes/time-tracking/index.tsx:480
@@ -1246,12 +1246,12 @@ msgid "Yes"
 msgstr "Ναι"
 
 #: src/components/ai-drawer.tsx:472
-msgid "You"
-msgstr "Εσείς"
+#~ msgid "You"
+#~ msgstr "Εσείς"
 
 #: src/routes/settings/ai.tsx:40
-msgid "Your Anthropic API key is configured and AI features are enabled."
-msgstr "Το κλειδί API Anthropic σας έχει ρυθμιστεί και οι λειτουργίες Τεχνητής Νοημοσύνης είναι ενεργοποιημένες."
+#~ msgid "Your Anthropic API key is configured and AI features are enabled."
+#~ msgstr "Το κλειδί API Anthropic σας έχει ρυθμιστεί και οι λειτουργίες Τεχνητής Νοημοσύνης είναι ενεργοποιημένες."
 
 #: src/components/feedback-modal.tsx:66
 msgid "Your name (optional)"

@@ -41,7 +41,7 @@ msgstr ""
 msgid "Add a new organization to your account"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:766
+#: src/routes/invoices/details.tsx:826
 msgid "Add line item"
 msgstr ""
 
@@ -56,34 +56,34 @@ msgid "Address"
 msgstr ""
 
 #: src/layouts/base.tsx:226
-msgid "AI"
-msgstr ""
+#~ msgid "AI"
+#~ msgstr ""
 
 #: src/components/ai-drawer.tsx:346
 #: src/components/ai-drawer.tsx:378
 #: src/components/ai-drawer.tsx:472
-msgid "AI Assistant"
-msgstr ""
+#~ msgid "AI Assistant"
+#~ msgstr ""
 
 #: src/routes/settings/ai.tsx:31
-msgid "AI Configuration"
-msgstr ""
+#~ msgid "AI Configuration"
+#~ msgstr ""
 
 #: src/routes/time-tracking/reports.tsx:182
 msgid "All clients"
 msgstr ""
 
 #: src/routes/settings/ai.tsx:55
-msgid "Anthropic API Key"
-msgstr ""
+#~ msgid "Anthropic API Key"
+#~ msgstr ""
 
 #: src/components/ai-drawer.tsx:355
-msgid "API Key Required"
-msgstr ""
+#~ msgid "API Key Required"
+#~ msgstr ""
 
 #: src/routes/settings/ai.tsx:21
-msgid "API key saved successfully"
-msgstr ""
+#~ msgid "API key saved successfully"
+#~ msgstr ""
 
 #: src/components/projects/form.tsx:145
 msgid "Archive"
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Are you sure delete this organization?"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:879
+#: src/routes/invoices/details.tsx:939
 #: src/routes/invoices/index.tsx:104
 msgid "Are you sure to delete this invoice?"
 msgstr ""
@@ -128,8 +128,8 @@ msgid "Are you sure you want to unarchive this project?"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:420
-msgid "Ask me about invoicing, clients, or general questions..."
-msgstr ""
+#~ msgid "Ask me about invoicing, clients, or general questions..."
+#~ msgstr ""
 
 #: src/routes/settings/invoice.tsx:163
 msgid "Available variables:"
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Average per entry"
 msgstr ""
 
-#: src/layouts/base.tsx:217
+#: src/layouts/base.tsx:212
 msgid "Backup"
 msgstr ""
 
@@ -166,8 +166,8 @@ msgid "Change"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:388
-msgid "Clear chat"
-msgstr ""
+#~ msgid "Clear chat"
+#~ msgstr ""
 
 #: src/components/projects/form.tsx:181
 #: src/components/time-entries/form.tsx:170
@@ -207,7 +207,7 @@ msgstr ""
 msgid "Client updated successfully"
 msgstr ""
 
-#: src/layouts/base.tsx:142
+#: src/layouts/base.tsx:137
 #: src/routes/clients.tsx:54
 msgid "Clients"
 msgstr ""
@@ -217,8 +217,8 @@ msgid "Code"
 msgstr ""
 
 #: src/routes/settings/ai.tsx:47
-msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
-msgstr ""
+#~ msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
+#~ msgstr ""
 
 #: src/routes/invoices/index.tsx:32
 msgid "Confirmed"
@@ -253,17 +253,17 @@ msgstr ""
 #~ msgid "Create your organization to get started"
 #~ msgstr ""
 
-#: src/routes/invoices/details.tsx:540
+#: src/routes/invoices/details.tsx:581
 #: src/routes/organizations/new.tsx:72
 #: src/routes/settings/invoice.tsx:84
 msgid "Currency"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:777
+#: src/routes/invoices/details.tsx:837
 msgid "Customer note"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:575
+#: src/routes/invoices/details.tsx:616
 msgid "Daily %"
 msgstr ""
 
@@ -309,14 +309,14 @@ msgstr ""
 
 #: src/components/clients/form.tsx:132
 #: src/components/time-entries/form.tsx:132
-#: src/routes/invoices/details.tsx:885
+#: src/routes/invoices/details.tsx:945
 #: src/routes/invoices/index.tsx:113
 #: src/routes/settings/organization.tsx:147
 #: src/routes/time-tracking/index.tsx:484
 msgid "Delete"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:878
+#: src/routes/invoices/details.tsx:938
 #: src/routes/invoices/index.tsx:103
 msgid "Delete the invoice?"
 msgstr ""
@@ -328,7 +328,7 @@ msgstr ""
 #: src/components/invoices/pdf.tsx:285
 #: src/components/tax-rates/form.tsx:69
 #: src/components/time-entries/form.tsx:163
-#: src/routes/invoices/details.tsx:602
+#: src/routes/invoices/details.tsx:658
 #: src/routes/settings/tax-rates.tsx:53
 #: src/routes/time-tracking/index.tsx:355
 msgid "Description"
@@ -341,7 +341,7 @@ msgid "Draft"
 msgstr ""
 
 #: src/components/invoices/pdf.tsx:264
-#: src/routes/invoices/details.tsx:564
+#: src/routes/invoices/details.tsx:605
 #: src/routes/invoices/index.tsx:163
 msgid "Due date"
 msgstr ""
@@ -350,7 +350,7 @@ msgstr ""
 msgid "Due days"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:873
+#: src/routes/invoices/details.tsx:933
 #: src/routes/invoices/index.tsx:92
 msgid "Duplicate"
 msgstr ""
@@ -379,7 +379,7 @@ msgstr ""
 msgid "e.g. AP, MS"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:902
+#: src/routes/invoices/details.tsx:962
 #: src/routes/invoices/index.tsx:86
 #: src/routes/time-tracking/index.tsx:454
 msgid "Edit"
@@ -431,8 +431,8 @@ msgid "Entries"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:444
-msgid "Error"
-msgstr ""
+#~ msgid "Error"
+#~ msgstr ""
 
 #: src/routes/time-tracking/reports.tsx:159
 msgid "Export"
@@ -508,7 +508,7 @@ msgstr ""
 msgid "Failed to update time entry"
 msgstr ""
 
-#: src/layouts/base.tsx:250
+#: src/layouts/base.tsx:236
 msgid "Feedback"
 msgstr ""
 
@@ -521,8 +521,8 @@ msgstr ""
 #~ msgstr ""
 
 #: src/routes/settings/ai.tsx:59
-msgid "Get your API key from"
-msgstr ""
+#~ msgid "Get your API key from"
+#~ msgstr ""
 
 #: src/routes/time-tracking/reports.tsx:194
 msgid "Group by client"
@@ -540,7 +540,7 @@ msgstr ""
 msgid "IBAN"
 msgstr ""
 
-#: src/layouts/base.tsx:199
+#: src/layouts/base.tsx:194
 msgid "Invoice"
 msgstr ""
 
@@ -583,14 +583,14 @@ msgid "Invoice duplication failed"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:167
-msgid "Invoice form updated with new data."
-msgstr ""
+#~ msgid "Invoice form updated with new data."
+#~ msgstr ""
 
 #: src/atoms/invoice.ts:215
 msgid "Invoice not found"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:531
+#: src/routes/invoices/details.tsx:572
 msgid "Invoice number"
 msgstr ""
 
@@ -618,7 +618,7 @@ msgstr ""
 msgid "Invoice updated successfully"
 msgstr ""
 
-#: src/layouts/base.tsx:133
+#: src/layouts/base.tsx:128
 #: src/routes/invoices/index.tsx:127
 msgid "Invoices"
 msgstr ""
@@ -648,7 +648,7 @@ msgstr ""
 
 #: src/components/clients/form.tsx:99
 #: src/routes/clients.tsx:62
-#: src/routes/invoices/details.tsx:516
+#: src/routes/invoices/details.tsx:557
 msgid "New client"
 msgstr ""
 
@@ -660,7 +660,7 @@ msgstr ""
 msgid "New invoice"
 msgstr ""
 
-#: src/layouts/base.tsx:310
+#: src/layouts/base.tsx:293
 msgid "New organization"
 msgstr ""
 
@@ -692,7 +692,7 @@ msgstr ""
 #: src/components/clients/form.tsx:128
 #: src/components/projects/form.tsx:138
 #: src/components/time-entries/form.tsx:128
-#: src/routes/invoices/details.tsx:882
+#: src/routes/invoices/details.tsx:942
 #: src/routes/invoices/index.tsx:110
 #: src/routes/time-tracking/index.tsx:481
 msgid "No"
@@ -706,7 +706,7 @@ msgstr ""
 msgid "No client assigned"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:649
 msgid "No line items"
 msgstr ""
 
@@ -731,10 +731,10 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/ai-drawer.tsx:161
-msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
-msgstr ""
+#~ msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
+#~ msgstr ""
 
-#: src/layouts/base.tsx:190
+#: src/layouts/base.tsx:185
 msgid "Organization"
 msgstr ""
 
@@ -768,7 +768,7 @@ msgid "Organization updated successfully"
 msgstr ""
 
 #: src/components/invoices/pdf.tsx:268
-#: src/routes/invoices/details.tsx:573
+#: src/routes/invoices/details.tsx:614
 #: src/routes/settings/invoice.tsx:105
 msgid "Overdue charge"
 msgstr ""
@@ -791,8 +791,8 @@ msgid "Phone"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:358
-msgid "Please configure your Anthropic API key in"
-msgstr ""
+#~ msgid "Please configure your Anthropic API key in"
+#~ msgstr ""
 
 #: src/components/projects/form.tsx:174
 msgid "Please enter a project name"
@@ -833,7 +833,7 @@ msgid "Preview"
 msgstr ""
 
 #: src/components/invoices/pdf.tsx:291
-#: src/routes/invoices/details.tsx:659
+#: src/routes/invoices/details.tsx:715
 msgid "Price"
 msgstr ""
 
@@ -862,13 +862,13 @@ msgstr ""
 msgid "Project updated successfully"
 msgstr ""
 
-#: src/layouts/base.tsx:151
+#: src/layouts/base.tsx:146
 #: src/routes/projects.tsx:136
 msgid "Projects"
 msgstr ""
 
 #: src/components/invoices/pdf.tsx:288
-#: src/routes/invoices/details.tsx:625
+#: src/routes/invoices/details.tsx:680
 msgid "Qty."
 msgstr ""
 
@@ -876,7 +876,7 @@ msgstr ""
 msgid "Registration number"
 msgstr ""
 
-#: src/layouts/base.tsx:174
+#: src/layouts/base.tsx:169
 #: src/routes/time-tracking/reports.tsx:153
 msgid "Reports"
 msgstr ""
@@ -907,15 +907,15 @@ msgstr ""
 #: src/components/time-entries/form.tsx:113
 #: src/components/time-entries/form.tsx:152
 #: src/components/time-entries/time-range-cell.tsx:91
-#: src/routes/invoices/details.tsx:928
+#: src/routes/invoices/details.tsx:988
 #: src/routes/settings/invoice.tsx:256
 #: src/routes/settings/organization.tsx:138
 msgid "Save"
 msgstr ""
 
 #: src/routes/settings/ai.tsx:76
-msgid "Save Configuration"
-msgstr ""
+#~ msgid "Save Configuration"
+#~ msgstr ""
 
 #: src/routes/projects.tsx:142
 msgid "Search projects..."
@@ -950,7 +950,7 @@ msgstr ""
 msgid "Select date format"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:474
+#: src/routes/invoices/details.tsx:515
 msgid "Select or create a client"
 msgstr ""
 
@@ -979,21 +979,21 @@ msgstr ""
 msgid "Sequential number"
 msgstr ""
 
-#: src/layouts/base.tsx:183
+#: src/layouts/base.tsx:178
 msgid "Settings"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:360
-msgid "Settings → AI"
-msgstr ""
+#~ msgid "Settings → AI"
+#~ msgstr ""
 
 #: src/routes/settings/invoice.tsx:158
 msgid "Show variables"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:496
-msgid "Start a conversation with your AI assistant"
-msgstr ""
+#~ msgid "Start a conversation with your AI assistant"
+#~ msgstr ""
 
 #: src/components/projects/form.tsx:199
 msgid "Start Date"
@@ -1021,7 +1021,7 @@ msgid "Stop Timer"
 msgstr ""
 
 #: src/components/invoices/pdf.tsx:335
-#: src/routes/invoices/details.tsx:806
+#: src/routes/invoices/details.tsx:866
 msgid "Subtotal"
 msgstr ""
 
@@ -1059,12 +1059,12 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:827
+#: src/routes/invoices/details.tsx:887
 msgid "Tax"
 msgstr ""
 
 #: src/components/invoices/pdf.tsx:294
-#: src/routes/invoices/details.tsx:693
+#: src/routes/invoices/details.tsx:750
 msgid "Tax %"
 msgstr ""
 
@@ -1088,7 +1088,7 @@ msgstr ""
 msgid "Tax rate updated successfully"
 msgstr ""
 
-#: src/layouts/base.tsx:208
+#: src/layouts/base.tsx:203
 #: src/routes/settings/tax-rates.tsx:33
 msgid "Tax rates"
 msgstr ""
@@ -1097,15 +1097,15 @@ msgstr ""
 msgid "Tell us what you think, report a bug, or suggest an improvement..."
 msgstr ""
 
-#: src/routes/invoices/details.tsx:476
-#: src/routes/invoices/details.tsx:533
-#: src/routes/invoices/details.tsx:542
-#: src/routes/invoices/details.tsx:558
-#: src/routes/invoices/details.tsx:566
-#: src/routes/invoices/details.tsx:616
-#: src/routes/invoices/details.tsx:631
-#: src/routes/invoices/details.tsx:665
-#: src/routes/invoices/details.tsx:730
+#: src/routes/invoices/details.tsx:517
+#: src/routes/invoices/details.tsx:574
+#: src/routes/invoices/details.tsx:583
+#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:607
+#: src/routes/invoices/details.tsx:671
+#: src/routes/invoices/details.tsx:686
+#: src/routes/invoices/details.tsx:721
+#: src/routes/invoices/details.tsx:787
 #: src/routes/settings/invoice.tsx:86
 #: src/routes/settings/invoice.tsx:132
 #: src/routes/settings/invoice.tsx:202
@@ -1141,7 +1141,7 @@ msgstr ""
 msgid "Time Range"
 msgstr ""
 
-#: src/layouts/base.tsx:158
+#: src/layouts/base.tsx:153
 msgid "Time tracking"
 msgstr ""
 
@@ -1153,18 +1153,18 @@ msgstr ""
 msgid "Timeframe"
 msgstr ""
 
-#: src/layouts/base.tsx:165
+#: src/layouts/base.tsx:160
 msgid "Timer"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:362
-msgid "to use the AI assistant."
-msgstr ""
+#~ msgid "to use the AI assistant."
+#~ msgstr ""
 
 #: src/components/invoices/pdf.tsx:297
 #: src/components/invoices/pdf.tsx:371
-#: src/routes/invoices/details.tsx:711
-#: src/routes/invoices/details.tsx:838
+#: src/routes/invoices/details.tsx:768
+#: src/routes/invoices/details.tsx:898
 #: src/routes/invoices/index.tsx:170
 #: src/routes/time-tracking/reports.tsx:249
 msgid "Total"
@@ -1199,7 +1199,7 @@ msgstr ""
 msgid "VATIN"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:906
+#: src/routes/invoices/details.tsx:966
 msgid "View"
 msgstr ""
 
@@ -1234,7 +1234,7 @@ msgstr ""
 #: src/components/clients/form.tsx:127
 #: src/components/projects/form.tsx:137
 #: src/components/time-entries/form.tsx:127
-#: src/routes/invoices/details.tsx:881
+#: src/routes/invoices/details.tsx:941
 #: src/routes/invoices/index.tsx:109
 #: src/routes/settings/organization.tsx:143
 #: src/routes/time-tracking/index.tsx:480
@@ -1242,12 +1242,12 @@ msgid "Yes"
 msgstr ""
 
 #: src/components/ai-drawer.tsx:472
-msgid "You"
-msgstr ""
+#~ msgid "You"
+#~ msgstr ""
 
 #: src/routes/settings/ai.tsx:40
-msgid "Your Anthropic API key is configured and AI features are enabled."
-msgstr ""
+#~ msgid "Your Anthropic API key is configured and AI features are enabled."
+#~ msgstr ""
 
 #: src/components/feedback-modal.tsx:66
 msgid "Your name (optional)"

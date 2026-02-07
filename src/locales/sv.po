@@ -41,7 +41,7 @@ msgstr "Aktiv"
 msgid "Add a new organization to your account"
 msgstr "Lägg till en ny organisation till ditt konto"
 
-#: src/routes/invoices/details.tsx:766
+#: src/routes/invoices/details.tsx:826
 msgid "Add line item"
 msgstr "Lägg till rad"
 
@@ -56,34 +56,34 @@ msgid "Address"
 msgstr "Adress"
 
 #: src/layouts/base.tsx:226
-msgid "AI"
-msgstr "AI"
+#~ msgid "AI"
+#~ msgstr "AI"
 
 #: src/components/ai-drawer.tsx:346
 #: src/components/ai-drawer.tsx:378
 #: src/components/ai-drawer.tsx:472
-msgid "AI Assistant"
-msgstr "AI-assistent"
+#~ msgid "AI Assistant"
+#~ msgstr "AI-assistent"
 
 #: src/routes/settings/ai.tsx:31
-msgid "AI Configuration"
-msgstr "AI-konfiguration"
+#~ msgid "AI Configuration"
+#~ msgstr "AI-konfiguration"
 
 #: src/routes/time-tracking/reports.tsx:182
 msgid "All clients"
 msgstr "Alla kunder"
 
 #: src/routes/settings/ai.tsx:55
-msgid "Anthropic API Key"
-msgstr "Anthropic API-nyckel"
+#~ msgid "Anthropic API Key"
+#~ msgstr "Anthropic API-nyckel"
 
 #: src/components/ai-drawer.tsx:355
-msgid "API Key Required"
-msgstr "API-nyckel krävs"
+#~ msgid "API Key Required"
+#~ msgstr "API-nyckel krävs"
 
 #: src/routes/settings/ai.tsx:21
-msgid "API key saved successfully"
-msgstr "API-nyckel sparad framgångsrikt"
+#~ msgid "API key saved successfully"
+#~ msgstr "API-nyckel sparad framgångsrikt"
 
 #: src/components/projects/form.tsx:145
 msgid "Archive"
@@ -98,7 +98,7 @@ msgstr "Arkiverad"
 msgid "Are you sure delete this organization?"
 msgstr "Är du säker på att du vill ta bort denna organisation?"
 
-#: src/routes/invoices/details.tsx:879
+#: src/routes/invoices/details.tsx:939
 #: src/routes/invoices/index.tsx:104
 msgid "Are you sure to delete this invoice?"
 msgstr "Är du säker på att du vill ta bort denna faktura?"
@@ -128,8 +128,8 @@ msgid "Are you sure you want to unarchive this project?"
 msgstr "Är du säker på att du vill återställa detta projekt från arkivet?"
 
 #: src/components/ai-drawer.tsx:420
-msgid "Ask me about invoicing, clients, or general questions..."
-msgstr "Fråga mig om fakturering, kunder eller allmänna frågor..."
+#~ msgid "Ask me about invoicing, clients, or general questions..."
+#~ msgstr "Fråga mig om fakturering, kunder eller allmänna frågor..."
 
 #: src/routes/settings/invoice.tsx:163
 msgid "Available variables:"
@@ -139,7 +139,7 @@ msgstr "Tillgängliga variabler:"
 msgid "Average per entry"
 msgstr "Genomsnitt per registrering"
 
-#: src/layouts/base.tsx:217
+#: src/layouts/base.tsx:212
 msgid "Backup"
 msgstr "Säkerhetskopia"
 
@@ -166,8 +166,8 @@ msgid "Change"
 msgstr "Ändra"
 
 #: src/components/ai-drawer.tsx:388
-msgid "Clear chat"
-msgstr "Rensa chatt"
+#~ msgid "Clear chat"
+#~ msgstr "Rensa chatt"
 
 #: src/components/projects/form.tsx:181
 #: src/components/time-entries/form.tsx:170
@@ -207,7 +207,7 @@ msgstr "Kunde inte uppdatera kund"
 msgid "Client updated successfully"
 msgstr "Kund uppdaterad framgångsrikt"
 
-#: src/layouts/base.tsx:142
+#: src/layouts/base.tsx:137
 #: src/routes/clients.tsx:54
 msgid "Clients"
 msgstr "Kunder"
@@ -217,8 +217,8 @@ msgid "Code"
 msgstr "Kod"
 
 #: src/routes/settings/ai.tsx:47
-msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
-msgstr "Konfigurera din Anthropic API-nyckel för att aktivera AI-drivna funktioner i ditt faktureringsarbetsflöde."
+#~ msgid "Configure your Anthropic API key to enable AI-powered features in your invoicing workflow."
+#~ msgstr "Konfigurera din Anthropic API-nyckel för att aktivera AI-drivna funktioner i ditt faktureringsarbetsflöde."
 
 #: src/routes/invoices/index.tsx:32
 msgid "Confirmed"
@@ -253,17 +253,17 @@ msgstr "Skapa organisation"
 #~ msgid "Create your organization to get started"
 #~ msgstr "Skapa din organisation för att komma igång"
 
-#: src/routes/invoices/details.tsx:540
+#: src/routes/invoices/details.tsx:581
 #: src/routes/organizations/new.tsx:72
 #: src/routes/settings/invoice.tsx:84
 msgid "Currency"
 msgstr "Valuta"
 
-#: src/routes/invoices/details.tsx:777
+#: src/routes/invoices/details.tsx:837
 msgid "Customer note"
 msgstr "Kundanteckning"
 
-#: src/routes/invoices/details.tsx:575
+#: src/routes/invoices/details.tsx:616
 msgid "Daily %"
 msgstr "Daglig %"
 
@@ -309,14 +309,14 @@ msgstr "Standard"
 
 #: src/components/clients/form.tsx:132
 #: src/components/time-entries/form.tsx:132
-#: src/routes/invoices/details.tsx:885
+#: src/routes/invoices/details.tsx:945
 #: src/routes/invoices/index.tsx:113
 #: src/routes/settings/organization.tsx:147
 #: src/routes/time-tracking/index.tsx:484
 msgid "Delete"
 msgstr "Ta bort"
 
-#: src/routes/invoices/details.tsx:878
+#: src/routes/invoices/details.tsx:938
 #: src/routes/invoices/index.tsx:103
 msgid "Delete the invoice?"
 msgstr "Ta bort fakturan?"
@@ -328,7 +328,7 @@ msgstr "Ta bort tidsregistreringen?"
 #: src/components/invoices/pdf.tsx:285
 #: src/components/tax-rates/form.tsx:69
 #: src/components/time-entries/form.tsx:163
-#: src/routes/invoices/details.tsx:602
+#: src/routes/invoices/details.tsx:658
 #: src/routes/settings/tax-rates.tsx:53
 #: src/routes/time-tracking/index.tsx:355
 msgid "Description"
@@ -341,7 +341,7 @@ msgid "Draft"
 msgstr "Utkast"
 
 #: src/components/invoices/pdf.tsx:264
-#: src/routes/invoices/details.tsx:564
+#: src/routes/invoices/details.tsx:605
 #: src/routes/invoices/index.tsx:163
 msgid "Due date"
 msgstr "Förfallodatum"
@@ -350,7 +350,7 @@ msgstr "Förfallodatum"
 msgid "Due days"
 msgstr "Förfallodagar"
 
-#: src/routes/invoices/details.tsx:873
+#: src/routes/invoices/details.tsx:933
 #: src/routes/invoices/index.tsx:92
 msgid "Duplicate"
 msgstr "Duplicera"
@@ -379,7 +379,7 @@ msgstr "E-postadresser"
 msgid "e.g. AP, MS"
 msgstr "t.ex. AP, MS"
 
-#: src/routes/invoices/details.tsx:902
+#: src/routes/invoices/details.tsx:962
 #: src/routes/invoices/index.tsx:86
 #: src/routes/time-tracking/index.tsx:454
 msgid "Edit"
@@ -431,8 +431,8 @@ msgid "Entries"
 msgstr "Registreringar"
 
 #: src/components/ai-drawer.tsx:444
-msgid "Error"
-msgstr "Fel"
+#~ msgid "Error"
+#~ msgstr "Fel"
 
 #: src/routes/time-tracking/reports.tsx:159
 msgid "Export"
@@ -508,7 +508,7 @@ msgstr "Misslyckades att uppdatera projekt"
 msgid "Failed to update time entry"
 msgstr "Misslyckades att uppdatera tidsregistrering"
 
-#: src/layouts/base.tsx:250
+#: src/layouts/base.tsx:236
 msgid "Feedback"
 msgstr "Feedback"
 
@@ -521,8 +521,8 @@ msgstr "Feedback skickad framgångsrikt!"
 #~ msgstr "Kom igång"
 
 #: src/routes/settings/ai.tsx:59
-msgid "Get your API key from"
-msgstr "Hämta din API-nyckel från"
+#~ msgid "Get your API key from"
+#~ msgstr "Hämta din API-nyckel från"
 
 #: src/routes/time-tracking/reports.tsx:194
 msgid "Group by client"
@@ -540,7 +540,7 @@ msgstr "Gruppera efter vecka"
 msgid "IBAN"
 msgstr "IBAN"
 
-#: src/layouts/base.tsx:199
+#: src/layouts/base.tsx:194
 msgid "Invoice"
 msgstr "Faktura"
 
@@ -583,14 +583,14 @@ msgid "Invoice duplication failed"
 msgstr "Fakturaduplicering misslyckades"
 
 #: src/components/ai-drawer.tsx:167
-msgid "Invoice form updated with new data."
-msgstr "Fakturafomulär uppdaterat med nya uppgifter."
+#~ msgid "Invoice form updated with new data."
+#~ msgstr "Fakturafomulär uppdaterat med nya uppgifter."
 
 #: src/atoms/invoice.ts:215
 msgid "Invoice not found"
 msgstr "Faktura hittades inte"
 
-#: src/routes/invoices/details.tsx:531
+#: src/routes/invoices/details.tsx:572
 msgid "Invoice number"
 msgstr "Fakturanummer"
 
@@ -618,7 +618,7 @@ msgstr "Kunde inte uppdatera faktura"
 msgid "Invoice updated successfully"
 msgstr "Faktura uppdaterad framgångsrikt"
 
-#: src/layouts/base.tsx:133
+#: src/layouts/base.tsx:128
 #: src/routes/invoices/index.tsx:127
 msgid "Invoices"
 msgstr "Fakturor"
@@ -648,7 +648,7 @@ msgstr "Namn"
 
 #: src/components/clients/form.tsx:99
 #: src/routes/clients.tsx:62
-#: src/routes/invoices/details.tsx:516
+#: src/routes/invoices/details.tsx:557
 msgid "New client"
 msgstr "Ny kund"
 
@@ -660,7 +660,7 @@ msgstr "Ny registrering"
 msgid "New invoice"
 msgstr "Ny faktura"
 
-#: src/layouts/base.tsx:310
+#: src/layouts/base.tsx:293
 msgid "New organization"
 msgstr "Ny organisation"
 
@@ -692,7 +692,7 @@ msgstr "Nästa faktura kommer använda detta nummer + 1"
 #: src/components/clients/form.tsx:128
 #: src/components/projects/form.tsx:138
 #: src/components/time-entries/form.tsx:128
-#: src/routes/invoices/details.tsx:882
+#: src/routes/invoices/details.tsx:942
 #: src/routes/invoices/index.tsx:110
 #: src/routes/time-tracking/index.tsx:481
 msgid "No"
@@ -706,7 +706,7 @@ msgstr "Ingen kund"
 msgid "No client assigned"
 msgstr "Ingen kund tilldelad"
 
-#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:649
 msgid "No line items"
 msgstr "Inga rader"
 
@@ -731,10 +731,10 @@ msgstr "Anteckningar"
 #~ msgstr "Antal siffror"
 
 #: src/components/ai-drawer.tsx:161
-msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
-msgstr "Öppnar nytt fakturafomulär med dina uppgifter. Granska och klicka på Spara för att skapa fakturan."
+#~ msgid "Opening new invoice form with your data. Please review and click Save to create the invoice."
+#~ msgstr "Öppnar nytt fakturafomulär med dina uppgifter. Granska och klicka på Spara för att skapa fakturan."
 
-#: src/layouts/base.tsx:190
+#: src/layouts/base.tsx:185
 msgid "Organization"
 msgstr "Organisation"
 
@@ -768,7 +768,7 @@ msgid "Organization updated successfully"
 msgstr "Organisation uppdaterad framgångsrikt"
 
 #: src/components/invoices/pdf.tsx:268
-#: src/routes/invoices/details.tsx:573
+#: src/routes/invoices/details.tsx:614
 #: src/routes/settings/invoice.tsx:105
 msgid "Overdue charge"
 msgstr "Förseningsavgift"
@@ -791,8 +791,8 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: src/components/ai-drawer.tsx:358
-msgid "Please configure your Anthropic API key in"
-msgstr "Vänligen konfigurera din Anthropic API-nyckel i"
+#~ msgid "Please configure your Anthropic API key in"
+#~ msgstr "Vänligen konfigurera din Anthropic API-nyckel i"
 
 #: src/components/projects/form.tsx:174
 msgid "Please enter a project name"
@@ -833,7 +833,7 @@ msgid "Preview"
 msgstr "Förhandsvisning"
 
 #: src/components/invoices/pdf.tsx:291
-#: src/routes/invoices/details.tsx:659
+#: src/routes/invoices/details.tsx:715
 msgid "Price"
 msgstr "Pris"
 
@@ -862,13 +862,13 @@ msgstr "Projekt återställt från arkivet framgångsrikt"
 msgid "Project updated successfully"
 msgstr "Projekt uppdaterat framgångsrikt"
 
-#: src/layouts/base.tsx:151
+#: src/layouts/base.tsx:146
 #: src/routes/projects.tsx:136
 msgid "Projects"
 msgstr "Projekt"
 
 #: src/components/invoices/pdf.tsx:288
-#: src/routes/invoices/details.tsx:625
+#: src/routes/invoices/details.tsx:680
 msgid "Qty."
 msgstr "Antal"
 
@@ -876,7 +876,7 @@ msgstr "Antal"
 msgid "Registration number"
 msgstr "Organisationsnummer"
 
-#: src/layouts/base.tsx:174
+#: src/layouts/base.tsx:169
 #: src/routes/time-tracking/reports.tsx:153
 msgid "Reports"
 msgstr "Rapporter"
@@ -907,15 +907,15 @@ msgstr "Återställ din databas från en tidigare skapad säkerhetskopia. Detta 
 #: src/components/time-entries/form.tsx:113
 #: src/components/time-entries/form.tsx:152
 #: src/components/time-entries/time-range-cell.tsx:91
-#: src/routes/invoices/details.tsx:928
+#: src/routes/invoices/details.tsx:988
 #: src/routes/settings/invoice.tsx:256
 #: src/routes/settings/organization.tsx:138
 msgid "Save"
 msgstr "Spara"
 
 #: src/routes/settings/ai.tsx:76
-msgid "Save Configuration"
-msgstr "Spara konfiguration"
+#~ msgid "Save Configuration"
+#~ msgstr "Spara konfiguration"
 
 #: src/routes/projects.tsx:142
 msgid "Search projects..."
@@ -950,7 +950,7 @@ msgstr ""
 msgid "Select date format"
 msgstr ""
 
-#: src/routes/invoices/details.tsx:474
+#: src/routes/invoices/details.tsx:515
 msgid "Select or create a client"
 msgstr "Välj eller skapa en kund"
 
@@ -979,21 +979,21 @@ msgstr "Skickad"
 msgid "Sequential number"
 msgstr "Löpnummer"
 
-#: src/layouts/base.tsx:183
+#: src/layouts/base.tsx:178
 msgid "Settings"
 msgstr "Inställningar"
 
 #: src/components/ai-drawer.tsx:360
-msgid "Settings → AI"
-msgstr "Inställningar → AI"
+#~ msgid "Settings → AI"
+#~ msgstr "Inställningar → AI"
 
 #: src/routes/settings/invoice.tsx:158
 msgid "Show variables"
 msgstr "Visa variabler"
 
 #: src/components/ai-drawer.tsx:496
-msgid "Start a conversation with your AI assistant"
-msgstr "Starta en konversation med din AI-assistent"
+#~ msgid "Start a conversation with your AI assistant"
+#~ msgstr "Starta en konversation med din AI-assistent"
 
 #: src/components/projects/form.tsx:199
 msgid "Start Date"
@@ -1021,7 +1021,7 @@ msgid "Stop Timer"
 msgstr "Stoppa timer"
 
 #: src/components/invoices/pdf.tsx:335
-#: src/routes/invoices/details.tsx:806
+#: src/routes/invoices/details.tsx:866
 msgid "Subtotal"
 msgstr "Delsumma"
 
@@ -1059,12 +1059,12 @@ msgstr "Tagg uppdaterad framgångsrikt"
 msgid "Tags"
 msgstr "Taggar"
 
-#: src/routes/invoices/details.tsx:827
+#: src/routes/invoices/details.tsx:887
 msgid "Tax"
 msgstr "Moms"
 
 #: src/components/invoices/pdf.tsx:294
-#: src/routes/invoices/details.tsx:693
+#: src/routes/invoices/details.tsx:750
 msgid "Tax %"
 msgstr "Moms %"
 
@@ -1088,7 +1088,7 @@ msgstr "Kunde inte uppdatera momssats"
 msgid "Tax rate updated successfully"
 msgstr "Momssats uppdaterad framgångsrikt"
 
-#: src/layouts/base.tsx:208
+#: src/layouts/base.tsx:203
 #: src/routes/settings/tax-rates.tsx:33
 msgid "Tax rates"
 msgstr "Momssatser"
@@ -1097,15 +1097,15 @@ msgstr "Momssatser"
 msgid "Tell us what you think, report a bug, or suggest an improvement..."
 msgstr "Berätta vad du tycker, rapportera en bugg eller föreslå en förbättring..."
 
-#: src/routes/invoices/details.tsx:476
-#: src/routes/invoices/details.tsx:533
-#: src/routes/invoices/details.tsx:542
-#: src/routes/invoices/details.tsx:558
-#: src/routes/invoices/details.tsx:566
-#: src/routes/invoices/details.tsx:616
-#: src/routes/invoices/details.tsx:631
-#: src/routes/invoices/details.tsx:665
-#: src/routes/invoices/details.tsx:730
+#: src/routes/invoices/details.tsx:517
+#: src/routes/invoices/details.tsx:574
+#: src/routes/invoices/details.tsx:583
+#: src/routes/invoices/details.tsx:599
+#: src/routes/invoices/details.tsx:607
+#: src/routes/invoices/details.tsx:671
+#: src/routes/invoices/details.tsx:686
+#: src/routes/invoices/details.tsx:721
+#: src/routes/invoices/details.tsx:787
 #: src/routes/settings/invoice.tsx:86
 #: src/routes/settings/invoice.tsx:132
 #: src/routes/settings/invoice.tsx:202
@@ -1141,7 +1141,7 @@ msgstr "Tidsregistrering uppdaterad framgångsrikt"
 msgid "Time Range"
 msgstr "Tidsintervall"
 
-#: src/layouts/base.tsx:158
+#: src/layouts/base.tsx:153
 msgid "Time tracking"
 msgstr "Tidsrapportering"
 
@@ -1153,18 +1153,18 @@ msgstr "Tidsrapportering"
 msgid "Timeframe"
 msgstr "Tidsram"
 
-#: src/layouts/base.tsx:165
+#: src/layouts/base.tsx:160
 msgid "Timer"
 msgstr "Timer"
 
 #: src/components/ai-drawer.tsx:362
-msgid "to use the AI assistant."
-msgstr "för att använda AI-assistenten."
+#~ msgid "to use the AI assistant."
+#~ msgstr "för att använda AI-assistenten."
 
 #: src/components/invoices/pdf.tsx:297
 #: src/components/invoices/pdf.tsx:371
-#: src/routes/invoices/details.tsx:711
-#: src/routes/invoices/details.tsx:838
+#: src/routes/invoices/details.tsx:768
+#: src/routes/invoices/details.tsx:898
 #: src/routes/invoices/index.tsx:170
 #: src/routes/time-tracking/reports.tsx:249
 msgid "Total"
@@ -1199,7 +1199,7 @@ msgstr "Momsregistreringsnummer"
 msgid "VATIN"
 msgstr "Momsreg.nr"
 
-#: src/routes/invoices/details.tsx:906
+#: src/routes/invoices/details.tsx:966
 msgid "View"
 msgstr "Visa"
 
@@ -1234,7 +1234,7 @@ msgstr "Vad arbetar du med?"
 #: src/components/clients/form.tsx:127
 #: src/components/projects/form.tsx:137
 #: src/components/time-entries/form.tsx:127
-#: src/routes/invoices/details.tsx:881
+#: src/routes/invoices/details.tsx:941
 #: src/routes/invoices/index.tsx:109
 #: src/routes/settings/organization.tsx:143
 #: src/routes/time-tracking/index.tsx:480
@@ -1242,12 +1242,12 @@ msgid "Yes"
 msgstr "Ja"
 
 #: src/components/ai-drawer.tsx:472
-msgid "You"
-msgstr "Du"
+#~ msgid "You"
+#~ msgstr "Du"
 
 #: src/routes/settings/ai.tsx:40
-msgid "Your Anthropic API key is configured and AI features are enabled."
-msgstr "Din Anthropic API-nyckel är konfigurerad och AI-funktioner är aktiverade."
+#~ msgid "Your Anthropic API key is configured and AI features are enabled."
+#~ msgstr "Din Anthropic API-nyckel är konfigurerad och AI-funktioner är aktiverade."
 
 #: src/components/feedback-modal.tsx:66
 msgid "Your name (optional)"
