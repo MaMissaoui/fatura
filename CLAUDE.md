@@ -65,3 +65,12 @@ Tauri handles the build process:
 - Frontend builds with Vite to dist/
 - Rust backend compiles with Cargo
 - Final app bundle includes SQLite database
+
+## Committing
+- Use conventional commit format: `<type>: <description>`
+- Types: feat, fix, docs, style, refactor, perf, test, chore, ci, revert, hotfix
+- Breaking changes: add `!` before `:` (e.g., `feat!: remove status endpoint`)
+- First line under 72 chars, present tense, imperative mood
+- Never include "Generated with Claude Code" or "Co-Authored-By" attribution
+- Split into multiple commits when changes span different modules/concerns or mix types
+- Stage all changes if none are already staged
