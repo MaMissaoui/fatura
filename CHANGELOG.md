@@ -5,7 +5,18 @@ All notable changes to Upcount will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0-beta.23] - Unreleased
+## [2.0.0-beta.24] - 2026-05-18
+
+### Fixed
+- AppImage crash on Linux distros shipping libglvnd 1.7+ (Ubuntu 26.04, Nobara, recent Manjaro) — bundled WebKitGTK no longer aborts with `EGL_BAD_PARAMETER` (#180, #211)
+
+### Removed
+- AI assistant feature
+
+### Changed
+- Updated Rust crate dependencies
+
+## [2.0.0-beta.23] - 2025-09-20
 
 ### Added
 - Drag and drop functionality for reordering invoice line items using the MoreOutlined (⋯) icon
