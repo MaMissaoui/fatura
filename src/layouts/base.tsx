@@ -116,7 +116,7 @@ export default function BaseLayout() {
       >
         <div className="logo" style={{ height: 22, margin: "21px 16px", textAlign: "center" }}>
           <Link to="/invoices">
-            <img src={siderCollapsed ? "/logo-minimal.svg" : "/logo-light.svg"} alt="Upcount" />
+            <img src={siderCollapsed ? "/logo-minimal.svg" : "/logo-light.svg"} alt="Fatura" />
           </Link>
         </div>
         <Menu

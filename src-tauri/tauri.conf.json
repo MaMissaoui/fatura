@@ -1,8 +1,8 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
-  "productName": "Upcount",
+  "productName": "Fatura",
   "version": "2.0.0-beta.24",
-  "identifier": "com.upcount.dev",
+  "identifier": "com.fatura.dev",
   "build": {
     "beforeBuildCommand": "pnpm build",
     "beforeDevCommand": "pnpm dev",
@@ -16,7 +16,7 @@
         "fullscreen": false,
         "height": 800,
         "resizable": true,
-        "title": "Upcount",
+        "title": "Fatura",
         "width": 1000
       }
     ],
@@ -64,7 +64,7 @@
   },
   "plugins": {
     "updater": {
-      "endpoints": ["https://github.com/madisvain/upcount/releases/latest/download/latest.json"],
+      "endpoints": ["https://github.com/MaMissaoui/fatura/releases/latest/download/latest.json"],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY3NDAzREUxNTYwNTkyOApSV1FvV1dBVjNnTjBCa0IydHZ0QjBCMWtoZjJqdmZiR0FSS2VSWUIzUzVXRnduclJXbFprVTJYTAo="
     }
   }

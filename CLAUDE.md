@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-Upcount is a cross-platform invoicing application built with Tauri, React, and SQLite. The app is designed to be offline-first for privacy and supports multiple languages via LinguiJS.
+Fatura is a cross-platform invoicing application built with Tauri, React, and SQLite. The app is designed to be offline-first for privacy and supports multiple languages via LinguiJS.
 
 ## Architecture
 - **Frontend**: React 18 with TypeScript and Vite

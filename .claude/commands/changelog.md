@@ -74,8 +74,8 @@ When asked to update the changelog:
 
 5. **Version links** (at bottom of file):
    ```markdown
-   [unreleased]: https://github.com/madisvain/upcount/compare/vX.X.X...HEAD
-   [X.X.X]: https://github.com/madisvain/upcount/compare/vX.X.X-1...vX.X.X
+   [unreleased]: https://github.com/MaMissaoui/fatura/compare/vX.X.X...HEAD
+   [X.X.X]: https://github.com/MaMissaoui/fatura/compare/vX.X.X-1...vX.X.X
    ```
 
 ## Example Usage

@@ -1,6 +1,6 @@
 # Translation Management
 
-You are helping maintain translations for Upcount, a cross-platform invoicing application. The app uses LinguiJS with .po files for internationalization.
+You are helping maintain translations for Fatura, a cross-platform invoicing application. The app uses LinguiJS with .po files for internationalization.
 
 ## Overview
 

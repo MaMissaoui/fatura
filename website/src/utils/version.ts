@@ -18,7 +18,7 @@ export async function getLatestRelease(): Promise<ReleaseData | null> {
   }
 
   try {
-    const response = await fetch('https://api.github.com/repos/madisvain/upcount/releases/latest');
+    const response = await fetch('https://api.github.com/repos/MaMissaoui/fatura/releases/latest');
     if (response.ok) {
       cachedReleaseData = await response.json() as ReleaseData;
       return cachedReleaseData;

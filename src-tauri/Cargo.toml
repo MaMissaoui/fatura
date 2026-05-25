@@ -1,18 +1,18 @@
 [package]
-name = "upcount"
+name = "fatura"
 version = "0.1.0"
-description = "Upcount invoicing app"
+description = "Fatura invoicing app"
 authors = ["Madis Väin"]
 license = ""
-repository = "https://github.com/madisvain/upcount"
-default-run = "upcount"
+repository = "https://github.com/MaMissaoui/fatura"
+default-run = "fatura"
 edition = "2021"
 rust-version = "1.75"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-name = "upcount_lib"
+name = "fatura_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

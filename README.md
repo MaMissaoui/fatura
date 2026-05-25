@@ -1,24 +1,20 @@
 
-# Upcount invoicing & time tracking app
+# Fatura invoicing & time tracking app
 
-![Github actions](https://github.com/madisvain/upcount/workflows/publish/badge.svg) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/madisvain/upcount?include_prereleases) ![GitHub](https://img.shields.io/github/license/madisvain/upcount)
+![Github actions](https://github.com/MaMissaoui/fatura/workflows/publish/badge.svg) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/MaMissaoui/fatura?include_prereleases) ![GitHub](https://img.shields.io/github/license/MaMissaoui/fatura)
 
 
 ## 🔒 Local-First & Privacy Focused
 
-**Your data belongs to you.** Upcount is designed to work completely offline - no internet connection required. All your invoices, clients, and business data are stored locally on your computer in an SQLite database. No cloud servers, no subscriptions, no data mining. You own and control all your data.
+**Your data belongs to you.** Fatura is designed to work completely offline - no internet connection required. All your invoices, clients, and business data are stored locally on your computer in an SQLite database. No cloud servers, no subscriptions, no data mining. You own and control all your data.
 
 Built with [Tauri](https://tauri.app/), [SQLite](https://www.sqlite.org/index.html), [React](https://reactjs.org/), and [Ant Design](https://ant.design/)
 
-![Invoice list](https://www.upcount.app/screenshots/invoices.png)
-[Invoice editing](https://www.upcount.app/screenshots/invoice-edit.png)
-[Invoice settings](https://www.upcount.app/screenshots/settings.png)
-
 ## Download
 
-Upcount is available for Mac, Linux & Windows and can be downloaded from Github releases.
+Fatura is available for Mac, Linux & Windows and can be downloaded from Github releases.
 
-**[https://github.com/madisvain/upcount/releases](https://github.com/madisvain/upcount/releases)**
+**[https://github.com/MaMissaoui/fatura/releases](https://github.com/MaMissaoui/fatura/releases)**
 
 # Features
 * 🎯 Totally free & Open source
@@ -32,7 +28,7 @@ Upcount is available for Mac, Linux & Windows and can be downloaded from Github 
 * ⚡️ Offline-first for privacy
 * 🌐 Internationalized (10 languages)
 * 💾 Backup and restore functionality
-* ©️ [GPLv3 License](https://github.com/madisvain/upcount/blob/main/LICENSE)
+* ©️ [GPLv3 License](https://github.com/MaMissaoui/fatura/blob/main/LICENSE)
 
 # Languages
 * 🇬🇧 English
@@ -46,7 +42,7 @@ Upcount is available for Mac, Linux & Windows and can be downloaded from Github 
 * 🇸🇪 Swedish
 * 🇺🇦 Ukrainian
 
-If you are interested in adding a language translation to Upcount [please open a new issue](https://github.com/madisvain/upcount/issues).
+If you are interested in adding a language translation to Fatura [please open a new issue](https://github.com/MaMissaoui/fatura/issues).
 
 For developers the following commands are needed to add a language.
 
@@ -56,13 +52,13 @@ pnpm extract
 
 Then manually create the new locale file by copying an existing .po file in the locales folder and translating the strings.
 
-The translations are stored in .po files under [locales](https://github.com/madisvain/upcount/tree/main/src/locales) folder. A cross platform app named [POEdit](https://poedit.net/) could be used for translating them.
+The translations are stored in .po files under [locales](https://github.com/MaMissaoui/fatura/tree/main/src/locales) folder. A cross platform app named [POEdit](https://poedit.net/) could be used for translating them.
 
 ## Bugs and Feature Requests
 
-Have a bug or a feature request? First, read the [issue guidelines](https://github.com/madisvain/upcount/blob/main/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/madisvain/upcount/issues).
+Have a bug or a feature request? First, read the [issue guidelines](https://github.com/MaMissaoui/fatura/blob/main/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/MaMissaoui/fatura/issues).
 
-For more generic product questions and feedback please email [hello@upcount.app](mailto:hello@upcount.app)
+For more generic product questions and feedback please email [ma.missaoui@gmail.com](mailto:ma.missaoui@gmail.com)
 
 
 ## Contributors
@@ -73,4 +69,4 @@ For more generic product questions and feedback please email [hello@upcount.app]
 
 ## License
 
-[GPLv3 License](https://github.com/madisvain/upcount/blob/main/LICENSE) &copy; [Upcount](https://upcount.app)
+[GPLv3 License](https://github.com/MaMissaoui/fatura/blob/main/LICENSE) &copy; [Fatura](https://github.com/MaMissaoui/fatura)

@@ -15,7 +15,7 @@ export default defineConfig({
     lingui(),
     sentryVitePlugin({
       org: "konstruktor",
-      project: "upcount-react",
+      project: "fatura-react",
       telemetry: false,
       release: {
         name: process.env.GITHUB_SHA || "development",

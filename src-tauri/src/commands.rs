@@ -239,7 +239,7 @@ pub async fn backup_database(app: AppHandle) -> Result<String, String> {
     
     // Generate default filename with current date
     let now: DateTime<Utc> = Utc::now();
-    let default_filename = format!("upcount-backup-{}.db", now.format("%Y-%m-%d"));
+    let default_filename = format!("fatura-backup-{}.db", now.format("%Y-%m-%d"));
     
     // Show save dialog using callback approach
     let (tx, rx) = oneshot::channel();

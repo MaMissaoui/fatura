@@ -19,5 +19,5 @@ fn main() {
         scope.set_tag("arch", std::env::consts::ARCH);
     });
 
-    upcount_lib::run()
+    fatura_lib::run()
 }
