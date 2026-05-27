@@ -20,6 +20,12 @@ sudo apt-get install libgtk-3-dev libwebkit2gtk-4.1-dev \
   libayatana-appindicator3-dev librsvg2-dev
 ```
 
+Make sure `$(go env GOPATH)/bin` is on your `PATH` so the `wails` command is found:
+
+```bash
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
 Verify everything is ready:
 
 ```bash
@@ -161,7 +167,7 @@ Use **Settings → Backup** inside the app to create or restore a database backu
 fatura/
 ├── main.go              # Wails entry point (embeds dist/)
 ├── app.go               # All Go methods bound to the frontend
-├── go.mod / go.sum      # Go module
+├── go.mod               # Go module (go.sum is git-ignored)
 ├── wails.json           # Wails project config
 │
 ├── db/                  # Go database layer
@@ -195,11 +201,7 @@ fatura/
 
 ## Troubleshooting
 
-**`wails: command not found`** — Make sure `$(go env GOPATH)/bin` is on your `PATH`:
-
-```bash
-export PATH="$PATH:$(go env GOPATH)/bin"
-```
+**`wails: command not found`** — Add `$(go env GOPATH)/bin` to your `PATH` (see Prerequisites above).
 
 **Stale Wails bindings** — If the frontend can't find a Go method, regenerate the bindings:
 ```bash

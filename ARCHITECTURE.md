@@ -107,7 +107,7 @@ src/app.tsx  (App component)
         ├── activates LinguiJS locale
         ├── configures Ant Design locale
         │
-        └── <BrowserRouter>
+        └── <MemoryRouter>
               └── <Routes>
                     ├── /                     → src/routes/index.tsx
                     ├── /organizations/new    → src/routes/organizations/new.tsx

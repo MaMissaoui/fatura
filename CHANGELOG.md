@@ -1,9 +1,29 @@
 # Changelog
 
-All notable changes to Upcount will be documented in this file.
+All notable changes to Fatura will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.0-beta.25] - 2026-05-27
+
+### Changed
+- Replaced Tauri/Rust backend with Wails v2/Go — faster build times, CGO-free SQLite, and type-safe auto-generated JS bindings
+- All 38 backend commands ported to public Go methods on `App` struct (same SQL, same behaviour)
+- SQLite accessed via `jmoiron/sqlx` + `modernc.org/sqlite` (no CGO required)
+- Migrations moved to `db/migrations/` using `golang-migrate` format and applied automatically on startup
+- Frontend IPC switched from Tauri `invoke()` string calls to Wails auto-generated async functions
+- PDF save dialog now uses Wails `runtime.SaveFileDialog` instead of Tauri plugins
+- Backup/restore dialogs use Wails file dialogs instead of Tauri plugins
+- Router switched from `BrowserRouter` to `MemoryRouter` for compatibility with the `wails://` WebView URL scheme
+
+### Removed
+- Tauri/Rust backend (`src-tauri/`)
+- Auto-updater feature (to be reimplemented in a future release)
+- `@tauri-apps/*` npm dependencies
+
+### Fixed
+- `projectId` field missing from `TimeEntry` Go struct caused all time entry queries to fail after migration 0015
 
 ## [2.0.0-beta.24] - 2026-05-18
 
