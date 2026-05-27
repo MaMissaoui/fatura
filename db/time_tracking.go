@@ -25,11 +25,12 @@ type UpdateTagRequest struct {
 	Color *string `json:"color"`
 }
 
-// TimeEntry mirrors the timeEntries table (with an optional joined clientName).
+// TimeEntry mirrors the timeEntries table (with optional joined client/project names).
 type TimeEntry struct {
 	ID             string   `db:"id"             json:"id"`
 	OrganizationID string   `db:"organizationId" json:"organizationId"`
 	ClientID       *string  `db:"clientId"       json:"clientId"`
+	ProjectID      *string  `db:"projectId"      json:"projectId"`
 	Description    *string  `db:"description"    json:"description"`
 	StartTime      int64    `db:"startTime"      json:"startTime"`
 	EndTime        *int64   `db:"endTime"        json:"endTime"`
@@ -46,6 +47,7 @@ type CreateTimeEntryRequest struct {
 	ID             string   `json:"id"`
 	OrganizationID string   `json:"organizationId"`
 	ClientID       *string  `json:"clientId"`
+	ProjectID      *string  `json:"projectId"`
 	Description    *string  `json:"description"`
 	StartTime      int64    `json:"startTime"`
 	EndTime        *int64   `json:"endTime"`
@@ -58,6 +60,7 @@ type CreateTimeEntryRequest struct {
 // UpdateTimeEntryRequest is the payload for updating a time entry.
 type UpdateTimeEntryRequest struct {
 	ClientID    *string  `json:"clientId"`
+	ProjectID   *string  `json:"projectId"`
 	Description *string  `json:"description"`
 	StartTime   *int64   `json:"startTime"`
 	EndTime     *int64   `json:"endTime"`
@@ -156,9 +159,9 @@ func (d *Database) GetTimeEntry(timeEntryID string) (*TimeEntry, error) {
 
 func (d *Database) CreateTimeEntry(req CreateTimeEntryRequest) (*TimeEntry, error) {
 	_, err := d.DB.Exec(`
-		INSERT INTO timeEntries (id, organizationId, clientId, description, startTime, endTime, duration, tags, isBillable, hourlyRate)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-		req.ID, req.OrganizationID, req.ClientID, req.Description,
+		INSERT INTO timeEntries (id, organizationId, clientId, projectId, description, startTime, endTime, duration, tags, isBillable, hourlyRate)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		req.ID, req.OrganizationID, req.ClientID, req.ProjectID, req.Description,
 		req.StartTime, req.EndTime, req.Duration, req.Tags,
 		req.IsBillable, req.HourlyRate,
 	)
@@ -172,6 +175,7 @@ func (d *Database) UpdateTimeEntry(timeEntryID string, updates UpdateTimeEntryRe
 	_, err := d.DB.Exec(`
 		UPDATE timeEntries
 		SET clientId    = COALESCE(?, clientId),
+		    projectId   = COALESCE(?, projectId),
 		    description = COALESCE(?, description),
 		    startTime   = COALESCE(?, startTime),
 		    endTime     = COALESCE(?, endTime),
@@ -180,7 +184,7 @@ func (d *Database) UpdateTimeEntry(timeEntryID string, updates UpdateTimeEntryRe
 		    isBillable  = COALESCE(?, isBillable),
 		    hourlyRate  = COALESCE(?, hourlyRate)
 		WHERE id = ?`,
-		updates.ClientID, updates.Description, updates.StartTime, updates.EndTime,
+		updates.ClientID, updates.ProjectID, updates.Description, updates.StartTime, updates.EndTime,
 		updates.Duration, updates.Tags, updates.IsBillable, updates.HourlyRate,
 		timeEntryID,
 	)
