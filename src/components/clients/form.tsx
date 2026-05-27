@@ -29,9 +29,7 @@ const ClientForm = () => {
   const handleSubmit = async (values: any) => {
     setSubmitting(true);
     await setClient(values);
-    startTransition(() => {
-      setClientId(null);
-    });
+    setClientId(null);
     navigate(location.pathname, { state: { clientModal: false } });
     form.resetFields();
     setSubmitting(false);
@@ -41,9 +39,7 @@ const ClientForm = () => {
     if (clientId) {
       setSubmitting(true);
       await deleteClient(clientId);
-      startTransition(() => {
-        setClientId(null);
-      });
+      setClientId(null);
       navigate(location.pathname, { state: { clientModal: false } });
       form.resetFields();
       setSubmitting(false);
@@ -102,9 +98,7 @@ const ClientForm = () => {
       onOk={() => form.submit()}
       confirmLoading={submitting}
       onCancel={() => {
-        startTransition(() => {
-          setClientId(null);
-        });
+        setClientId(null);
         form.resetFields();
         navigate(location.pathname, { state: { clientModal: false } });
       }}
@@ -144,9 +138,7 @@ const ClientForm = () => {
           <div>
             <Button
               onClick={() => {
-                startTransition(() => {
-                  setClientId(null);
-                });
+                setClientId(null);
                 form.resetFields();
                 navigate(location.pathname, { state: { clientModal: false } });
               }}

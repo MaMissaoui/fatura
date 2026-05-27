@@ -74,7 +74,6 @@ export const clientAtom = atom(
         processedValues.id = nanoid();
         processedValues.organizationId = get(organizationIdAtom);
         const createdClient = await CreateClient(processedValues);
-        set(clientIdAtom, createdClient.id);
         message.success(t`Client created`);
 
         // Update the clients list
