@@ -8,7 +8,7 @@
 
 **Your data belongs to you.** Fatura is designed to work completely offline - no internet connection required. All your invoices, clients, and business data are stored locally on your computer in an SQLite database. No cloud servers, no subscriptions, no data mining. You own and control all your data.
 
-Built with [Tauri](https://tauri.app/), [SQLite](https://www.sqlite.org/index.html), [React](https://reactjs.org/), and [Ant Design](https://ant.design/)
+Built with [Wails](https://wails.io/), [SQLite](https://www.sqlite.org/index.html), [React](https://reactjs.org/), and [Ant Design](https://ant.design/)
 
 ## Download
 
