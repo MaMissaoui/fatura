@@ -9,6 +9,8 @@ import {
   Table,
   Typography,
   Tag,
+  Empty,
+  Flex,
   Popconfirm,
   Dropdown,
   Form,
@@ -591,6 +593,13 @@ const TimeTracking = () => {
             dataSource={search ? searchTimeEntries() : timeEntries}
             rowKey="id"
             pagination={false}
+            locale={{
+              emptyText: (
+                <Flex justify="center" style={{ padding: "32px 0" }}>
+                  <Empty />
+                </Flex>
+              ),
+            }}
           />
         </Col>
       </Row>
