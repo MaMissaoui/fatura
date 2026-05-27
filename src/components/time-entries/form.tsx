@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router";
 import {
   Form,
@@ -16,7 +16,6 @@ import { atom, useAtom, useSetAtom, useAtomValue } from "jotai";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { DeleteOutlined } from "@ant-design/icons";
-import isEmpty from "lodash/isEmpty";
 import get from "lodash/get";
 import dayjs from "dayjs";
 
@@ -25,6 +24,7 @@ import { projectsAtom } from "src/atoms/project";
 import {
   timeEntryIdAtom,
   timeEntryAtom,
+  timeEntriesAtom,
   deleteTimeEntryAtom,
   setTagsAtom,
 } from "src/atoms/time-tracking";
@@ -40,7 +40,8 @@ const TimeEntryForm = () => {
   const dateTimeFormat = useDateTimePickerFormat();
 
   const [timeEntryId, setTimeEntryId] = useAtom(timeEntryIdAtom);
-  const [timeEntry, setTimeEntry] = useAtom(timeEntryAtom);
+  const timeEntries = useAtomValue(timeEntriesAtom);
+  const setTimeEntry = useSetAtom(timeEntryAtom);
   const [submitting, setSubmitting] = useAtom(submittingAtom);
   const deleteTimeEntry = useSetAtom(deleteTimeEntryAtom);
   const clients = useAtomValue(clientsAtom);
@@ -48,6 +49,23 @@ const TimeEntryForm = () => {
   const setTags = useSetAtom(setTagsAtom);
 
   const isEditing = Boolean(timeEntryId);
+  const isVisible = get(location.state, "timeEntryModal", false);
+
+  const timeEntry = useMemo(() => {
+    if (!timeEntryId) return null;
+    const entry = timeEntries.find((e: any) => e.id === timeEntryId);
+    if (!entry) return null;
+    return {
+      ...entry,
+      startTime: entry.startTime ? dayjs(entry.startTime) : null,
+      endTime: entry.endTime ? dayjs(entry.endTime) : null,
+      tags: entry.tags
+        ? typeof entry.tags === "string"
+          ? JSON.parse(entry.tags)
+          : entry.tags
+        : [],
+    };
+  }, [timeEntries, timeEntryId]);
 
   const handleSubmit = async (values: any) => {
     setSubmitting(true);
@@ -68,6 +86,7 @@ const TimeEntryForm = () => {
     };
 
     await setTimeEntry(submitData);
+    setTimeEntryId(null);
     navigate(location.pathname, { state: { timeEntryModal: false }, replace: true });
     form.resetFields();
     setSubmitting(false);
@@ -77,6 +96,7 @@ const TimeEntryForm = () => {
     if (timeEntryId) {
       setSubmitting(true);
       await deleteTimeEntry(timeEntryId);
+      setTimeEntryId(null);
       navigate(location.pathname, { state: { timeEntryModal: false }, replace: true });
       form.resetFields();
       setSubmitting(false);
@@ -94,24 +114,22 @@ const TimeEntryForm = () => {
   };
 
   useEffect(() => {
-    if (get(location, "state.timeEntryId")) {
-      setTimeEntryId(get(location, "state.timeEntryId"));
-    } else {
-      form.resetFields();
+    const navTimeEntryId = get(location.state, "timeEntryId");
+    if (isVisible && navTimeEntryId) {
+      setTimeEntryId(navTimeEntryId);
+    } else if (!isVisible) {
       setTimeEntryId(null);
+      form.resetFields();
     }
-  }, [location, form, setTimeEntryId]);
+  }, [isVisible, location.state, setTimeEntryId, form]);
 
   useEffect(() => {
     if (timeEntry) {
-      const formValues = {
-        ...timeEntry,
-        startTime: timeEntry.startTime ? dayjs(timeEntry.startTime) : null,
-        endTime: timeEntry.endTime ? dayjs(timeEntry.endTime) : null,
-      };
-      form.setFieldsValue(formValues);
+      form.setFieldsValue(timeEntry);
+    } else if (!timeEntryId) {
+      form.resetFields();
     }
-  }, [timeEntry, form]);
+  }, [timeEntry, timeEntryId, form]);
 
   useEffect(() => {
     setTags();
@@ -120,11 +138,12 @@ const TimeEntryForm = () => {
   return (
     <Modal
       title={isEditing ? <Trans>Edit Time Entry</Trans> : <Trans>New Time Entry</Trans>}
-      open={get(location.state, "timeEntryModal", false)}
+      open={isVisible}
       okText={<Trans>Save</Trans>}
       onOk={() => form.submit()}
       confirmLoading={submitting}
       onCancel={() => {
+        setTimeEntryId(null);
         form.resetFields();
         navigate(location.pathname, { state: { timeEntryModal: false }, replace: true });
       }}
@@ -151,6 +170,7 @@ const TimeEntryForm = () => {
           <div>
             <Button
               onClick={() => {
+                setTimeEntryId(null);
                 form.resetFields();
                 navigate(location.pathname, { state: { timeEntryModal: false }, replace: true });
               }}
@@ -166,8 +186,7 @@ const TimeEntryForm = () => {
       ]}
       forceRender={true}
     >
-      {(!timeEntryId || !isEmpty(timeEntry)) && (
-        <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      <Form form={form} layout="vertical" onFinish={handleSubmit}>
           <Form.Item name="description" label={<Trans>Description</Trans>}>
             <Input.TextArea rows={3} placeholder={t`What are you working on?`} />
           </Form.Item>
@@ -275,7 +294,6 @@ const TimeEntryForm = () => {
             <TagSelector placeholder={t`Add or select tags`} style={{ width: "100%" }} />
           </Form.Item>
         </Form>
-      )}
     </Modal>
   );
 };

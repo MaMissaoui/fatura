@@ -228,7 +228,6 @@ export const timeEntryAtom = atom(
         };
 
         const createdTimeEntry = await CreateTimeEntry(timeEntryData);
-        set(timeEntryIdAtom, createdTimeEntry.id);
         message.success(t`Time entry created`);
 
         // Update the time entries list
