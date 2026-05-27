@@ -26,12 +26,13 @@ Fatura is available for Mac, Linux & Windows and can be downloaded from Github r
 * 🍭 Customizable settings
 * 🎭 Cross platform
 * ⚡️ Offline-first for privacy
-* 🌐 Internationalized (10 languages)
+* 🌐 Internationalized (11 languages)
 * 💾 Backup and restore functionality
 * ©️ [GPLv3 License](https://github.com/MaMissaoui/fatura/blob/main/LICENSE)
 
 # Languages
-* 🇬🇧 English
+* 🇬🇧 English (US)
+* 🇬🇧 English (UK)
 * 🇩🇪 German
 * 🇪🇪 Estonian
 * 🇫🇮 Finnish

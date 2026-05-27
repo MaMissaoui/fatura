@@ -5,6 +5,28 @@ All notable changes to Fatura will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-beta.26] - 2026-05-27
+
+### Changed
+- Go module updated to Go 1.26 (was 1.22)
+- React upgraded from 18 to 19.2.6
+- Vite upgraded from 6 to 8 (now uses rolldown bundler internally)
+- LinguiJS upgraded from 5 to 6.1.0 (required for Vite 8 / rolldown compatibility)
+- `@vitejs/plugin-react` upgraded from 4 to 6.0.2
+- `@sentry/vite-plugin` upgraded from 4 to 5.3.0
+- `modernc.org/sqlite`: 1.29.10 → 1.50.1
+- `golang-migrate/migrate`: 4.17.0 → 4.19.1
+- `jmoiron/sqlx`: 1.3.5 → 1.4.0
+- `jotai`: 2.17.1 → 2.20.0
+- `react-router`: 7.13 → 7.15.1
+- Various other minor dependency bumps
+
+### Fixed
+- TypeScript error in invoice PDF export: React 19 changed `ReactElement` default generic from `<any>` to `<unknown>`, breaking the `@react-pdf/renderer` `pdf()` call
+
+### Removed
+- Unused `@lingui/macro` package (macros are now part of `@lingui/core` in v6)
+
 ## [2.0.0-beta.25] - 2026-05-27
 
 ### Changed

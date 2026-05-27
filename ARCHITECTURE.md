@@ -32,16 +32,16 @@ The **Go process** owns the window and the database. The **React frontend** runs
 | Layer | Technology | Role |
 |-------|-----------|------|
 | Desktop shell | [Wails v2](https://wails.io) | Creates the OS window, bridges Go ↔ WebView |
-| Backend language | Go 1.21 | Business logic, file I/O, database access |
+| Backend language | Go 1.26 | Business logic, file I/O, database access |
 | Database | SQLite via `modernc.org/sqlite` | Local persistent storage (CGO-free) |
 | DB query layer | `jmoiron/sqlx` | Struct scanning, positional queries |
 | DB migrations | `golang-migrate/migrate` | Versioned schema upgrades on startup |
-| Frontend framework | React 18 | UI rendering |
-| Build tool | Vite 6 | Dev server, bundler |
+| Frontend framework | React 19 | UI rendering |
+| Build tool | Vite 8 (rolldown) | Dev server, bundler |
 | State management | [Jotai](https://jotai.org) | Atomic reactive state; each atom owns one slice of data |
 | UI components | [Ant Design 5](https://ant.design) | Component library |
 | Routing | React Router 7 | Client-side routing inside the WebView |
-| i18n | [LinguiJS](https://lingui.dev) | Translation extraction + runtime activation |
+| i18n | [LinguiJS 6](https://lingui.dev) | Translation extraction + runtime activation |
 | PDF generation | `@react-pdf/renderer` | Renders invoice PDFs inside the browser context |
 | Error tracking | Sentry (frontend JS only) | Crash reports; opt-in via `VITE_SENTRY_ENABLED` |
 

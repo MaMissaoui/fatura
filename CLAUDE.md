@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Fatura is a cross-platform invoicing application built with Wails v2 (Go), React, and SQLite. The app is designed to be offline-first for privacy and supports multiple languages via LinguiJS.
 
 ## Architecture
-- **Frontend**: React 18 with TypeScript and Vite
+- **Frontend**: React 19 with TypeScript and Vite 8
 - **UI Framework**: Ant Design components
 - **State Management**: Jotai atoms for reactive state
 - **Backend**: Wails v2 (Go) with SQLite via `modernc.org/sqlite` + `jmoiron/sqlx`
@@ -55,7 +55,7 @@ const clients = await GetClients(organizationId)  // calls app.go → db/client.
 ## File Structure
 - `main.go` — Wails entry point; embeds `dist/`
 - `app.go` — All public Go methods bound to the frontend
-- `go.mod` / `go.sum` — Go module
+- `go.mod` — Go module (`go.sum` is git-ignored)
 - `wails.json` — Wails project config
 - `db/` — Go database layer (SQLite connection, migrations, CRUD per domain)
 - `db/migrations/` — SQL migration files (`*.up.sql`), applied automatically
@@ -91,7 +91,7 @@ Uses Jotai atoms pattern with:
 - Uses LinguiJS with macro-based extraction
 - Translation files in .po format under src/locales/
 - Default locale configuration in src/utils/lingui.tsx
-- Currently supports: English (en), Estonian (et)
+- Currently supports 11 locales: en, en-GB, de, et, fi, fr, el, nl, pt, sv, uk
 
 ## Build Process
 Wails handles the build process:

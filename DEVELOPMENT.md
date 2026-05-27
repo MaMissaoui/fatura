@@ -8,9 +8,9 @@ Fatura is a cross-platform desktop invoicing app built with [Wails v2](https://w
 
 | Tool | Minimum version | Install |
 |------|----------------|---------|
-| [Go](https://go.dev/dl/) | 1.21 | `brew install go` |
-| [Node.js](https://nodejs.org) | 18 LTS | `brew install node` |
-| [pnpm](https://pnpm.io) | 9+ | `npm install -g pnpm` |
+| [Go](https://go.dev/dl/) | 1.26 | `brew install go` |
+| [Node.js](https://nodejs.org) | 20.19+ or 22.12+ | `brew install node` |
+| [pnpm](https://pnpm.io) | 11+ | `npm install -g pnpm` |
 | [Wails CLI](https://wails.io/docs/gettingstarted/installation) | v2 | `go install github.com/wailsapp/wails/v2/cmd/wails@latest` |
 
 ### Linux only — additional system packages
