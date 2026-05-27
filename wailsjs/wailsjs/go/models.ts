@@ -252,6 +252,7 @@ export namespace db {
 	    id: string;
 	    organizationId: string;
 	    clientId?: string;
+	    projectId?: string;
 	    description?: string;
 	    startTime: number;
 	    endTime?: number;
@@ -269,6 +270,7 @@ export namespace db {
 	        this.id = source["id"];
 	        this.organizationId = source["organizationId"];
 	        this.clientId = source["clientId"];
+	        this.projectId = source["projectId"];
 	        this.description = source["description"];
 	        this.startTime = source["startTime"];
 	        this.endTime = source["endTime"];
@@ -468,6 +470,7 @@ export namespace db {
 	    id: string;
 	    organizationId: string;
 	    clientId?: string;
+	    projectId?: string;
 	    description?: string;
 	    startTime: number;
 	    endTime?: number;
@@ -487,6 +490,7 @@ export namespace db {
 	        this.id = source["id"];
 	        this.organizationId = source["organizationId"];
 	        this.clientId = source["clientId"];
+	        this.projectId = source["projectId"];
 	        this.description = source["description"];
 	        this.startTime = source["startTime"];
 	        this.endTime = source["endTime"];
@@ -678,6 +682,7 @@ export namespace db {
 	}
 	export class UpdateTimeEntryRequest {
 	    clientId?: string;
+	    projectId?: string;
 	    description?: string;
 	    startTime?: number;
 	    endTime?: number;
@@ -693,6 +698,7 @@ export namespace db {
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
 	        this.clientId = source["clientId"];
+	        this.projectId = source["projectId"];
 	        this.description = source["description"];
 	        this.startTime = source["startTime"];
 	        this.endTime = source["endTime"];

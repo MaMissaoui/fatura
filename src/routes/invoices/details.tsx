@@ -145,7 +145,7 @@ const SortableRow: React.FC<{
 };
 
 // PDF Preview component that generates blob manually (like PDF download)
-const PDFPreview: React.FC<{ createPDFDocument: () => React.ReactElement | null }> = ({
+const PDFPreview: React.FC<{ createPDFDocument: () => React.ReactElement<any> | null }> = ({
   createPDFDocument,
 }) => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
