@@ -9,8 +9,6 @@ import {
   Table,
   Typography,
   Tag,
-  Empty,
-  Flex,
   Popconfirm,
   Dropdown,
   Form,
@@ -92,7 +90,10 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
   dataIndex,
   record,
   handleSave,
+  title: _title,
+  inputType: _inputType,
   options = [],
+  ...restProps
 }) => {
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -179,7 +180,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
     );
   }
 
-  return <td>{childNode}</td>;
+  return <td {...restProps}>{childNode}</td>;
 };
 
 const TimeTracking = () => {
@@ -593,13 +594,6 @@ const TimeTracking = () => {
             dataSource={search ? searchTimeEntries() : timeEntries}
             rowKey="id"
             pagination={false}
-            locale={{
-              emptyText: (
-                <Flex justify="center" style={{ padding: "32px 0" }}>
-                  <Empty />
-                </Flex>
-              ),
-            }}
           />
         </Col>
       </Row>
