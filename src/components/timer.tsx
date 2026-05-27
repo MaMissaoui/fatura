@@ -5,7 +5,7 @@ import { atom } from "jotai";
 import { useNavigate } from "react-router";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import { invoke } from "@tauri-apps/api/core";
+import { GetTimeEntry } from "wailsjs/go/main/App";
 
 import { runningTimerAtom } from "src/atoms/time-tracking";
 
@@ -17,7 +17,7 @@ const timerEntryAtom = atom(async (get) => {
   if (!runningTimerId) return null;
 
   try {
-    const timeEntry = await invoke<any>("get_time_entry", { timeEntryId: runningTimerId });
+    const timeEntry = await GetTimeEntry(runningTimerId);
     if (!timeEntry) return null;
     return timeEntry;
   } catch (error) {

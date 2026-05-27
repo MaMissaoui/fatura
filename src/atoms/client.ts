@@ -7,7 +7,13 @@ import orderBy from "lodash/orderBy";
 import keyBy from "lodash/keyBy";
 import map from "lodash/map";
 import reject from "lodash/reject";
-import { invoke } from "@tauri-apps/api/core";
+import {
+  GetClients,
+  GetClient,
+  CreateClient,
+  UpdateClient,
+  DeleteClient,
+} from "wailsjs/go/main/App";
 
 import { organizationIdAtom } from "./organization";
 
@@ -18,7 +24,7 @@ clientsAtom.debugLabel = "clientsAtom";
 export const setClientsAtom = atom(null, async (get, set) => {
   const organizationId = get(organizationIdAtom);
   try {
-    const response = await invoke<any[]>("get_clients", { organizationId });
+    const response = await GetClients(organizationId!);
     // Keep emails as JSON string in the clients list since the table expects it
     set(clientsAtom, response);
   } catch (error) {
@@ -39,7 +45,7 @@ export const clientAtom = atom(
     if (!clientId) return null;
 
     try {
-      const client = await invoke<any>("get_client", { clientId });
+      const client = await GetClient(clientId);
       if (!client) return null;
       // Parse emails from JSON string to array for the form
       return {
@@ -67,9 +73,7 @@ export const clientAtom = atom(
         // Insert
         processedValues.id = nanoid();
         processedValues.organizationId = get(organizationIdAtom);
-        const createdClient = await invoke<any>("create_client", {
-          client: processedValues,
-        });
+        const createdClient = await CreateClient(processedValues);
         set(clientIdAtom, createdClient.id);
         message.success(t`Client created`);
 
@@ -78,10 +82,7 @@ export const clientAtom = atom(
         set(clientsAtom, orderBy([...clients, createdClient], "name", "asc"));
       } else {
         // Update
-        const updatedClient = await invoke<any>("update_client", {
-          clientId,
-          updates: processedValues,
-        });
+        const updatedClient = await UpdateClient(clientId, processedValues);
         message.success(t`Client updated successfully`);
 
         // Update the clients list
@@ -103,7 +104,7 @@ export const clientAtom = atom(
 // Delete client
 export const deleteClientAtom = atom(null, async (get, set, clientId: string) => {
   try {
-    const success = await invoke<boolean>("delete_client", { clientId });
+    const success = await DeleteClient(clientId);
 
     if (success) {
       // Remove client from the list

@@ -6,7 +6,13 @@ import { t } from "@lingui/core/macro";
 import isEqual from "lodash/isEqual";
 import reject from "lodash/reject";
 import first from "lodash/first";
-import { invoke } from "@tauri-apps/api/core";
+import {
+  GetOrganizations,
+  GetOrganization,
+  CreateOrganization,
+  UpdateOrganization,
+  DeleteOrganization,
+} from "wailsjs/go/main/App";
 
 import { generateInvoiceNumber } from "src/utils/invoice";
 
@@ -16,7 +22,7 @@ export const organizationsLoadedAtom = atom<boolean>(false);
 
 export const setOrganizationsAtom = atom(null, async (_get, set) => {
   try {
-    const response = await invoke<any[]>("get_organizations");
+    const response = await GetOrganizations();
     set(organizationsAtom, response);
     set(organizationsLoadedAtom, true);
   } catch (error) {
@@ -44,14 +50,15 @@ export const organizationAtom = atom(
     if (!organizationId) return null;
 
     try {
-      const organization = await invoke<any>("get_organization", { organizationId });
+      const organization = await GetOrganization(organizationId);
 
-      // Convert logo byte array to data URL string if present
-      if (organization?.logo && Array.isArray(organization.logo)) {
-        // The byte array contains UTF-8 bytes of the original data URL string
-        const bytes = new Uint8Array(organization.logo);
-        const decoder = new TextDecoder("utf-8");
-        organization.logo = decoder.decode(bytes);
+      // Wails serializes []byte as base64 — decode to the original data URL string.
+      if (organization?.logo && typeof organization.logo === "string") {
+        try {
+          organization.logo = atob(organization.logo);
+        } catch {
+          // already a plain string or invalid base64 — leave as-is
+        }
       }
 
       return organization;
@@ -64,13 +71,14 @@ export const organizationAtom = atom(
     const organizationId = get(organizationIdAtom);
 
     try {
-      // Convert logo from data URL to byte array if present
+      // Wails expects []byte as base64 — encode the data URL string.
       let processedValues = { ...newValues };
       if (processedValues.logo && typeof processedValues.logo === "string") {
-        // Always convert to byte array since Rust expects Vec<u8>
-        const encoder = new TextEncoder();
-        const bytes = encoder.encode(processedValues.logo);
-        processedValues.logo = Array.from(bytes);
+        try {
+          processedValues.logo = btoa(processedValues.logo);
+        } catch {
+          // Non-ASCII in data URL (unlikely) — send as-is and let Go handle it
+        }
       }
 
       if (!organizationId) {
@@ -86,18 +94,13 @@ export const organizationAtom = atom(
           id: nanoid(),
         };
 
-        const createdOrganization = await invoke<any>("create_organization", {
-          organization: organizationData,
-        });
+        const createdOrganization = await CreateOrganization(organizationData);
         set(setOrganizationsAtom);
         set(organizationIdAtom, createdOrganization.id);
         message.success(t`Organization created`);
       } else {
         // Update
-        await invoke<any>("update_organization", {
-          organizationId,
-          updates: processedValues,
-        });
+        await UpdateOrganization(organizationId, processedValues);
         message.success(t`Organization updated successfully`);
         set(setOrganizationsAtom);
 
@@ -137,7 +140,7 @@ export const deleteOrganizationAtom = atom(null, async (get, set) => {
   const organizationId = get(organizationIdAtom);
 
   try {
-    const success = await invoke<boolean>("delete_organization", { organizationId });
+    const success = await DeleteOrganization(organizationId!);
 
     if (success) {
       // Remove organization from the list

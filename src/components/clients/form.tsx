@@ -7,7 +7,7 @@ import { t } from "@lingui/core/macro";
 import { DeleteOutlined } from "@ant-design/icons";
 import isEmpty from "lodash/isEmpty";
 import get from "lodash/get";
-import { invoke } from "@tauri-apps/api/core";
+import { GetClientInvoiceCount } from "wailsjs/go/main/App";
 
 import { clientIdAtom, clientAtom, deleteClientAtom } from "src/atoms/client";
 import { generateClientCode } from "src/utils/client";
@@ -81,7 +81,7 @@ const ClientForm = () => {
       // Fetch invoice count when clientId changes
       const fetchInvoiceCount = async () => {
         try {
-          const count = await invoke<number>("get_client_invoice_count", { clientId });
+          const count = await GetClientInvoiceCount(clientId);
           setInvoiceCount(count);
         } catch (error) {
           console.error("Failed to fetch invoice count:", error);

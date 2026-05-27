@@ -1,4 +1,9 @@
-upcount-website
+# Go
+go.sum
+
+# Wails build output
+build/bin/
+package.json.md5
 
 # Environment variables
 .env

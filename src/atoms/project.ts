@@ -4,7 +4,11 @@ import { nanoid } from "nanoid";
 import { t } from "@lingui/core/macro";
 import keyBy from "lodash/keyBy";
 import map from "lodash/map";
-import { invoke } from "@tauri-apps/api/core";
+import {
+  GetProjects,
+  CreateProject,
+  UpdateProject,
+} from "wailsjs/go/main/App";
 
 import { organizationIdAtom } from "./organization";
 
@@ -27,7 +31,7 @@ projectsAtom.debugLabel = "projectsAtom";
 export const setProjectsAtom = atom(null, async (get, set) => {
   const organizationId = get(organizationIdAtom);
   try {
-    const response = await invoke<Project[]>("get_projects", { organizationId });
+    const response = await GetProjects(organizationId!);
     set(projectsAtom, response);
   } catch (error) {
     console.error("Failed to fetch projects:", error);
@@ -58,7 +62,7 @@ export const createProjectAtom = atom(
     };
 
     try {
-      await invoke("create_project", { project: newProject });
+      await CreateProject(newProject);
       const projects = get(projectsAtom);
       set(projectsAtom, [...projects, { ...newProject, createdAt: new Date().toISOString() }]);
       message.success(t`Project created successfully`);
@@ -82,7 +86,7 @@ export const updateProjectAtom = atom(
     updates: Partial<Omit<Project, "id" | "organizationId" | "createdAt">>,
   ) => {
     try {
-      await invoke("update_project", { projectId, updates });
+      await UpdateProject(projectId, updates);
       const projects = get(projectsAtom);
       const updatedProjects = map(projects, (project) =>
         project.id === projectId ? { ...project, ...updates } : project,
@@ -102,7 +106,7 @@ updateProjectAtom.debugLabel = "updateProjectAtom";
 export const archiveProjectAtom = atom(null, async (get, set, projectId: string) => {
   const archivedAt = Math.floor(Date.now() / 1000);
   try {
-    await invoke("update_project", { projectId, updates: { archivedAt } });
+    await UpdateProject(projectId, { archivedAt });
     const projects = get(projectsAtom);
     const updatedProjects = map(projects, (project) =>
       project.id === projectId ? { ...project, archivedAt } : project,
@@ -120,7 +124,7 @@ archiveProjectAtom.debugLabel = "archiveProjectAtom";
 // Unarchive project
 export const unarchiveProjectAtom = atom(null, async (get, set, projectId: string) => {
   try {
-    await invoke("update_project", { projectId, updates: { archivedAt: null } });
+    await UpdateProject(projectId, { archivedAt: null });
     const projects = get(projectsAtom);
     const updatedProjects = map(projects, (project) =>
       project.id === projectId ? { ...project, archivedAt: undefined } : project,

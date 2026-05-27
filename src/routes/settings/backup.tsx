@@ -4,7 +4,7 @@ import { CloudDownloadOutlined, CloudUploadOutlined, DatabaseOutlined } from "@a
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
-import { invoke } from "@tauri-apps/api/core";
+import { BackupDatabase, RestoreDatabase } from "wailsjs/go/main/App";
 
 const { Title, Paragraph } = Typography;
 
@@ -17,8 +17,10 @@ function SettingsBackup() {
   const handleBackup = async () => {
     setBacking(true);
     try {
-      const backupPath = await invoke<string>("backup_database");
-      messageApi.success(t`Database backup saved successfully to ${backupPath}`);
+      const backupPath = await BackupDatabase();
+      if (backupPath) {
+        messageApi.success(t`Database backup saved successfully to ${backupPath}`);
+      }
     } catch (error) {
       console.error("Backup failed:", error);
       messageApi.error(t`Failed to backup database: ${String(error)}`);
@@ -37,13 +39,15 @@ function SettingsBackup() {
       onOk: async () => {
         setRestoring(true);
         try {
-          const result = await invoke<string>("restore_database");
-          messageApi.success(result);
-          // Recommend restarting the application
-          Modal.info({
-            title: t`Restore Complete`,
-            content: t`Database has been restored successfully. Please restart the application to see the changes.`,
-          });
+          const result = await RestoreDatabase();
+          if (result) {
+            messageApi.success(result);
+            // Recommend restarting the application
+            Modal.info({
+              title: t`Restore Complete`,
+              content: t`Database has been restored successfully. Please restart the application to see the changes.`,
+            });
+          }
         } catch (error) {
           console.error("Restore failed:", error);
           messageApi.error(t`Failed to restore database: ${String(error)}`);

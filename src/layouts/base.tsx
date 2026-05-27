@@ -34,7 +34,6 @@ import { organizationsAtom, organizationIdAtom, organizationAtom } from "src/ato
 import Timer from "src/components/timer";
 import FeedbackModal from "src/components/feedback-modal";
 import { dynamicActivate, locales } from "src/utils/lingui";
-import { useAutoUpdater } from "src/hooks/useAutoUpdater";
 
 const { Content, Header, Sider } = Layout;
 const { Option } = Select;
@@ -65,9 +64,6 @@ export default function BaseLayout() {
 
   // Sider
   const [siderCollapsed, setSiderCollapsed] = useAtom(siderAtom);
-
-  // Auto-updater
-  useAutoUpdater();
 
   // If no organizationId is set, redirect to index page
   if (!organizationId) {

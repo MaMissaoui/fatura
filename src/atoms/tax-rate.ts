@@ -5,7 +5,12 @@ import { t } from "@lingui/core/macro";
 import orderBy from "lodash/orderBy";
 import keyBy from "lodash/keyBy";
 import map from "lodash/map";
-import { invoke } from "@tauri-apps/api/core";
+import {
+  GetTaxRates,
+  GetTaxRate,
+  CreateTaxRate,
+  UpdateTaxRate,
+} from "wailsjs/go/main/App";
 
 import { organizationIdAtom } from "./organization";
 
@@ -14,7 +19,7 @@ export const taxRatesAtom = atom<any[]>([]);
 export const setTaxRatesAtom = atom(null, async (get, set) => {
   const organizationId = get(organizationIdAtom);
   try {
-    const response = await invoke<any[]>("get_tax_rates", { organizationId });
+    const response = await GetTaxRates(organizationId!);
     set(taxRatesAtom, response);
   } catch (error) {
     console.error("Failed to fetch tax rates:", error);
@@ -31,7 +36,7 @@ export const taxRateAtom = atom(
     if (!taxRateId) return null;
 
     try {
-      const taxRate = await invoke<any>("get_tax_rate", { taxRateId });
+      const taxRate = await GetTaxRate(taxRateId);
       return taxRate;
     } catch (error) {
       console.error("Failed to fetch tax rate:", error);
@@ -59,9 +64,7 @@ export const taxRateAtom = atom(
               : newValues.isDefault,
         };
 
-        const createdTaxRate = await invoke<any>("create_tax_rate", {
-          taxRate: taxRateData,
-        });
+        const createdTaxRate = await CreateTaxRate(taxRateData);
         set(taxRateIdAtom, createdTaxRate.id);
         message.success(t`Tax rate created`);
 
@@ -83,10 +86,7 @@ export const taxRateAtom = atom(
               : newValues.isDefault,
         };
 
-        const updatedTaxRate = await invoke<any>("update_tax_rate", {
-          taxRateId,
-          updates: updateData,
-        });
+        const updatedTaxRate = await UpdateTaxRate(taxRateId, updateData);
         message.success(t`Tax rate updated successfully`);
 
         // Update the tax rates list

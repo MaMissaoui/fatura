@@ -7,85 +7,70 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish-tauri:
+  publish-wails:
     permissions:
       contents: write
     strategy:
       fail-fast: false
       matrix:
         settings:
-          - platform: "macos-latest" # for Arm based macs (M1 and above).
-            args: "--target aarch64-apple-darwin"
-          - platform: "macos-latest" # for Intel based macs.
-            args: "--target x86_64-apple-darwin"
+          - platform: "macos-latest"
+            args: "-platform darwin/arm64"
+          - platform: "macos-latest"
+            args: "-platform darwin/amd64"
           - platform: "ubuntu-24.04"
-            args: ""
+            args: "-platform linux/amd64"
 
     runs-on: ${{ matrix.settings.platform }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
-      - name: install dependencies (ubuntu only)
+      - name: Install dependencies (ubuntu only)
         if: matrix.settings.platform == 'ubuntu-24.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
-        # webkitgtk 4.1 is for Tauri v2.
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache-dependency-path: go.sum
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@v4
         with:
           version: 10
 
-      - name: setup node
-        uses: actions/setup-node@v6
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: "pnpm"
 
-      - name: install Rust stable
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
-          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+      - name: Install Wails CLI
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
-      - name: Rust cache
-        uses: swatinem/rust-cache@v2
-        with:
-          workspaces: "./src-tauri -> target"
-
-      - name: install frontend dependencies
+      - name: Install frontend dependencies
         run: pnpm install --frozen-lockfile
-      
-      - name: Save API key to file
-        if: matrix.settings.platform == 'macos-latest'
-        env:
-          APPLE_API_KEY_VALUE: ${{ secrets.APPLE_API_KEY_VALUE }}
-        shell: bash
-        run: echo "$APPLE_API_KEY_VALUE" >> ${{ github.workspace }}/apple-api-key.p8
 
-      - uses: tauri-apps/tauri-action@v0
+      - name: Build with Wails
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
-          # Apple signing
-          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
-          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
-          APPLE_API_KEY_VALUE: ${{ secrets.APPLE_API_KEY_VALUE }}
-          APPLE_API_KEY_PATH: ${{ github.workspace }}/apple-api-key.p8
-          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
-          # Tauri updater signing
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
-          # Build configuration
-          NODE_OPTIONS: "--max-old-space-size=4096"
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: wails build ${{ matrix.settings.args }}
 
+      - name: Upload macOS artifact
+        if: matrix.settings.platform == 'macos-latest'
+        uses: actions/upload-artifact@v4
         with:
-          tagName: v__VERSION__
-          releaseName: "v__VERSION__"
-          releaseBody: "See the assets to download a version and install."
-          releaseDraft: false
-          prerelease: false
-          args: ${{ matrix.settings.args }}
+          name: fatura-${{ matrix.settings.args }}
+          path: build/bin/
+
+      - name: Upload Linux artifact
+        if: matrix.settings.platform == 'ubuntu-24.04'
+        uses: actions/upload-artifact@v4
+        with:
+          name: fatura-linux-amd64
+          path: build/bin/

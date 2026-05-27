@@ -22,7 +22,7 @@ import "dayjs/locale/sv";
 import "dayjs/locale/uk";
 
 import { useEffect, useState, useMemo, lazy, Suspense } from "react";
-import { BrowserRouter, Navigate, Route, Routes, useNavigate, useLocation } from "react-router";
+import { MemoryRouter, Navigate, Route, Routes, useNavigate, useLocation } from "react-router";
 import { ConfigProvider } from "antd";
 import enUS from "antd/locale/en_US";
 import enGB from "antd/locale/en_GB";
@@ -208,9 +208,9 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <MemoryRouter>
       <AppContent />
-    </BrowserRouter>
+    </MemoryRouter>
   );
 };
 

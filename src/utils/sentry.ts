@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/react";
-import { getVersion } from "@tauri-apps/api/app";
+import { GetVersion } from "wailsjs/go/main/App";
 
 // Initialize Sentry
 export const initSentry = async () => {
@@ -11,7 +11,7 @@ export const initSentry = async () => {
   // Get the app version
   let appVersion = "unknown";
   try {
-    appVersion = await getVersion();
+    appVersion = await GetVersion();
   } catch (error) {
     console.warn("Failed to get app version:", error);
   }

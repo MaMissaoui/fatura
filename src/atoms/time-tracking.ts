@@ -9,7 +9,18 @@ import orderBy from "lodash/orderBy";
 import keyBy from "lodash/keyBy";
 import map from "lodash/map";
 import reject from "lodash/reject";
-import { invoke } from "@tauri-apps/api/core";
+import {
+  GetTags,
+  GetTag,
+  CreateTag,
+  UpdateTag,
+  DeleteTag,
+  GetTimeEntries,
+  GetTimeEntry,
+  CreateTimeEntry,
+  UpdateTimeEntry,
+  DeleteTimeEntry,
+} from "wailsjs/go/main/App";
 
 import { organizationIdAtom } from "./organization";
 
@@ -18,7 +29,7 @@ export const tagsAtom = atom<any[]>([]);
 export const setTagsAtom = atom(null, async (get, set) => {
   const organizationId = get(organizationIdAtom);
   try {
-    const response = await invoke<any[]>("get_tags", { organizationId });
+    const response = await GetTags(organizationId!);
     set(tagsAtom, response);
   } catch (error) {
     console.error("Failed to fetch tags:", error);
@@ -35,7 +46,7 @@ export const tagAtom = atom(
     if (!tagId) return null;
 
     try {
-      const tag = await invoke<any>("get_tag", { tagId });
+      const tag = await GetTag(tagId);
       return tag;
     } catch (error) {
       console.error("Failed to fetch tag:", error);
@@ -54,9 +65,7 @@ export const tagAtom = atom(
           organizationId: get(organizationIdAtom),
         };
 
-        const createdTag = await invoke<any>("create_tag", {
-          tag: tagData,
-        });
+        const createdTag = await CreateTag(tagData);
         set(tagIdAtom, createdTag.id);
         message.success(t`Tag created`);
 
@@ -65,10 +74,7 @@ export const tagAtom = atom(
         set(tagsAtom, orderBy([...tags, createdTag], "name", "asc"));
       } else {
         // Update
-        const updatedTag = await invoke<any>("update_tag", {
-          tagId,
-          updates: newValues,
-        });
+        const updatedTag = await UpdateTag(tagId, newValues);
         message.success(t`Tag updated successfully`);
 
         // Update the tags list
@@ -90,7 +96,7 @@ export const tagAtom = atom(
 // Delete tag
 export const deleteTagAtom = atom(null, async (get, set, tagId: string) => {
   try {
-    const success = await invoke<boolean>("delete_tag", { tagId });
+    const success = await DeleteTag(tagId);
 
     if (success) {
       // Remove tag from the list
@@ -111,7 +117,7 @@ export const timeEntriesAtom = atom<any[]>([]);
 export const setTimeEntriesAtom = atom(null, async (get, set) => {
   const organizationId = get(organizationIdAtom);
   try {
-    const response = await invoke<any[]>("get_time_entries", { organizationId });
+    const response = await GetTimeEntries(organizationId!);
     set(timeEntriesAtom, response);
   } catch (error) {
     console.error("Failed to fetch time entries:", error);
@@ -162,7 +168,7 @@ export const updateTimeEntryDirectlyAtom = atom(
       };
 
       // Update in database
-      await invoke("update_time_entry", { timeEntryId: id, updates: updateData });
+      await UpdateTimeEntry(id, updateData);
 
       // Update local state immediately
       set(updateTimeEntryLocallyAtom, { id, updates });
@@ -181,7 +187,7 @@ export const timeEntryAtom = atom(
     if (!timeEntryId) return null;
 
     try {
-      const timeEntry = await invoke<any>("get_time_entry", { timeEntryId });
+      const timeEntry = await GetTimeEntry(timeEntryId);
       if (!timeEntry) return null;
 
       return {
@@ -221,9 +227,7 @@ export const timeEntryAtom = atom(
               : newValues.isBillable,
         };
 
-        const createdTimeEntry = await invoke<any>("create_time_entry", {
-          timeEntry: timeEntryData,
-        });
+        const createdTimeEntry = await CreateTimeEntry(timeEntryData);
         set(timeEntryIdAtom, createdTimeEntry.id);
         message.success(t`Time entry created`);
 
@@ -252,10 +256,7 @@ export const timeEntryAtom = atom(
               : newValues.isBillable,
         };
 
-        const updatedTimeEntry = await invoke<any>("update_time_entry", {
-          timeEntryId,
-          updates: updateData,
-        });
+        const updatedTimeEntry = await UpdateTimeEntry(timeEntryId, updateData);
         message.success(t`Time entry updated successfully`);
 
         // Update the time entries list
@@ -279,7 +280,7 @@ export const timeEntryAtom = atom(
 // Delete time entry
 export const deleteTimeEntryAtom = atom(null, async (get, set, timeEntryId: string) => {
   try {
-    const success = await invoke<boolean>("delete_time_entry", { timeEntryId });
+    const success = await DeleteTimeEntry(timeEntryId);
 
     if (success) {
       // Remove time entry from the list

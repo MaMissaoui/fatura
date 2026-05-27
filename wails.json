@@ -1,0 +1,19 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "fatura",
+  "outputfilename": "fatura",
+  "frontend:install": "pnpm install",
+  "frontend:build": "pnpm build",
+  "frontend:dev:watcher": "pnpm dev",
+  "frontend:dev:serverUrl": "http://localhost:5173",
+  "frontend:dir": ".",
+  "wailsjsdir": "./wailsjs",
+  "assetdir": "dist",
+  "info": {
+    "companyName": "Fatura",
+    "productName": "Fatura",
+    "productVersion": "2.0.0-beta.24",
+    "copyright": "Copyright © 2024",
+    "comments": "Cross-platform invoicing application"
+  }
+}

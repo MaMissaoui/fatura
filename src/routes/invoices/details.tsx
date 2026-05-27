@@ -51,8 +51,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { save } from "@tauri-apps/plugin-dialog";
-import { writeFile } from "@tauri-apps/plugin-fs";
+import { SaveFile } from "wailsjs/go/main/App";
 import { pdf } from "@react-pdf/renderer";
 import { Document, Page } from "react-pdf";
 import dayjs from "dayjs";
@@ -1022,16 +1021,11 @@ const InvoiceDetails: React.FC = () => {
                         {!isNew && (
                           <Button
                             onClick={async () => {
-                              const filePath: string | null = await save({
-                                defaultPath: `invoice-${id}.pdf`,
-                              });
-                              if (!filePath) return;
-
                               const document = createPDFDocument();
                               if (!document) return;
                               const blob = await pdf(document).toBlob();
-                              const contents = new Uint8Array(await blob.arrayBuffer());
-                              await writeFile(filePath, contents);
+                              const contents = Array.from(new Uint8Array(await blob.arrayBuffer()));
+                              await SaveFile(`invoice-${id}.pdf`, contents);
                             }}
                           >
                             <FilePdfOutlined /> PDF

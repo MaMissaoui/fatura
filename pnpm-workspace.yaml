@@ -1,4 +1,9 @@
-packages:
-  - 'website'
+allowBuilds:
+  '@parcel/watcher': true
+  '@sentry/cli': true
+  canvas: true
+  esbuild: true
+  sharp: true
+  workerd: true
 overrides:
   jsondiffpatch@<0.7.2: '>=0.7.2'

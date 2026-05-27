@@ -9,7 +9,15 @@ import orderBy from "lodash/orderBy";
 import keyBy from "lodash/keyBy";
 import map from "lodash/map";
 import reject from "lodash/reject";
-import { invoke } from "@tauri-apps/api/core";
+import {
+  GetInvoices,
+  GetInvoice,
+  GetInvoiceLineItems,
+  CreateInvoice,
+  UpdateInvoice,
+  UpdateInvoiceState,
+  DeleteInvoice,
+} from "wailsjs/go/main/App";
 
 import { centsToUnits, unitsToCents, multiplyDecimal } from "src/utils/currency";
 import { organizationIdAtom, nextInvoiceNumberAtom } from "./organization";
@@ -19,7 +27,7 @@ export const invoicesAtom = atom<any[]>([]);
 export const setInvoicesAtom = atom(null, async (get, set) => {
   const organizationId = get(organizationIdAtom);
   try {
-    const response = await invoke<any[]>("get_invoices", { organizationId });
+    const response = await GetInvoices(organizationId!);
     // Convert cents to units for display
     const invoicesWithUnits = response.map((invoice) => ({
       ...invoice,
@@ -44,8 +52,8 @@ export const invoiceAtom = atom(
 
     try {
       const [invoice, lineItems] = await Promise.all([
-        invoke<any>("get_invoice", { invoiceId }),
-        invoke<any[]>("get_invoice_line_items", { invoiceId }),
+        GetInvoice(invoiceId),
+        GetInvoiceLineItems(invoiceId),
       ]);
 
       if (!invoice) return null;
@@ -97,9 +105,7 @@ export const invoiceAtom = atom(
           })),
         };
 
-        const createdInvoice = await invoke<any>("create_invoice", {
-          invoice: invoiceData,
-        });
+        const createdInvoice = await CreateInvoice(invoiceData);
 
         set(invoiceIdAtom, createdInvoice.id);
         message.success(t`Invoice created`);
@@ -134,10 +140,7 @@ export const invoiceAtom = atom(
             : undefined,
         };
 
-        const updatedInvoice = await invoke<any>("update_invoice", {
-          invoiceId,
-          updates: updateData,
-        });
+        const updatedInvoice = await UpdateInvoice(invoiceId, updateData);
 
         message.success(t`Invoice updated successfully`);
 
@@ -160,7 +163,7 @@ export const invoiceAtom = atom(
 // Delete invoice
 export const deleteInvoiceAtom = atom(null, async (get, set, invoiceId: string) => {
   try {
-    const success = await invoke<boolean>("delete_invoice", { invoiceId });
+    const success = await DeleteInvoice(invoiceId);
 
     if (success) {
       // Remove invoice from the list
@@ -181,10 +184,7 @@ export const updateInvoiceStateAtom = atom(
   null,
   async (get, set, { invoiceId, state }: { invoiceId: string; state: string }) => {
     try {
-      const updatedInvoice = await invoke<any>("update_invoice_state", {
-        invoiceId,
-        state,
-      });
+      const updatedInvoice = await UpdateInvoiceState(invoiceId, state);
 
       message.success(t`Invoice state updated`);
 
@@ -210,8 +210,8 @@ export const duplicateInvoiceAtom = atom(null, async (get, set, invoiceId: strin
   try {
     // Fetch the original invoice with line items
     const [originalInvoice, lineItems] = await Promise.all([
-      invoke<any>("get_invoice", { invoiceId }),
-      invoke<any[]>("get_invoice_line_items", { invoiceId }),
+      GetInvoice(invoiceId),
+      GetInvoiceLineItems(invoiceId),
     ]);
 
     if (!originalInvoice) {
@@ -253,9 +253,7 @@ export const duplicateInvoiceAtom = atom(null, async (get, set, invoiceId: strin
     };
 
     // Create the duplicated invoice
-    const createdInvoice = await invoke<any>("create_invoice", {
-      invoice: duplicatedInvoice,
-    });
+    const createdInvoice = await CreateInvoice(duplicatedInvoice);
 
     message.success(t`Invoice duplicated successfully`);
 
