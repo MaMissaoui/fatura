@@ -1,15 +1,14 @@
-import { useEffect, useState, startTransition } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { Form, Input, Modal, Select, Button, Popconfirm, Spin } from "antd";
-import { atom, useAtom, useSetAtom } from "jotai";
+import { Form, Input, Modal, Select, Button, Popconfirm } from "antd";
+import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { DeleteOutlined } from "@ant-design/icons";
-import isEmpty from "lodash/isEmpty";
 import get from "lodash/get";
 import { GetClientInvoiceCount } from "wailsjs/go/main/App";
 
-import { clientIdAtom, clientAtom, deleteClientAtom } from "src/atoms/client";
+import { clientIdAtom, clientAtom, clientsAtom, deleteClientAtom } from "src/atoms/client";
 import { generateClientCode } from "src/utils/client";
 
 const submittingAtom = atom(false);
@@ -20,11 +19,23 @@ const ClientForm = () => {
   const [form] = Form.useForm();
 
   const [clientId, setClientId] = useAtom(clientIdAtom);
-  const [client, setClient] = useAtom(clientAtom);
+  const clients = useAtomValue(clientsAtom);
+  const setClient = useSetAtom(clientAtom);
   const [submitting, setSubmitting] = useAtom(submittingAtom);
   const deleteClient = useSetAtom(deleteClientAtom);
   const [invoiceCount, setInvoiceCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
+
+  const isVisible = get(location.state, "clientModal", false);
+
+  const client = useMemo(() => {
+    if (!clientId) return null;
+    const c = clients.find((x: any) => x.id === clientId);
+    if (!c) return null;
+    return {
+      ...c,
+      emails: c.emails ? JSON.parse(c.emails) : [],
+    };
+  }, [clients, clientId]);
 
   const handleSubmit = async (values: any) => {
     setSubmitting(true);
@@ -47,34 +58,25 @@ const ClientForm = () => {
   };
 
   useEffect(() => {
-    if (get(location, "state.clientId")) {
-      startTransition(() => {
-        setClientId(get(location, "state.clientId"));
-      });
-    } else {
+    const navClientId = get(location.state, "clientId");
+    if (isVisible && navClientId) {
+      setClientId(navClientId);
+    } else if (!isVisible) {
+      setClientId(null);
       form.resetFields();
-      startTransition(() => {
-        setClientId(null);
-      });
     }
-  }, [location, form, setClientId]);
+  }, [isVisible, location.state, setClientId, form]);
 
   useEffect(() => {
-    if (clientId) {
-      setLoading(true);
-    }
     if (client) {
       form.setFieldsValue(client);
-      setLoading(false);
-    } else if (clientId) {
-      // Client is still loading or failed to load
-      setLoading(false);
+    } else if (!clientId) {
+      form.resetFields();
     }
   }, [client, clientId, form]);
 
   useEffect(() => {
     if (clientId) {
-      // Fetch invoice count when clientId changes
       const fetchInvoiceCount = async () => {
         try {
           const count = await GetClientInvoiceCount(clientId);
@@ -93,7 +95,7 @@ const ClientForm = () => {
   return (
     <Modal
       title={clientId ? <Trans>Edit client</Trans> : <Trans>New client</Trans>}
-      open={get(location.state, "clientModal", false)}
+      open={isVisible}
       okText={<Trans>Save</Trans>}
       onOk={() => form.submit()}
       confirmLoading={submitting}
@@ -154,47 +156,38 @@ const ClientForm = () => {
       ]}
       forceRender={true}
     >
-      {loading ? (
-        <div style={{ textAlign: "center", padding: "40px 0" }}>
-          <Spin size="large" />
-        </div>
-      ) : (
-        (!clientId || !isEmpty(client)) && (
-          <Form form={form} layout="vertical" onFinish={handleSubmit}>
-            <Form.Item name="name" rules={[{ required: true, message: t`Please input name!` }]}>
-              <Input
-                placeholder={t`Name`}
-                onChange={(e) => {
-                  // Only auto-generate code for new clients (no clientId)
-                  if (!clientId) {
-                    const code = generateClientCode(e.target.value);
-                    form.setFieldValue("code", code);
-                  }
-                }}
-              />
-            </Form.Item>
-            <Form.Item name="code" rules={[{ required: false }]}>
-              <Input placeholder={t`Code`} maxLength={10} />
-            </Form.Item>
-            <Form.Item name="address">
-              <Input.TextArea rows={4} placeholder={t`Address`} />
-            </Form.Item>
-            {/* TODO: E-mail validation */}
-            <Form.Item name="emails">
-              <Select placeholder={t`E-mails`} mode="tags" tokenSeparators={[",", ";"]} />
-            </Form.Item>
-            <Form.Item name="phone">
-              <Input placeholder={t`Phone`} />
-            </Form.Item>
-            <Form.Item name="vatin">
-              <Input placeholder={t`VAT Number`} />
-            </Form.Item>
-            <Form.Item name="website">
-              <Input placeholder={t`Website`} />
-            </Form.Item>
-          </Form>
-        )
-      )}
+      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+        <Form.Item name="name" rules={[{ required: true, message: t`Please input name!` }]}>
+          <Input
+            placeholder={t`Name`}
+            onChange={(e) => {
+              if (!clientId) {
+                const code = generateClientCode(e.target.value);
+                form.setFieldValue("code", code);
+              }
+            }}
+          />
+        </Form.Item>
+        <Form.Item name="code" rules={[{ required: false }]}>
+          <Input placeholder={t`Code`} maxLength={10} />
+        </Form.Item>
+        <Form.Item name="address">
+          <Input.TextArea rows={4} placeholder={t`Address`} />
+        </Form.Item>
+        {/* TODO: E-mail validation */}
+        <Form.Item name="emails">
+          <Select placeholder={t`E-mails`} mode="tags" tokenSeparators={[",", ";"]} />
+        </Form.Item>
+        <Form.Item name="phone">
+          <Input placeholder={t`Phone`} />
+        </Form.Item>
+        <Form.Item name="vatin">
+          <Input placeholder={t`VAT Number`} />
+        </Form.Item>
+        <Form.Item name="website">
+          <Input placeholder={t`Website`} />
+        </Form.Item>
+      </Form>
     </Modal>
   );
 };

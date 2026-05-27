@@ -1,4 +1,4 @@
-import { useEffect, Suspense } from "react";
+import { useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router";
 import { Button, Col, Input, Space, Table, Typography, Row, Tag, Tooltip } from "antd";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
@@ -129,9 +129,7 @@ const Clients = () => {
         </Col>
       </Row>
 
-      <Suspense fallback={null}>
-        <ClientForm />
-      </Suspense>
+      <ClientForm />
     </>
   );
 };
