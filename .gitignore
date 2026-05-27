@@ -41,3 +41,4 @@ dist-ssr
 # Sentry Config File
 .env.sentry-build-plugin
 Error_Timer.png
+no_data_icon.png
