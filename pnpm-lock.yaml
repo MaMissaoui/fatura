@@ -120,6 +120,9 @@ importers:
       babel-plugin-macros:
         specifier: ^3.1.0
         version: 3.1.0
+      jotai-babel:
+        specifier: ^0.2.0
+        version: 0.2.0(@babel/core@7.29.7)(@babel/template@7.29.7)(jotai@2.20.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.15)(react@19.2.6))
       oxfmt:
         specifier: ^0.28.0
         version: 0.28.0
@@ -1988,6 +1991,13 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
+
+  jotai-babel@0.2.0:
+    resolution: {integrity: sha512-aAe8nDB6L31+dpavZyW5FIvrbYRKYzoy84t83RkMTXXh+ZaXAZs0mrtAooqt2hdIFFlHLldYtwWsxzbG34o4yA==}
+    peerDependencies:
+      '@babel/core': '>=7.0.0'
+      '@babel/template': '>=7.0.0'
+      jotai: '>=2.0.0'
 
   jotai-devtools@0.14.0:
     resolution: {integrity: sha512-vtUE3hlcZJeBpaziPMu07jB0kWu5MWUsGAsYBUUFBbTcE8Tzumb2+ZV6lPrIgEAJmVg5ZD1vf73URDzdgoKZaw==}
@@ -4896,6 +4906,12 @@ snapshots:
       pretty-format: 29.7.0
 
   jiti@2.6.1: {}
+
+  jotai-babel@0.2.0(@babel/core@7.29.7)(@babel/template@7.29.7)(jotai@2.20.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.15)(react@19.2.6)):
+    dependencies:
+      '@babel/core': 7.29.7
+      '@babel/template': 7.29.7
+      jotai: 2.20.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.15)(react@19.2.6)
 
   jotai-devtools@0.14.0(@types/react@19.2.15)(jotai@2.20.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.15)(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(redux@5.0.1):
     dependencies:

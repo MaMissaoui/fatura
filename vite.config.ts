@@ -10,7 +10,7 @@ export default defineConfig({
     react({
       babel: {
         plugins: ["@lingui/babel-plugin-lingui-macro"],
-        presets: ["jotai/babel/preset"],
+        presets: ["jotai-babel/preset"],
       },
     }),
     lingui(),
