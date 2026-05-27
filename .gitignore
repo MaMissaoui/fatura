@@ -40,3 +40,4 @@ dist-ssr
 *.sw?
 # Sentry Config File
 .env.sentry-build-plugin
+Error_Timer.png
