@@ -110,9 +110,9 @@ export default function BaseLayout() {
         collapsed={siderCollapsed}
         style={{ overflow: "auto", height: "100vh", position: "fixed", left: 0, top: 0, bottom: 0 }}
       >
-        <div className="logo" style={{ height: 22, margin: "21px 16px", textAlign: "center" }}>
+        <div className="logo" style={{ margin: siderCollapsed ? "8px 8px 16px" : "8px 16px 16px", textAlign: "center" }}>
           <Link to="/invoices">
-            <img src={siderCollapsed ? "/logo-minimal.svg" : "/logo-light.svg"} alt="Fatura" />
+            <img src={siderCollapsed ? "/logo-minimal.png" : "/logo-light.png"} alt="Fatura" style={{ width: siderCollapsed ? "100%" : "45%", height: "auto" }} />
           </Link>
         </div>
         <Menu
