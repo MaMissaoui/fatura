@@ -77,9 +77,7 @@ const Invoices = () => {
   const [search, setSearch] = useAtom(searchAtom);
 
   useEffect(() => {
-    if (location.pathname === "/invoices") {
-      setInvoices();
-    }
+    setInvoices();
   }, [setInvoices]);
 
   const searchInvoices = () => {
