@@ -3,6 +3,7 @@ import {
   Col,
   Form,
   Input,
+  InputNumber,
   Popconfirm,
   Space,
   Typography,
@@ -129,14 +130,14 @@ function SettingsInvoice() {
           <Row gutter={24}>
             <Col span={24}>
               <Divider orientation="left">
-                <Trans>Date Formatting</Trans>
+                <Trans>Date Format & Decimal Places</Trans>
               </Divider>
             </Col>
           </Row>
           <Row>
             <Col span={12}>
               <Row gutter={16}>
-                <Col span={24}>
+                <Col span={12}>
                   <Form.Item label={t`Date format`} name="date_format">
                     <Select placeholder={t`Select date format`}>
                       {Object.keys(DATE_FORMATS).map((key) => (
@@ -148,6 +149,11 @@ function SettingsInvoice() {
                         </Select.Option>
                       ))}
                     </Select>
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item label={t`Decimal places`} name="minimum_fraction_digits">
+                    <InputNumber min={0} max={10} style={{ width: "100%" }} />
                   </Form.Item>
                 </Col>
               </Row>
